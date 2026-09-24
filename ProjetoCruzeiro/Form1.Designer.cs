@@ -1,6 +1,6 @@
 ﻿namespace ProjetoCruzeiro
 {
-    partial class Form1
+    partial class Cruzeiro
     {
         /// <summary>
         /// Variável de designer necessária.
@@ -29,12 +29,41 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.panelPrincipal = new System.Windows.Forms.Panel();
+            this.SuspendLayout();
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            // 
+            // panelPrincipal
+            // 
+            this.panelPrincipal.Location = new System.Drawing.Point(-1, -1);
+            this.panelPrincipal.Name = "panelPrincipal";
+            this.panelPrincipal.Size = new System.Drawing.Size(1266, 682);
+            this.panelPrincipal.TabIndex = 1;
+            this.panelPrincipal.Paint += new System.Windows.Forms.PaintEventHandler(this.panelPrincipal_Paint);
+            // 
+            // Cruzeiro
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "Form1";
+            this.ClientSize = new System.Drawing.Size(1264, 681);
+            this.Controls.Add(this.panelPrincipal);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.Name = "Cruzeiro";
+            this.Text = "Cruzeiro";
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.Panel panelPrincipal;
     }
 }
 
