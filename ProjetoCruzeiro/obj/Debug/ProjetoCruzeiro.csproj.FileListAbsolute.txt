@@ -17,3 +17,7 @@ C:\Users\Roberto Levi\source\repos\ProjetoCruzeiro\ProjetoCruzeiro\obj\Debug\Pro
 C:\Users\Roberto Levi\source\repos\ProjetoCruzeiro\ProjetoCruzeiro\obj\Debug\ProjetoCruzeiro.pdb
 C:\Users\Roberto Levi\source\repos\ProjetoCruzeiro\ProjetoCruzeiro\bin\Debug\Videos\intro.mp4
 C:\Users\Roberto Levi\source\repos\ProjetoCruzeiro\ProjetoCruzeiro\bin\Debug\Videos\intro2.mp4
+C:\Users\Roberto Levi\source\repos\ProjetoCruzeiro\ProjetoCruzeiro\obj\Debug\ProjetoCruzeiro.AvisoControl.resources
+C:\Users\Roberto Levi\source\repos\ProjetoCruzeiro\ProjetoCruzeiro\obj\Debug\ProjetoCruzeiro.JogoForm.resources
+C:\Users\Roberto Levi\source\repos\ProjetoCruzeiro\ProjetoCruzeiro\obj\Debug\ProjetoCruzeiro.LevelSelectControl.resources
+C:\Users\Roberto Levi\source\repos\ProjetoCruzeiro\ProjetoCruzeiro\obj\Debug\ProjetoCruzeiro.DificuldadeSelectControl.resources

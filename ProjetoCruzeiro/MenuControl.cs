@@ -17,11 +17,31 @@ namespace ProjetoCruzeiro
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        #region Botões
+
+        private void btn_iniciar_Click(object sender, EventArgs e)
         {
             Cruzeiro cruzeiro = (Cruzeiro)this.FindForm();
 
-            cruzeiro.AbrirTela(new CutsceneIntroControl());
+            cruzeiro.AbrirTela(new DificuldadeSelectControl());
         }
+
+        private void btn_sair_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        #endregion
+
+        #region Lixeira
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        #endregion
+
+       
     }
 }

@@ -42,7 +42,7 @@
             // 
             this.panelPrincipal.Location = new System.Drawing.Point(-1, -1);
             this.panelPrincipal.Name = "panelPrincipal";
-            this.panelPrincipal.Size = new System.Drawing.Size(1266, 682);
+            this.panelPrincipal.Size = new System.Drawing.Size(1280, 720);
             this.panelPrincipal.TabIndex = 1;
             this.panelPrincipal.Paint += new System.Windows.Forms.PaintEventHandler(this.panelPrincipal_Paint);
             // 
@@ -50,7 +50,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1264, 681);
+            this.ClientSize = new System.Drawing.Size(1279, 718);
             this.Controls.Add(this.panelPrincipal);
             this.MaximizeBox = false;
             this.MinimizeBox = false;

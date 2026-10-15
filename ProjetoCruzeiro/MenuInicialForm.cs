@@ -16,7 +16,7 @@ namespace ProjetoCruzeiro
         {
             InitializeComponent();
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
-            AbrirTela(new MenuControl());
+            AbrirTela(new AvisoControl());
         }
 
         #region Funções base
