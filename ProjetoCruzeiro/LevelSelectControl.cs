@@ -19,27 +19,21 @@ namespace ProjetoCruzeiro
             InitializeComponent();
             this.DificuldadeSelecionada = dificuldadeSelecionada;
 
+    
             switch (dificuldadeSelecionada)
             {
                 case 1:
-                    lbl_caso.Text = "Caso 1";
-
-                    
-
-
-
-
-
+                    EsconderInfoLevels();
+                    lbl_caso.Text = "ATO 1";
                     break;
+
                 case 2:
-                    lbl_caso.Text = "Caso 2";
+                    EsconderInfoLevels();
+                    lbl_caso.Text = "ATO 2";
                     break;
                 case 3:
-                    lbl_caso.Text = "Caso 3";
-                    break;
-
-                default:
-                    lbl_caso.Text = "Nível Desconhecido";
+                    EsconderInfoLevels();
+                    lbl_caso.Text = "ATO 3";
                     break;
             }
         }
@@ -63,5 +57,75 @@ namespace ProjetoCruzeiro
 
         }
         #endregion
+
+        private void lbl_level3_button_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        #region Esconder info dos levels
+        void EsconderInfoLevels()
+        {
+            lbl_level_titulo.Text = "";
+            lbl_level_desc.Text = "";
+            lbl_level_highscore.Text = "";
+            lbl_level_local.Text = "";
+            pbx_level_estrela1.Visible = false;
+            pbx_level_estrela2.Visible = false;
+            pbx_level_estrela3.Visible = false;
+        }
+        #endregion
+
+        #region mudar info dos levels
+
+        #region level 1
+        private void lbl_level1_button_MouseHover(object sender, EventArgs e)
+            {
+                if (DificuldadeSelecionada == 1)
+            {
+                lbl_level_titulo.Text = "O Furto";
+                lbl_level_desc.Text = "Descubra a combinação correta!";
+                lbl_level_highscore.Text = "Highscore: 1500 pontos";
+                lbl_level_local.Text = "Loja";
+                pbx_level_estrela1.Visible = true;
+                pbx_level_estrela2.Visible = true;
+                pbx_level_estrela3.Visible = true;
+            } else if (DificuldadeSelecionada == 2)
+            {
+                lbl_level_titulo.Text = "Pesadelo na Cozinha";
+                lbl_level_desc.Text = "Ajuste as balanças!";
+                lbl_level_highscore.Text = "Highscore: 3000 pontos";
+                lbl_level_local.Text = "Cozinha";
+                pbx_level_estrela1.Visible = true;
+                pbx_level_estrela2.Visible = true;
+                pbx_level_estrela3.Visible = true;
+            }
+            else if (DificuldadeSelecionada == 3)
+            {
+                lbl_level_titulo.Text = "Um Terrível Caso";
+                lbl_level_desc.Text = "Acerte a posição das válvulas!";
+                lbl_level_highscore.Text = "Highscore: 800 pontos";
+                lbl_level_local.Text = "Jacuzzi";
+                pbx_level_estrela1.Visible = true;
+                pbx_level_estrela2.Visible = true;
+                pbx_level_estrela3.Visible = true;
+            }
+        }
+
+        private void lbl_level1_button_MouseLeave(object sender, EventArgs e)
+        {
+            EsconderInfoLevels();
+        }
+        #endregion
+
+        #region level 2
+        #endregion
+
+        #region level 3
+        #endregion
+
+        #endregion
+
+
     }
 }

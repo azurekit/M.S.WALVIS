@@ -121,6 +121,12 @@
   <data name="buttonlevel1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\imagens\buttonlevel.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="estrelavazia" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\imagens\estrelavazia.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="botaojogar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\imagens\botaojogar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="caso" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\imagens\caso.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -136,7 +142,13 @@
   <data name="buttonlevel2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\imagens\buttonlevel.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="estrelavazia" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\imagens\estrelavazia.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="botaojogarnoitepng-Photoroom" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\imagens\botaojogarnoitepng-Photoroom.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="botaojogartarde-Photoroom" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\imagens\botaojogartarde-Photoroom.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="botaojogarmanha-Photoroom" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\imagens\botaojogarmanha-Photoroom.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

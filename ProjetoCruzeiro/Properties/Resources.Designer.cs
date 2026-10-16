@@ -73,6 +73,46 @@ namespace ProjetoCruzeiro.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap botaojogar {
+            get {
+                object obj = ResourceManager.GetObject("botaojogar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap botaojogarmanha_Photoroom {
+            get {
+                object obj = ResourceManager.GetObject("botaojogarmanha-Photoroom", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap botaojogarnoitepng_Photoroom {
+            get {
+                object obj = ResourceManager.GetObject("botaojogarnoitepng-Photoroom", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap botaojogartarde_Photoroom {
+            get {
+                object obj = ResourceManager.GetObject("botaojogartarde-Photoroom", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap buttonlevel {
             get {
                 object obj = ResourceManager.GetObject("buttonlevel", resourceCulture);

@@ -8,7 +8,7 @@ namespace ProjetoCruzeiro
 {
     public class ProgressoJogador
     {
-        public int Pontuacaogeral { get; set; } = 0;
+        public int Pontuacaototal { get; set; } = 0;
         
         public int[] HighscoreLevels { get; set; } = new int[9]; // Array para armazenar a pontuação de cada nível
 
@@ -23,7 +23,7 @@ namespace ProjetoCruzeiro
                 return;
             }
 
-            Pontuacaogeral += pontuacao;
+            Pontuacaototal += pontuacao;
 
             if (pontuacao > HighscoreLevels[level - 1])
             {
