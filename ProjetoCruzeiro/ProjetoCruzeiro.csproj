@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Ato1Level1.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Ato1Level1.Designer.cs">
+      <DependentUpon>Ato1Level1.cs</DependentUpon>
+    </Compile>
     <Compile Include="JogoForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -91,6 +97,9 @@
     <Compile Include="DificuldadeSelectControl.Designer.cs">
       <DependentUpon>DificuldadeSelectControl.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Ato1Level1.resx">
+      <DependentUpon>Ato1Level1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="JogoForm.resx">
       <DependentUpon>JogoForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -157,6 +166,16 @@
   <ItemGroup>
     <None Include="imagens\caso.png" />
     <Content Include="imagens\altomar.png" />
+    <None Include="imagens\botaojogar.png" />
+    <None Include="imagens\botaojogarnoitepng-Photoroom.png" />
+    <None Include="imagens\botaojogartarde-Photoroom.png" />
+    <None Include="imagens\botaojogarmanha-Photoroom.png" />
+    <Content Include="imagens\botaoamarelo.png" />
+    <Content Include="imagens\botaoazul.png" />
+    <Content Include="imagens\botaolaranja.png" />
+    <Content Include="imagens\botaoroxo.png" />
+    <Content Include="imagens\botaoverde.png" />
+    <Content Include="imagens\botaovermelho.png" />
     <Content Include="imagens\buttonlevel.png" />
     <None Include="imagens\buttonlevelblock.png" />
     <None Include="imagens\estrelavazia.png" />

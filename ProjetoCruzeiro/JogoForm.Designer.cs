@@ -31,22 +31,24 @@
             this.panelJogo1 = new System.Windows.Forms.Panel();
             this.panelJogo2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.panelJogo2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelJogo1
             // 
-            this.panelJogo1.Location = new System.Drawing.Point(-1, -1);
+            this.panelJogo1.Location = new System.Drawing.Point(0, 0);
             this.panelJogo1.Name = "panelJogo1";
             this.panelJogo1.Size = new System.Drawing.Size(960, 720);
             this.panelJogo1.TabIndex = 2;
+            this.panelJogo1.Paint += new System.Windows.Forms.PaintEventHandler(this.panelJogo1_Paint);
             // 
             // panelJogo2
             // 
             this.panelJogo2.Controls.Add(this.panel3);
-            this.panelJogo2.Location = new System.Drawing.Point(958, -1);
+            this.panelJogo2.Location = new System.Drawing.Point(959, 0);
             this.panelJogo2.Name = "panelJogo2";
-            this.panelJogo2.Size = new System.Drawing.Size(321, 720);
+            this.panelJogo2.Size = new System.Drawing.Size(324, 720);
             this.panelJogo2.TabIndex = 4;
             // 
             // panel3
@@ -76,5 +78,6 @@
         private System.Windows.Forms.Panel panelJogo1;
         private System.Windows.Forms.Panel panelJogo2;
         private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
     }
 }

@@ -24,7 +24,15 @@ namespace ProjetoCruzeiro
         {
 
         }
+
+        private void panelJogo1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
         #endregion
+
+
+
 
     }
 }

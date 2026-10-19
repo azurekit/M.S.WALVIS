@@ -60,7 +60,8 @@ namespace ProjetoCruzeiro
 
         private void lbl_level3_button_Click(object sender, EventArgs e)
         {
-
+            Cruzeiro cruzeiro = (Cruzeiro)this.FindForm();
+            cruzeiro.AbrirTela(new CutsceneIntroControl());
         }
 
         #region Esconder info dos levels
@@ -73,6 +74,7 @@ namespace ProjetoCruzeiro
             pbx_level_estrela1.Visible = false;
             pbx_level_estrela2.Visible = false;
             pbx_level_estrela3.Visible = false;
+            pnl_level.BackColor = Color.Transparent;
         }
         #endregion
 
@@ -90,6 +92,7 @@ namespace ProjetoCruzeiro
                 pbx_level_estrela1.Visible = true;
                 pbx_level_estrela2.Visible = true;
                 pbx_level_estrela3.Visible = true;
+                pnl_level.BackColor = Color.FromArgb(100, 0, 0, 0);
             } else if (DificuldadeSelecionada == 2)
             {
                 lbl_level_titulo.Text = "Pesadelo na Cozinha";
@@ -116,6 +119,7 @@ namespace ProjetoCruzeiro
         {
             EsconderInfoLevels();
         }
+
         #endregion
 
         #region level 2
@@ -126,6 +130,23 @@ namespace ProjetoCruzeiro
 
         #endregion
 
+        #region selecionar level
 
+        #region level 1
+
+        void lbl_level1_button_Click(object sender, EventArgs e)
+        {
+
+            if (DificuldadeSelecionada == 1)
+            {
+                Cruzeiro cruzeiro = (Cruzeiro)this.FindForm();
+                cruzeiro.AbrirTela(new Ato1Level1());
+            }
+          
+        }
+
+        #endregion
+
+        #endregion
     }
 }
