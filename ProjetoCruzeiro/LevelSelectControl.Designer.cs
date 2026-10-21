@@ -123,6 +123,7 @@
             this.lbl_level2_button.Name = "lbl_level2_button";
             this.lbl_level2_button.Size = new System.Drawing.Size(300, 80);
             this.lbl_level2_button.TabIndex = 41;
+            this.lbl_level2_button.Click += new System.EventHandler(this.lbl_level2_button_Click);
             // 
             // lbl_level3_button
             // 

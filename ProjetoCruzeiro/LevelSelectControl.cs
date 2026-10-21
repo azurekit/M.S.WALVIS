@@ -148,5 +148,14 @@ namespace ProjetoCruzeiro
         #endregion
 
         #endregion
+
+        private void lbl_level2_button_Click(object sender, EventArgs e)
+        {
+            if (DificuldadeSelecionada == 1)
+            {
+                Cruzeiro cruzeiro = (Cruzeiro)this.FindForm();
+                cruzeiro.AbrirTela(new Ato1Level2());
+            }
+        }
     }
 }
