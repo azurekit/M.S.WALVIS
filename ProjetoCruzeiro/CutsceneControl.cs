@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace ProjetoCruzeiro
 {
-    public partial class CutsceneIntroControl : UserControl
+    public partial class CutsceneControl : UserControl
     {
 
         #region Variáveis Globais
@@ -21,7 +21,7 @@ namespace ProjetoCruzeiro
 
         #endregion
 
-        public CutsceneIntroControl()
+        public CutsceneControl()
         {
             InitializeComponent();
 

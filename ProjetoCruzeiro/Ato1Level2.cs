@@ -277,7 +277,8 @@ namespace ProjetoCruzeiro
             if (a == dados[0] && b == dados[1] && c == dados[2])
             {
                 MessageBox.Show("Você acertou!");
-                IniciarJogo();
+                Cruzeiro cruzeiro = (Cruzeiro)this.FindForm();
+                cruzeiro.AbrirTela(new LevelSelectControl(1));
             }
             else
             {

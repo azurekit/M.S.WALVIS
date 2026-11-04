@@ -17,7 +17,7 @@ namespace ProjetoCruzeiro
             InitializeComponent();
         }
 
-
+ 
 
         #region Lixeira
         private void JogoForm_Load(object sender, EventArgs e)

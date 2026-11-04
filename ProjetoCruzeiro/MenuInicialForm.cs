@@ -27,6 +27,50 @@ namespace ProjetoCruzeiro
             panelPrincipal.Controls.Clear();
             tela.Dock = DockStyle.Fill;
             panelPrincipal.Controls.Add(tela);
+            AtualizarIdentidade(tela);
+        }
+
+        public void AtualizarIdentidade(UserControl controle)
+        {
+            if (controle is DificuldadeSelectControl || controle is AvisoControl || controle is MenuControl)
+            {
+                this.Text = "Cruzeiro";
+
+            }
+
+            else if (controle is LevelSelectControl && ((LevelSelectControl)controle).DificuldadeSelecionada == 1)
+            {
+                this.Text = "Cruzeiro - Ato 1";
+            }
+            else if (controle is LevelSelectControl && ((LevelSelectControl)controle).DificuldadeSelecionada == 2)
+            {
+                this.Text = "Cruzeiro - Ato 2";
+            }
+            else if (controle is LevelSelectControl && ((LevelSelectControl)controle).DificuldadeSelecionada == 3)
+            {
+                this.Text = "Cruzeiro - Ato 3";
+            }
+
+            else if (controle is Ato1Level1)
+            {
+                this.Text = "Cruzeiro - Loja";
+            }
+            else if (controle is Ato1Level2)
+            {
+                this.Text = "Cruzeiro - Cassino";
+            }
+            else if (controle is Ato2Level3)
+            {
+                this.Text = "Cruzeiro - Área Restrita";
+            }
+            else if (controle is Ato2Level1)
+            {
+                this.Text = "Cruzeiro - Cozinha";
+            }
+            else if (controle is Ato2Level2)
+            {
+                this.Text = "Cruzeiro - Bar";
+            }
         }
 
         #endregion

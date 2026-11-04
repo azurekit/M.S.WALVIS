@@ -52,11 +52,29 @@
     <Compile Include="Ato1Level1.Designer.cs">
       <DependentUpon>Ato1Level1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Ato2Level2.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Ato2Level2.Designer.cs">
+      <DependentUpon>Ato2Level2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Ato1Level2.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Ato1Level2.Designer.cs">
       <DependentUpon>Ato1Level2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ato2Level3.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Ato2Level3.Designer.cs">
+      <DependentUpon>Ato2Level3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ato2Level1.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Ato2Level1.Designer.cs">
+      <DependentUpon>Ato2Level1.cs</DependentUpon>
     </Compile>
     <Compile Include="JogoForm.cs">
       <SubType>Form</SubType>
@@ -85,11 +103,11 @@
     <Compile Include="MenuControl.Designer.cs">
       <DependentUpon>MenuControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="CutsceneIntroControl.cs">
+    <Compile Include="CutsceneControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="CutsceneIntroControl.Designer.cs">
-      <DependentUpon>CutsceneIntroControl.cs</DependentUpon>
+    <Compile Include="CutsceneControl.Designer.cs">
+      <DependentUpon>CutsceneControl.cs</DependentUpon>
     </Compile>
     <Compile Include="AvisoControl.cs">
       <SubType>UserControl</SubType>
@@ -106,8 +124,17 @@
     <EmbeddedResource Include="Ato1Level1.resx">
       <DependentUpon>Ato1Level1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Ato2Level2.resx">
+      <DependentUpon>Ato2Level2.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Ato1Level2.resx">
       <DependentUpon>Ato1Level2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ato2Level3.resx">
+      <DependentUpon>Ato2Level3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ato2Level1.resx">
+      <DependentUpon>Ato2Level1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="JogoForm.resx">
       <DependentUpon>JogoForm.cs</DependentUpon>
@@ -131,8 +158,8 @@
     <EmbeddedResource Include="MenuControl.resx">
       <DependentUpon>MenuControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CutsceneIntroControl.resx">
-      <DependentUpon>CutsceneIntroControl.cs</DependentUpon>
+    <EmbeddedResource Include="CutsceneControl.resx">
+      <DependentUpon>CutsceneControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AvisoControl.resx">
       <DependentUpon>AvisoControl.cs</DependentUpon>

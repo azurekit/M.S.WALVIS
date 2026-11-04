@@ -10,7 +10,6 @@ C:\Users\Roberto Levi\source\repos\ProjetoCruzeiro\ProjetoCruzeiro\obj\Debug\Pro
 C:\Users\Roberto Levi\source\repos\ProjetoCruzeiro\ProjetoCruzeiro\obj\Debug\ProjetoCruzeiro.Cruzeiro.resources
 C:\Users\Roberto Levi\source\repos\ProjetoCruzeiro\ProjetoCruzeiro\obj\Debug\ProjetoCruzeiro.Properties.Resources.resources
 C:\Users\Roberto Levi\source\repos\ProjetoCruzeiro\ProjetoCruzeiro\obj\Debug\ProjetoCruzeiro.MenuControl.resources
-C:\Users\Roberto Levi\source\repos\ProjetoCruzeiro\ProjetoCruzeiro\obj\Debug\ProjetoCruzeiro.CutsceneIntroControl.resources
 C:\Users\Roberto Levi\source\repos\ProjetoCruzeiro\ProjetoCruzeiro\obj\Debug\ProjetoCruzeiro.csproj.GenerateResource.cache
 C:\Users\Roberto Levi\source\repos\ProjetoCruzeiro\ProjetoCruzeiro\obj\Debug\ProjetoCruzeiro.csproj.CoreCompileInputs.cache
 C:\Users\Roberto Levi\source\repos\ProjetoCruzeiro\ProjetoCruzeiro\obj\Debug\ProjetoCruzeiro.exe
@@ -23,3 +22,7 @@ C:\Users\Roberto Levi\source\repos\ProjetoCruzeiro\ProjetoCruzeiro\obj\Debug\Pro
 C:\Users\Roberto Levi\source\repos\ProjetoCruzeiro\ProjetoCruzeiro\obj\Debug\ProjetoCruzeiro.DificuldadeSelectControl.resources
 C:\Users\Roberto Levi\source\repos\ProjetoCruzeiro\ProjetoCruzeiro\obj\Debug\ProjetoCruzeiro.Ato1Level1.resources
 C:\Users\Roberto Levi\source\repos\ProjetoCruzeiro\ProjetoCruzeiro\obj\Debug\ProjetoCruzeiro.Ato1Level2.resources
+C:\Users\Roberto Levi\source\repos\ProjetoCruzeiro\ProjetoCruzeiro\obj\Debug\ProjetoCruzeiro.Ato2Level1.resources
+C:\Users\Roberto Levi\source\repos\ProjetoCruzeiro\ProjetoCruzeiro\obj\Debug\ProjetoCruzeiro.Ato2Level2.resources
+C:\Users\Roberto Levi\source\repos\ProjetoCruzeiro\ProjetoCruzeiro\obj\Debug\ProjetoCruzeiro.CutsceneControl.resources
+C:\Users\Roberto Levi\source\repos\ProjetoCruzeiro\ProjetoCruzeiro\obj\Debug\ProjetoCruzeiro.Ato2Level3.resources

@@ -1,288 +1,570 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ProjetoCruzeiro
 {
     public partial class Ato1Level1 : UserControl
     {
-
         #region Variáveis Globais
-        Random random = new Random();
-        int[] codigo = new int[4];
-        int[] tentativa = new int[4];
 
-        int posicaoAtual = 0;
-        int tentativas = 0;
+        Random random = new Random();
+
+        string[] cameras =
+        {
+            "Cozinha",
+            "Bar",
+            "Teatro",
+            "Convés",
+            "Cassino",
+            "Pista de Dança"
+        };
+
+        string[] ordemCorreta;
+        string[] ordemAtual;
+
+        PictureBox[] monitores;
+        Label[] labelsDicas;
+
+        int monitorSelecionado = -1;
+        int monitorMouse = -1;
+
+        bool jogoFinalizado = false;
+
+        Dictionary<string, Image[]> imagensMonitores =
+            new Dictionary<string, Image[]>();
+
+        enum TipoDica
+        {
+            Posicao,
+            Antes,
+            ImediatamenteAntes,
+            Extremidade,
+            Entre
+        }
+
+        class Dica
+        {
+            public TipoDica Tipo;
+            public string Camera;
+            public string OutraCamera;
+            public string TerceiraCamera;
+            public int Posicao;
+            public string Texto;
+        }
+
+        List<Dica> dicas = new List<Dica>();
 
         #endregion
 
         public Ato1Level1()
         {
             InitializeComponent();
-            #region Gerar código aleatório
 
-            List<int> cores = new List<int> { 0, 1, 2, 3, 4, 5 }; // 0 = vermelho, 1 = azul, 2 = amarelo, 3 = roxo, 4 = laranja, 5 = verde; usando list pq permite remover elementos facilmente
-
-
-
-            for (int i = 0; i < codigo.Length; i++)
+            monitores = new PictureBox[]
             {
-                int posicao = random.Next(cores.Count);
-                codigo[i] = cores[posicao];
-                cores.RemoveAt(posicao); // Remove a cor escolhida para evitar repetições
-                Console.WriteLine($"Código gerado: {codigo[i]}"); // Para debug, mostra o código gerado no console
+                pbx_monitor1,
+                pbx_monitor2,
+                pbx_monitor3,
+                pbx_monitor4,
+                pbx_monitor5,
+                pbx_monitor6
+            };
+
+            labelsDicas = new Label[]
+            {
+                lbl_dica1,
+                lbl_dica2,
+                lbl_dica3,
+                lbl_dica4,
+                lbl_dica5
+            };
+
+            CarregarImagens();
+
+            for (int i = 0; i < monitores.Length; i++)
+            {
+                monitores[i].Cursor = Cursors.Hand;
             }
 
-            #endregion
-
-
+            IniciarJogo();
         }
 
-        #region Selecionar cores
+        #region Inicialização
 
-        //0
-        #region vermelho
-        private void btn_vermelho_Click(object sender, EventArgs e)
+        private void IniciarJogo()
         {
+            monitorSelecionado = -1;
+            monitorMouse = -1;
+            jogoFinalizado = false;
 
-            SelecionarCor(0); // 0 = vermelho
-        }
-        #endregion
+            GerarOrdem();
+            GerarDicas();
+            EmbaralharMonitores();
 
-        //1
-        #region azul
-        private void btn_azul_Click(object sender, EventArgs e)
-        {
-            SelecionarCor(1); // 1 = azul
-        }
-
-        #endregion
-
-        //2
-        #region amarelo
-        private void btn_amarelo_Click(object sender, EventArgs e)
-        {
-            SelecionarCor(2); // 2 = amarelo
-        }
-        #endregion
-
-        //3
-        #region roxo
-        private void btn_roxo_Click(object sender, EventArgs e)
-        {
-            SelecionarCor(3); // 3 = roxo
-        }
-        #endregion
-
-        //4
-        #region laranja
-        private void btn_laranja_Click(object sender, EventArgs e)
-        {
-            SelecionarCor(4); // 4 = laranja
-        }
-        #endregion
-
-        //5
-        #region verde
-        private void btn_verde_Click(object sender, EventArgs e)
-        {
-            SelecionarCor(5); // 5 = verde
-        }
-        #endregion
-
-        #region selecionar cor
-        private void SelecionarCor(int cor)
-        {
-            if (posicaoAtual >= tentativa.Length)
-            {
-                MessageBox.Show("Você já selecionou 4 cores! Clique em Verificar para conferir sua tentativa.");
-                return;
-            }
-
-            Image botao = null;
-
-            switch (cor)
-            {
-                case 0:
-                    botao = Image.FromFile(Path.Combine(Application.StartupPath, "imagens", "botaovermelho.png"));
-                    break;
-                case 1:
-                    botao = Image.FromFile(Path.Combine(Application.StartupPath, "imagens", "botaoazul.png"));
-                    break;
-                case 2:
-                    botao = Image.FromFile(Path.Combine(Application.StartupPath, "imagens", "botaoamarelo.png"));
-                    break;
-                case 3:
-                    botao = Image.FromFile(Path.Combine(Application.StartupPath, "imagens", "botaoroxo.png"));
-                    break;
-                case 4:
-                    botao = Image.FromFile(Path.Combine(Application.StartupPath, "imagens", "botaoLaranja.png"));
-                    break;
-                case 5:
-                    botao = Image.FromFile(Path.Combine(Application.StartupPath, "imagens", "botaoverde.png"));
-                    break;
-            }
-
-            PictureBox pbx = (PictureBox)this.Controls.Find(
-                $"pbx_tentativa{tentativas + 1}_casa{posicaoAtual+1}", true
-                )[0];   
-
-            pbx.BackgroundImage = botao;
-
-        
-
-        tentativa[posicaoAtual] = cor;
-            posicaoAtual++;
-
-
-        }
-        #endregion
-
-        #endregion
-
-        #region pistas
-
-        private void MostrarPistas(int certas, int foraDeLugar)
-        {
-            List<Image> pistas = new List<Image>();
-
-            Image preta = Image.FromFile(Path.Combine(Application.StartupPath, "imagens", "pistaPreta.png"));
-            Image branca = Image.FromFile(Path.Combine(Application.StartupPath, "imagens", "pistaBranca.png"));
-
-            for (int i = 0; i < certas; i++)
-            {
-                pistas.Add(preta);
-            }
-
-            for (int i = 0; i < foraDeLugar; i++)
-            {
-                pistas.Add(branca);
-            }
-
-            PictureBox[] casas = new PictureBox[4];
-
-            for (int i = 0; i < 4; i++)
-            {
-
-                casas[i] = (PictureBox)this.Controls.Find(
-                $"pbx_pista{tentativas + 1}_{i + 1}", true
-                )[0];
-            }
-
-            for (int i = 0; i < 4; i++)
-            {
-                casas[i].BackgroundImage = null;
-            }
-
-            for (int i = 0; i < pistas.Count; i++)
-            {
-                casas[i].BackgroundImage = pistas[i];
-            }
+            ExibirDicas();
         }
 
         #endregion
 
-        #region Verificar tentativa
+        #region Imagens dos monitores
 
-        private void btn_confirmar_Click(object sender, EventArgs e)
+        private void CarregarImagens()
         {
-            
-            if (posicaoAtual < tentativa.Length)
+            string pasta = Path.Combine(
+                Application.StartupPath,
+                "imagens"
+            );
+
+            string[] nomes =
             {
-                MessageBox.Show("Você precisa selecionar 4 cores antes de verificar sua tentativa.");
-                return;
-            }
+                "cameracozinha",
+                "camerabar",
+                "camerateatro",
+                "cameraconves",
+                "cameracassino",
+                "camerapista"
+            };
 
-            int certas = 0;
-            int foraDeLugar = 0;
-
-            int[] codigoRestante = (int[])codigo.Clone();
-            int[] tentativaRestante = (int[])tentativa.Clone();
-
-            for (int i = 0; i < codigo.Length; i++)
+            foreach (string nome in nomes)
             {
-                if (tentativaRestante[i] == codigoRestante[i])
+                imagensMonitores.Add(nome, new Image[]
                 {
-                    certas++;
-                    codigoRestante[i] = -1; //validacao
-                    tentativaRestante[i] = -1; //validacao
+                    Image.FromFile(Path.Combine(pasta, nome + ".png")),
+                    Image.FromFile(Path.Combine(pasta, nome + "hover.png")),
+                    Image.FromFile(Path.Combine(pasta, nome + "click.png"))
+                });
+            }
+        }
+
+        private string NomeArquivo(string camera)
+        {
+            switch (camera)
+            {
+                case "Cozinha": return "cameracozinha";
+                case "Bar": return "camerabar";
+                case "Teatro": return "camerateatro";
+                case "Convés": return "cameraconves";
+                case "Cassino": return "cameracassino";
+                case "Pista de Dança": return "camerapista";
+                default: return "";
+            }
+        }
+
+        private string NomeComArtigo(string camera)
+        {
+            switch (camera)
+            {
+                case "Cozinha": return "da Cozinha";
+                case "Bar": return "do Bar";
+                case "Teatro": return "do Teatro";
+                case "Convés": return "do Convés";
+                case "Cassino": return "do Cassino";
+                case "Pista de Dança": return "da Pista de Dança";
+                default: return camera;
+            }
+        }
+
+        private void AtualizarMonitores()
+        {
+            for (int i = 0; i < monitores.Length; i++)
+            {
+                string nome = NomeArquivo(ordemAtual[i]);
+
+                monitores[i].Tag = ordemAtual[i];
+
+                int estado;
+
+                if (i == monitorSelecionado)
+                {
+                    estado = 2;
                 }
-            }
-
-            for (int i = 0; i < tentativaRestante.Length; i++)
-            {
-                if (tentativaRestante[i] == -1)
-                    continue;
-                
-                    for (int j = 0; j < codigoRestante.Length; j++)
-                    {
-                        if (tentativaRestante[i] != -1 && tentativaRestante[i] == codigoRestante[j])
-                        {
-                            foraDeLugar++;
-                            codigoRestante[j] = -1;
-                            break;
-                        }
+                else if (i == monitorMouse)
+                {
+                    estado = 1;
                 }
+                else
+                {
+                    estado = 0;
+                }
+
+                monitores[i].Image = imagensMonitores[nome][estado];
             }
-
-            MostrarPistas(certas, foraDeLugar);
-
-            if (certas == 4)
-            {
-                MessageBox.Show("Parabéns! Você acertou o código!");
-                Cruzeiro cruzeiro = (Cruzeiro)this.FindForm();
-                cruzeiro.AbrirTela(new LevelSelectControl(1));
-            }
-
-            tentativas++;
-
-            if (tentativas >= 8)
-            {
-                MessageBox.Show("Você atingiu o número máximo de tentativas! O código correto era: " + string.Join(", ", codigo));
-                Cruzeiro cruzeiro = (Cruzeiro)this.FindForm();
-                cruzeiro.AbrirTela(new LevelSelectControl(1));
-
-            }
-
-            Array.Clear(tentativa, 0, tentativa.Length);
-            posicaoAtual = 0;
-            
         }
 
         #endregion
 
-        #region voltar
+        #region Hover
 
-        private void btn_voltar_Click(object sender, EventArgs e)
-        { 
-            
-            if (posicaoAtual <= 0)
+        private void Monitor_MouseEnter(object sender, EventArgs e)
+        {
+            PictureBox monitor = sender as PictureBox;
+
+            int indice = Array.IndexOf(monitores, monitor);
+
+            if (indice == -1)
+                return;
+
+            monitorMouse = indice;
+
+            AtualizarMonitores();
+        }
+
+        private void Monitor_MouseLeave(object sender, EventArgs e)
+        {
+            PictureBox monitor = sender as PictureBox;
+
+            int indice = Array.IndexOf(monitores, monitor);
+
+            if (indice == -1)
+                return;
+
+            if (monitorMouse == indice)
+                monitorMouse = -1;
+
+            AtualizarMonitores();
+        }
+
+        #endregion
+
+        #region Clique e troca de monitores
+
+        private void Monitor_Click(object sender, EventArgs e)
+        {
+            if (jogoFinalizado)
+                return;
+
+            PictureBox monitor = sender as PictureBox;
+
+            int indice = Array.IndexOf(monitores, monitor);
+
+            if (indice == -1)
+                return;
+
+            if (monitorSelecionado == -1)
             {
+                monitorSelecionado = indice;
+            }
+            else if (monitorSelecionado == indice)
+            {
+                monitorSelecionado = -1;
+            }
+            else
+            {
+                int primeiro = monitorSelecionado;
+
+                string temp = ordemAtual[primeiro];
+
+                ordemAtual[primeiro] = ordemAtual[indice];
+                ordemAtual[indice] = temp;
+
+                monitorSelecionado = -1;
+            }
+
+            AtualizarMonitores();
+
+            VerificarVitoria();
+        }
+
+        #endregion
+
+        #region Gerar e embaralhar ordem
+
+        private void Embaralhar(string[] lista)
+        {
+            for (int i = lista.Length - 1; i > 0; i--)
+            {
+                int j = random.Next(0, i + 1);
+
+                string temp = lista[i];
+                lista[i] = lista[j];
+                lista[j] = temp;
+            }
+        }
+
+        private void GerarOrdem()
+        {
+            ordemCorreta = (string[])cameras.Clone();
+
+            Embaralhar(ordemCorreta);
+
+            Console.WriteLine("========== SOLUÇÃO CORRETA ==========");
+
+            for (int i = 0; i < ordemCorreta.Length; i++)
+            {
+                Console.WriteLine(
+                    $"{i + 1}º monitor: {NomeComArtigo(ordemCorreta[i])}"
+                );
+            }
+
+            Console.WriteLine("=====================================");
+            Console.WriteLine();
+        }
+
+        private void EmbaralharMonitores()
+        {
+            ordemAtual = (string[])ordemCorreta.Clone();
+
+            do
+            {
+                Embaralhar(ordemAtual);
+
+            } while (ordemAtual.SequenceEqual(ordemCorreta));
+
+            AtualizarMonitores();
+        }
+
+        #endregion
+
+        #region Gerar dicas
+
+        private void GerarDicas()
+        {
+            dicas.Clear();
+
+            List<Dica> candidatas = new List<Dica>();
+
+            for (int i = 0; i < ordemCorreta.Length; i++)
+            {
+                string camera = ordemCorreta[i];
+
+                candidatas.Add(new Dica
+                {
+                    Tipo = TipoDica.Posicao,
+                    Camera = camera,
+                    Posicao = i,
+                    Texto = $"A câmera {NomeComArtigo(camera)} está na posição {i + 1}."
+                });
+
+                if (i == 0 || i == ordemCorreta.Length - 1)
+                {
+                    candidatas.Add(new Dica
+                    {
+                        Tipo = TipoDica.Extremidade,
+                        Camera = camera,
+                        Texto = $"A câmera {NomeComArtigo(camera)} está em uma das extremidades."
+                    });
+                }
+
+                for (int j = i + 1; j < ordemCorreta.Length; j++)
+                {
+                    string outra = ordemCorreta[j];
+
+                    candidatas.Add(new Dica
+                    {
+                        Tipo = TipoDica.Antes,
+                        Camera = camera,
+                        OutraCamera = outra,
+                        Texto = $"A câmera {NomeComArtigo(camera)} aparece antes {NomeComArtigo(outra)}."
+                    });
+                }
+
+                if (i < ordemCorreta.Length - 1)
+                {
+                    string outra = ordemCorreta[i + 1];
+
+                    candidatas.Add(new Dica
+                    {
+                        Tipo = TipoDica.ImediatamenteAntes,
+                        Camera = camera,
+                        OutraCamera = outra,
+                        Texto = $"A câmera {NomeComArtigo(camera)} aparece imediatamente antes {NomeComArtigo(outra)}."
+                    });
+                }
+
+                for (int esquerda = 0; esquerda < i; esquerda++)
+                {
+                    for (int direita = i + 1; direita < ordemCorreta.Length; direita++)
+                    {
+                        string primeira = ordemCorreta[esquerda];
+                        string terceira = ordemCorreta[direita];
+
+                        candidatas.Add(new Dica
+                        {
+                            Tipo = TipoDica.Entre,
+                            Camera = camera,
+                            OutraCamera = primeira,
+                            TerceiraCamera = terceira,
+                            Texto = $"A câmera {NomeComArtigo(camera)} está entre as câmeras {NomeComArtigo(primeira)} e {NomeComArtigo(terceira)}."
+                        });
+                    }
+                }
+            }
+
+            for (int tentativa = 0; tentativa < 5000; tentativa++)
+            {
+                EmbaralharDicas(candidatas);
+
+                dicas.Clear();
+
+                for (int i = 0; i < 5; i++)
+                {
+                    dicas.Add(candidatas[i]);
+                }
+
+                if (ContarSolucoes() == 1)
+                    return;
+            }
+
+            dicas.Clear();
+
+            for (int i = 0; i < 5; i++)
+            {
+                string camera = ordemCorreta[i];
+
+                dicas.Add(new Dica
+                {
+                    Tipo = TipoDica.Posicao,
+                    Camera = camera,
+                    Posicao = i,
+                    Texto = $"A câmera {NomeComArtigo(camera)} está na posição {i + 1}."
+                });
+            }
+        }
+
+        private void EmbaralharDicas(List<Dica> lista)
+        {
+            for (int i = lista.Count - 1; i > 0; i--)
+            {
+                int j = random.Next(0, i + 1);
+
+                Dica temp = lista[i];
+                lista[i] = lista[j];
+                lista[j] = temp;
+            }
+        }
+
+        #endregion
+
+        #region Verificar dicas e soluções
+
+        private bool RespeitaDica(string[] ordem, Dica dica)
+        {
+            int posicao = Array.IndexOf(ordem, dica.Camera);
+            int outra = Array.IndexOf(ordem, dica.OutraCamera);
+            int terceira = Array.IndexOf(ordem, dica.TerceiraCamera);
+
+            switch (dica.Tipo)
+            {
+                case TipoDica.Posicao:
+                    return posicao == dica.Posicao;
+
+                case TipoDica.Antes:
+                    return posicao < outra;
+
+                case TipoDica.ImediatamenteAntes:
+                    return posicao + 1 == outra;
+
+                case TipoDica.Extremidade:
+                    return posicao == 0 || posicao == ordem.Length - 1;
+
+                case TipoDica.Entre:
+                    return (outra < posicao && posicao < terceira) ||
+                           (terceira < posicao && posicao < outra);
+            }
+
+            return false;
+        }
+
+        private int ContarSolucoes()
+        {
+            int quantidade = 0;
+
+            string[] tentativa = new string[cameras.Length];
+
+            bool[] usados = new bool[cameras.Length];
+
+            GerarPermutacoes(tentativa, usados, 0, ref quantidade);
+
+            return quantidade;
+        }
+
+        private void GerarPermutacoes(
+            string[] tentativa,
+            bool[] usados,
+            int nivel,
+            ref int quantidade)
+        {
+            if (quantidade >= 2)
+                return;
+
+            if (nivel == cameras.Length)
+            {
+                foreach (Dica dica in dicas)
+                {
+                    if (!RespeitaDica(tentativa, dica))
+                        return;
+                }
+
+                quantidade++;
+
                 return;
             }
 
-         
-            PictureBox pbx = (PictureBox)this.Controls.Find(
-                $"pbx_tentativa{tentativas+1}_casa{posicaoAtual}", true
-                )[0];
+            for (int i = 0; i < cameras.Length; i++)
+            {
+                if (usados[i])
+                    continue;
 
-            pbx.BackgroundImage = null;
+                tentativa[nivel] = cameras[i];
 
-            posicaoAtual--;
+                usados[i] = true;
 
+                GerarPermutacoes(
+                    tentativa,
+                    usados,
+                    nivel + 1,
+                    ref quantidade
+                );
 
+                usados[i] = false;
+
+                if (quantidade >= 2)
+                    return;
+            }
         }
 
         #endregion
 
+        #region Exibir dicas
 
+        private void ExibirDicas()
+        {
+            for (int i = 0; i < labelsDicas.Length; i++)
+            {
+                labelsDicas[i].Text = dicas[i].Texto;
+                labelsDicas[i].Visible = true;
+            }
+        }
+
+        #endregion
+
+        #region Verificar vitória
+
+        private void VerificarVitoria()
+        {
+            if (ordemAtual.SequenceEqual(ordemCorreta))
+            {
+                jogoFinalizado = true;
+
+                monitorSelecionado = -1;
+
+                AtualizarMonitores();
+
+                MessageBox.Show(
+                    "Sistema de monitoramento restaurado!",
+                    "Parabéns!",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information
+                );
+                Cruzeiro cruzeiro = (Cruzeiro)this.FindForm();
+                cruzeiro.AbrirTela(new LevelSelectControl(1));
+            }
+        }
+
+        #endregion
     }
 }

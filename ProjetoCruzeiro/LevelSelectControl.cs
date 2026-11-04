@@ -12,7 +12,7 @@ namespace ProjetoCruzeiro
 {
     public partial class LevelSelectControl : UserControl
     {
-        private int DificuldadeSelecionada;
+        public int DificuldadeSelecionada;
 
         public LevelSelectControl(int dificuldadeSelecionada)
         {
@@ -57,13 +57,7 @@ namespace ProjetoCruzeiro
 
         }
         #endregion
-
-        private void lbl_level3_button_Click(object sender, EventArgs e)
-        {
-            Cruzeiro cruzeiro = (Cruzeiro)this.FindForm();
-            cruzeiro.AbrirTela(new CutsceneIntroControl());
-        }
-
+        
         #region Esconder info dos levels
         void EsconderInfoLevels()
         {
@@ -142,12 +136,18 @@ namespace ProjetoCruzeiro
                 Cruzeiro cruzeiro = (Cruzeiro)this.FindForm();
                 cruzeiro.AbrirTela(new Ato1Level1());
             }
-          
+
+            if (DificuldadeSelecionada == 2)
+            {
+                Cruzeiro cruzeiro = (Cruzeiro)this.FindForm();
+                cruzeiro.AbrirTela(new Ato2Level1());
+            }
+
         }
 
         #endregion
 
-        #endregion
+        #region level 2
 
         private void lbl_level2_button_Click(object sender, EventArgs e)
         {
@@ -156,6 +156,33 @@ namespace ProjetoCruzeiro
                 Cruzeiro cruzeiro = (Cruzeiro)this.FindForm();
                 cruzeiro.AbrirTela(new Ato1Level2());
             }
+
+            if (DificuldadeSelecionada == 2)
+            {
+                Cruzeiro cruzeiro = (Cruzeiro)this.FindForm();
+                cruzeiro.AbrirTela(new Ato2Level2());
+            }
+
         }
+
+        #endregion
+
+        #region level 3
+
+        private void lbl_level3_button_Click(object sender, EventArgs e)
+        {
+            if (DificuldadeSelecionada == 2)
+            {
+                Cruzeiro cruzeiro = (Cruzeiro)this.FindForm();
+                cruzeiro.AbrirTela(new Ato2Level3());
+            }
+        }
+
+        #endregion
+
+        #endregion
+
+
+
     }
 }

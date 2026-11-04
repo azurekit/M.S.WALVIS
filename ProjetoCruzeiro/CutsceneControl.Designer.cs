@@ -1,6 +1,6 @@
 ﻿namespace ProjetoCruzeiro
 {
-    partial class CutsceneIntroControl
+    partial class CutsceneControl
     {
         /// <summary> 
         /// Variável de designer necessária.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CutsceneIntroControl));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CutsceneControl));
             this.btn_pular = new System.Windows.Forms.Button();
             this.axCutsceneIntro = new AxWMPLib.AxWindowsMediaPlayer();
             ((System.ComponentModel.ISupportInitialize)(this.axCutsceneIntro)).BeginInit();
