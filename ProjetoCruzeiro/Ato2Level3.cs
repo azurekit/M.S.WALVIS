@@ -109,7 +109,7 @@ namespace ProjetoCruzeiro
         {
             MessageBox.Show($"Parabéns! Você venceu o jogo em {movimentos} movimentos!");
             Cruzeiro cruzeiro = (Cruzeiro)this.FindForm();
-            cruzeiro.AbrirTela(new LevelSelectControl(1));
+            cruzeiro.AbrirTela(new LevelSelectControl(2));
         }
 
         #endregion

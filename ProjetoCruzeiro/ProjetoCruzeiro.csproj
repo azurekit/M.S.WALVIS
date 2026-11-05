@@ -52,6 +52,12 @@
     <Compile Include="Ato1Level1.Designer.cs">
       <DependentUpon>Ato1Level1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Ato1Level3.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Ato1Level3.Designer.cs">
+      <DependentUpon>Ato1Level3.cs</DependentUpon>
+    </Compile>
     <Compile Include="Ato2Level2.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -75,6 +81,12 @@
     </Compile>
     <Compile Include="Ato2Level1.Designer.cs">
       <DependentUpon>Ato2Level1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ato3Level1.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Ato3Level1.Designer.cs">
+      <DependentUpon>Ato3Level1.cs</DependentUpon>
     </Compile>
     <Compile Include="JogoForm.cs">
       <SubType>Form</SubType>
@@ -124,6 +136,9 @@
     <EmbeddedResource Include="Ato1Level1.resx">
       <DependentUpon>Ato1Level1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Ato1Level3.resx">
+      <DependentUpon>Ato1Level3.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Ato2Level2.resx">
       <DependentUpon>Ato2Level2.cs</DependentUpon>
     </EmbeddedResource>
@@ -135,6 +150,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Ato2Level1.resx">
       <DependentUpon>Ato2Level1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ato3Level1.resx">
+      <DependentUpon>Ato3Level1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="JogoForm.resx">
       <DependentUpon>JogoForm.cs</DependentUpon>

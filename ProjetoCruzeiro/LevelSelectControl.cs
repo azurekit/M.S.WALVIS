@@ -143,6 +143,12 @@ namespace ProjetoCruzeiro
                 cruzeiro.AbrirTela(new Ato2Level1());
             }
 
+            if (DificuldadeSelecionada == 3)
+            {
+                Cruzeiro cruzeiro = (Cruzeiro)this.FindForm();
+                cruzeiro.AbrirTela(new Ato3Level1());
+            }
+
         }
 
         #endregion
@@ -171,6 +177,12 @@ namespace ProjetoCruzeiro
 
         private void lbl_level3_button_Click(object sender, EventArgs e)
         {
+            if (DificuldadeSelecionada == 1)
+            {
+                Cruzeiro cruzeiro = (Cruzeiro)this.FindForm();
+                cruzeiro.AbrirTela(new Ato1Level3());
+            }
+
             if (DificuldadeSelecionada == 2)
             {
                 Cruzeiro cruzeiro = (Cruzeiro)this.FindForm();
