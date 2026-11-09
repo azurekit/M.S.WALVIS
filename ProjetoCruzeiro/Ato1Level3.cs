@@ -3,12 +3,15 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
+using System.Diagnostics;
 using System.Windows.Forms;
 
 namespace ProjetoCruzeiro
 {
     public partial class Ato1Level3 : UserControl
     {
+        #region Configurações
+
         const int TAMANHO_TABULEIRO = 9;
         const int TAMANHO_CELULA = 50;
 
@@ -18,6 +21,10 @@ namespace ProjetoCruzeiro
         const int OESTE = 8;
 
         Random random = new Random();
+
+        #endregion
+
+        #region Variáveis Globais
 
         List<Peca> pecas = new List<Peca>();
 
@@ -39,6 +46,19 @@ namespace ProjetoCruzeiro
         public int MovimentosRestantes { get; private set; }
 
         bool jogoFinalizado = false;
+
+        Stopwatch cronometro = new Stopwatch();
+
+        TimeSpan tempoDecorrido;
+
+        int pontuacaoMovimentos = 0;
+        int pontuacaoTempo = 0;
+        int bonusConclusao = 500;
+        int pontuacaoFinal = 0;
+
+        #endregion
+
+        #region Mapas
 
         string[] mapas =
         {
@@ -143,6 +163,10 @@ namespace ProjetoCruzeiro
             "3A3BAAA93"
         };
 
+        #endregion
+
+        #region Classe Peca
+
         class Peca
         {
             public int Linha;
@@ -153,6 +177,10 @@ namespace ProjetoCruzeiro
 
             public PictureBox Imagem;
         }
+
+        #endregion
+
+        #region Construtor
 
         public Ato1Level3()
         {
@@ -168,6 +196,10 @@ namespace ProjetoCruzeiro
 
             GerarTabuleiro();
         }
+
+        #endregion
+
+        #region Configurar interface
 
         void ConfigurarInterface()
         {
@@ -203,6 +235,10 @@ namespace ProjetoCruzeiro
 
             Controls.Add(painelTabuleiro);
         }
+
+        #endregion
+
+        #region Carregar imagens
 
         bool CarregarImagens()
         {
@@ -249,6 +285,10 @@ namespace ProjetoCruzeiro
                 return false;
             }
         }
+
+        #endregion
+
+        #region Gerar tabuleiro
 
         void GerarTabuleiro()
         {
@@ -302,7 +342,6 @@ namespace ProjetoCruzeiro
                     imagem.Cursor = Cursors.Hand;
 
                     imagem.Tag = peca;
-
                     imagem.Click += Peca_Click;
 
                     peca.Imagem = imagem;
@@ -341,6 +380,8 @@ namespace ProjetoCruzeiro
 
             lblStatus.Text = "Conecte a entrada à saída.";
             lblStatus.ForeColor = Color.White;
+
+            cronometro.Restart();
         }
 
         void LimparTabuleiro()
@@ -360,6 +401,10 @@ namespace ProjetoCruzeiro
 
             painelTabuleiro.Controls.Clear();
         }
+
+        #endregion
+
+        #region Rotação das peças
 
         int Rotacionar(int conexoes, int vezes)
         {
@@ -467,6 +512,10 @@ namespace ProjetoCruzeiro
             }
         }
 
+        #endregion
+
+        #region Movimentação
+
         void Peca_Click(object sender, EventArgs e)
         {
             if (jogoFinalizado)
@@ -504,6 +553,10 @@ namespace ProjetoCruzeiro
                 FinalizarDerrota();
             }
         }
+
+        #endregion
+
+        #region Verificar conexão
 
         bool VerificarConexao()
         {
@@ -624,6 +677,10 @@ namespace ProjetoCruzeiro
 
             return pecas[linha * TAMANHO_TABULEIRO + coluna];
         }
+
+        #endregion
+
+        #region Caminho da solução
 
         List<int> ObterCaminhoSolucao()
         {
@@ -746,32 +803,80 @@ namespace ProjetoCruzeiro
             );
         }
 
+        #endregion
+
+        #region Pontuação
+
+        void CalcularPontuacao()
+        {
+            int bonusConclusao = 500;
+
+            pontuacaoMovimentos = (int)Math.Min(
+                3500,
+                (MovimentosRestantes / (movimentosLimite * 0.6)) * 3500
+            );
+
+            int segundos = (int)Math.Floor(cronometro.Elapsed.TotalSeconds);
+
+            pontuacaoTempo = Math.Max(
+                0,
+                1000 - Math.Max(0, segundos - 25) * 50
+            );
+
+            pontuacaoFinal = bonusConclusao +
+                             pontuacaoMovimentos +
+                             pontuacaoTempo;
+
+            Console.WriteLine("========== RESULTADO DO NÍVEL ==========");
+            Console.WriteLine($"Movimentos restantes: {MovimentosRestantes}");
+            Console.WriteLine($"Pontuação por movimentos: {pontuacaoMovimentos}");
+            Console.WriteLine($"Pontuação por tempo: {pontuacaoTempo}");
+            Console.WriteLine($"Bônus de conclusão: {bonusConclusao}");
+            Console.WriteLine($"Pontuação final: {pontuacaoFinal}");
+            Console.WriteLine("========================================");
+        }
+
+        #endregion
+
+        #region Vitória
+
         void FinalizarJogo()
         {
+            if (jogoFinalizado)
+                return;
+
             jogoFinalizado = true;
+
+            CalcularPontuacao();
 
             lblStatus.Text = "Conexão estabelecida!";
             lblStatus.ForeColor = Color.LightGreen;
 
             foreach (Peca peca in pecas)
+            {
                 peca.Imagem.Enabled = false;
-
-            MessageBox.Show(
-                "Você conectou a entrada à saída!\n\n" +
-                "Movimentos realizados: " + movimentos +
-                "\nMovimentos restantes: " + MovimentosRestantes,
-                "Desafio concluído",
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Information
-            );
+                peca.Imagem.Cursor = Cursors.Default;
+            }
 
             Cruzeiro cruzeiro = (Cruzeiro)this.FindForm();
-            cruzeiro.AbrirTela(new LevelSelectControl(1));
+
+            cruzeiro.AbrirTela(
+                new VitoriaControl(3, pontuacaoFinal)
+            );
         }
+
+        #endregion
+
+        #region Derrota
 
         void FinalizarDerrota()
         {
+            if (jogoFinalizado)
+                return;
+
             jogoFinalizado = true;
+
+            cronometro.Stop();
 
             MovimentosRestantes = 0;
 
@@ -779,7 +884,10 @@ namespace ProjetoCruzeiro
             lblStatus.ForeColor = Color.OrangeRed;
 
             foreach (Peca peca in pecas)
+            {
                 peca.Imagem.Enabled = false;
+                peca.Imagem.Cursor = Cursors.Default;
+            }
 
             MessageBox.Show(
                 "Você não conseguiu estabelecer a conexão a tempo!\n\n" +
@@ -791,7 +899,10 @@ namespace ProjetoCruzeiro
             );
 
             Cruzeiro cruzeiro = (Cruzeiro)this.FindForm();
+
             cruzeiro.AbrirTela(new LevelSelectControl(1));
         }
+
+        #endregion
     }
 }

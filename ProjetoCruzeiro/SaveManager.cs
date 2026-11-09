@@ -1,0 +1,325 @@
+﻿
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Web.Script.Serialization;
+
+namespace ProjetoCruzeiro
+{
+    public static class SaveManager
+    {
+        #region Caminhos
+
+        private static readonly string diretorio =
+            Path.Combine(
+                Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
+                "Cruzeiro"
+            );
+
+        private static readonly string caminhoSave =
+            Path.Combine(diretorio, "save.json");
+
+        #endregion
+
+        #region Dados
+
+        public class DadosSave
+        {
+            public ConfiguracoesSave configuracoes { get; set; }
+            public ProgressoSave progresso { get; set; }
+            public CosmeticosSave cosmeticos { get; set; }
+
+            public DadosSave()
+            {
+                configuracoes = new ConfiguracoesSave();
+                progresso = new ProgressoSave();
+                cosmeticos = new CosmeticosSave();
+            }
+        }
+
+        public class ConfiguracoesSave
+        {
+            public int volume { get; set; }
+            public bool mutado { get; set; }
+
+            public ConfiguracoesSave()
+            {
+                volume = 80;
+                mutado = false;
+            }
+        }
+
+        public class ProgressoSave
+        {
+            public int moedas { get; set; }
+            public Dictionary<string, LevelSave> levels { get; set; }
+
+            public ProgressoSave()
+            {
+                moedas = 0;
+                levels = new Dictionary<string, LevelSave>();
+
+                for (int i = 1; i <= 9; i++)
+                {
+                    levels.Add(i.ToString(), new LevelSave());
+                }
+            }
+        }
+
+        public class LevelSave
+        {
+            public bool completo { get; set; }
+            public int melhorPontuacao { get; set; }
+
+            public LevelSave()
+            {
+                completo = false;
+                melhorPontuacao = 0;
+            }
+        }
+
+        public class CosmeticosSave
+        {
+            public List<string> possuidos { get; set; }
+
+            public CosmeticosSave()
+            {
+                possuidos = new List<string>();
+            }
+        }
+
+        #endregion
+
+        #region Variáveis
+
+        public static DadosSave Dados { get; private set; }
+
+        public static string CaminhoArquivo
+        {
+            get { return caminhoSave; }
+        }
+
+        #endregion
+
+        #region Inicialização
+
+        public static void Inicializar()
+        {
+            if (!Directory.Exists(diretorio))
+                Directory.CreateDirectory(diretorio);
+
+            if (File.Exists(caminhoSave))
+            {
+                string json = File.ReadAllText(caminhoSave);
+
+                JavaScriptSerializer serializer =
+                    new JavaScriptSerializer();
+
+                Dados = serializer.Deserialize<DadosSave>(json);
+
+                if (Dados == null)
+                    Dados = new DadosSave();
+            }
+            else
+            {
+                Dados = new DadosSave();
+            }
+
+            PrepararDados();
+
+            Salvar();
+        }
+
+        private static void PrepararDados()
+        {
+            if (Dados.configuracoes == null)
+                Dados.configuracoes = new ConfiguracoesSave();
+
+            if (Dados.progresso == null)
+                Dados.progresso = new ProgressoSave();
+
+            if (Dados.cosmeticos == null)
+                Dados.cosmeticos = new CosmeticosSave();
+
+            if (Dados.progresso.levels == null)
+                Dados.progresso.levels = new Dictionary<string, LevelSave>();
+
+            if (Dados.cosmeticos.possuidos == null)
+                Dados.cosmeticos.possuidos = new List<string>();
+
+            for (int i = 1; i <= 9; i++)
+            {
+                string id = i.ToString();
+
+                if (!Dados.progresso.levels.ContainsKey(id) ||
+                    Dados.progresso.levels[id] == null)
+                {
+                    Dados.progresso.levels[id] = new LevelSave();
+                }
+            }
+
+            if (Dados.configuracoes.volume < 0)
+                Dados.configuracoes.volume = 0;
+
+            if (Dados.configuracoes.volume > 100)
+                Dados.configuracoes.volume = 100;
+        }
+
+        #endregion
+
+        #region Salvamento
+
+        public static void Salvar()
+        {
+            if (Dados == null)
+                return;
+
+            JavaScriptSerializer serializer =
+                new JavaScriptSerializer();
+
+            serializer.MaxJsonLength = int.MaxValue;
+
+            string json = serializer.Serialize(Dados);
+
+            File.WriteAllText(caminhoSave, json);
+        }
+
+        #endregion
+
+        #region Pontuação e progresso
+
+        public static void AtualizarLevel(
+            int identificador,
+            bool completo,
+            int melhorPontuacao)
+        {
+            if (identificador < 1 || identificador > 9)
+                return;
+
+            string id = identificador.ToString();
+
+            LevelSave level = Dados.progresso.levels[id];
+
+            if (completo)
+                level.completo = true;
+
+            if (melhorPontuacao > level.melhorPontuacao)
+                level.melhorPontuacao = melhorPontuacao;
+
+            Salvar();
+        }
+
+        public static bool EstaConcluido(int identificador)
+        {
+            if (identificador < 1 || identificador > 9)
+                return false;
+
+            return Dados.progresso.levels[
+                identificador.ToString()
+            ].completo;
+        }
+
+        public static int ObterHighscore(int identificador)
+        {
+            if (identificador < 1 || identificador > 9)
+                return 0;
+
+            return Dados.progresso.levels[
+                identificador.ToString()
+            ].melhorPontuacao;
+        }
+
+        public static int QuantidadeNiveisConcluidos()
+        {
+            int quantidade = 0;
+
+            foreach (LevelSave level in Dados.progresso.levels.Values)
+            {
+                if (level.completo)
+                    quantidade++;
+            }
+
+            return quantidade;
+        }
+
+        #endregion
+
+        #region Moedas
+
+        public static void DefinirMoedas(int quantidade)
+        {
+            Dados.progresso.moedas = Math.Max(0, quantidade);
+
+            Salvar();
+        }
+
+        public static int ObterMoedas()
+        {
+            return Dados.progresso.moedas;
+        }
+
+        #endregion
+
+        #region Configurações
+
+        public static void DefinirVolume(int volume)
+        {
+            Dados.configuracoes.volume =
+                Math.Max(0, Math.Min(100, volume));
+
+            Salvar();
+        }
+
+        public static int ObterVolume()
+        {
+            return Dados.configuracoes.volume;
+        }
+
+        public static void DefinirMutado(bool mutado)
+        {
+            Dados.configuracoes.mutado = mutado;
+
+            Salvar();
+        }
+
+        public static bool EstaMutado()
+        {
+            return Dados.configuracoes.mutado;
+        }
+
+        #endregion
+
+        #region Cosméticos
+
+        public static void AdicionarCosmetico(string identificador)
+        {
+            if (string.IsNullOrWhiteSpace(identificador))
+                return;
+
+            if (!Dados.cosmeticos.possuidos.Contains(identificador))
+            {
+                Dados.cosmeticos.possuidos.Add(identificador);
+
+                Salvar();
+            }
+        }
+
+        public static bool PossuiCosmetico(string identificador)
+        {
+            return Dados.cosmeticos.possuidos.Contains(identificador);
+        }
+
+        public static void RemoverCosmetico(string identificador)
+        {
+            if (Dados.cosmeticos.possuidos.Remove(identificador))
+                Salvar();
+        }
+
+        public static List<string> ObterCosmeticos()
+        {
+            return new List<string>(Dados.cosmeticos.possuidos);
+        }
+
+        #endregion
+    }
+}

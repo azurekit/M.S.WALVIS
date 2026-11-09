@@ -28,61 +28,86 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
-            this.btn_iniciar = new System.Windows.Forms.Button();
-            this.btn_sair = new System.Windows.Forms.Button();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MenuControl));
+            this.pbx_jogar = new System.Windows.Forms.PictureBox();
+            this.pbx_loja = new System.Windows.Forms.PictureBox();
+            this.pbx_opcoes = new System.Windows.Forms.PictureBox();
+            this.pbx_sair = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pbx_jogar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbx_loja)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbx_opcoes)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbx_sair)).BeginInit();
             this.SuspendLayout();
             // 
-            // label1
+            // pbx_jogar
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 40F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(454, 147);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(310, 63);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Titulo fodao";
+            this.pbx_jogar.BackColor = System.Drawing.Color.Transparent;
+            this.pbx_jogar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pbx_jogar.BackgroundImage")));
+            this.pbx_jogar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pbx_jogar.Location = new System.Drawing.Point(877, 80);
+            this.pbx_jogar.Name = "pbx_jogar";
+            this.pbx_jogar.Size = new System.Drawing.Size(274, 104);
+            this.pbx_jogar.TabIndex = 5;
+            this.pbx_jogar.TabStop = false;
+            this.pbx_jogar.Click += new System.EventHandler(this.btn_iniciar_Click);
             // 
-            // btn_iniciar
+            // pbx_loja
             // 
-            this.btn_iniciar.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_iniciar.Location = new System.Drawing.Point(428, 421);
-            this.btn_iniciar.Name = "btn_iniciar";
-            this.btn_iniciar.Size = new System.Drawing.Size(382, 58);
-            this.btn_iniciar.TabIndex = 1;
-            this.btn_iniciar.Text = "jogar essa porra";
-            this.btn_iniciar.UseVisualStyleBackColor = true;
-            this.btn_iniciar.Click += new System.EventHandler(this.btn_iniciar_Click);
+            this.pbx_loja.BackColor = System.Drawing.Color.Transparent;
+            this.pbx_loja.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pbx_loja.BackgroundImage")));
+            this.pbx_loja.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pbx_loja.Location = new System.Drawing.Point(877, 207);
+            this.pbx_loja.Name = "pbx_loja";
+            this.pbx_loja.Size = new System.Drawing.Size(274, 104);
+            this.pbx_loja.TabIndex = 7;
+            this.pbx_loja.TabStop = false;
             // 
-            // btn_sair
+            // pbx_opcoes
             // 
-            this.btn_sair.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_sair.Location = new System.Drawing.Point(428, 542);
-            this.btn_sair.Name = "btn_sair";
-            this.btn_sair.Size = new System.Drawing.Size(382, 58);
-            this.btn_sair.TabIndex = 2;
-            this.btn_sair.Text = "meter o pé";
-            this.btn_sair.UseVisualStyleBackColor = true;
-            this.btn_sair.Click += new System.EventHandler(this.btn_sair_Click);
+            this.pbx_opcoes.BackColor = System.Drawing.Color.Transparent;
+            this.pbx_opcoes.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pbx_opcoes.BackgroundImage")));
+            this.pbx_opcoes.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pbx_opcoes.Location = new System.Drawing.Point(877, 351);
+            this.pbx_opcoes.Name = "pbx_opcoes";
+            this.pbx_opcoes.Size = new System.Drawing.Size(274, 104);
+            this.pbx_opcoes.TabIndex = 8;
+            this.pbx_opcoes.TabStop = false;
+            // 
+            // pbx_sair
+            // 
+            this.pbx_sair.BackColor = System.Drawing.Color.Transparent;
+            this.pbx_sair.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pbx_sair.BackgroundImage")));
+            this.pbx_sair.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pbx_sair.Location = new System.Drawing.Point(877, 495);
+            this.pbx_sair.Name = "pbx_sair";
+            this.pbx_sair.Size = new System.Drawing.Size(274, 104);
+            this.pbx_sair.TabIndex = 9;
+            this.pbx_sair.TabStop = false;
+            this.pbx_sair.Click += new System.EventHandler(this.btn_sair_Click);
             // 
             // MenuControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.btn_sair);
-            this.Controls.Add(this.btn_iniciar);
-            this.Controls.Add(this.label1);
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.Controls.Add(this.pbx_sair);
+            this.Controls.Add(this.pbx_opcoes);
+            this.Controls.Add(this.pbx_loja);
+            this.Controls.Add(this.pbx_jogar);
             this.Name = "MenuControl";
             this.Size = new System.Drawing.Size(1280, 720);
+            ((System.ComponentModel.ISupportInitialize)(this.pbx_jogar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbx_loja)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbx_opcoes)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbx_sair)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btn_iniciar;
-        private System.Windows.Forms.Button btn_sair;
+        private System.Windows.Forms.PictureBox pbx_jogar;
+        private System.Windows.Forms.PictureBox pbx_loja;
+        private System.Windows.Forms.PictureBox pbx_opcoes;
+        private System.Windows.Forms.PictureBox pbx_sair;
     }
 }

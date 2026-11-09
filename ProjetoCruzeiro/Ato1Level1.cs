@@ -1,5 +1,7 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -33,6 +35,19 @@ namespace ProjetoCruzeiro
         int monitorMouse = -1;
 
         bool jogoFinalizado = false;
+
+        Timer timerVitoria;
+
+        Stopwatch cronometro = new Stopwatch();
+
+        int movimentos = 0;
+        int movimentosMinimos = 0;
+        int pontuacaoFinal = 0;
+
+        int pontuacaoMovimentos = 0;
+        int pontuacaoTempo = 0;
+
+        TimeSpan tempoDecorrido;
 
         Dictionary<string, Image[]> imagensMonitores =
             new Dictionary<string, Image[]>();
@@ -83,6 +98,13 @@ namespace ProjetoCruzeiro
                 lbl_dica5
             };
 
+            pbx_monitorloja.Visible = false;
+            pbx_monitorloja.Image = null;
+
+            timerVitoria = new Timer();
+            timerVitoria.Interval = 13000;
+            timerVitoria.Tick += TimerVitoria_Tick;
+
             CarregarImagens();
 
             for (int i = 0; i < monitores.Length; i++)
@@ -101,11 +123,22 @@ namespace ProjetoCruzeiro
             monitorMouse = -1;
             jogoFinalizado = false;
 
+            movimentos = 0;
+            movimentosMinimos = 0;
+            pontuacaoFinal = 0;
+
+            pontuacaoMovimentos = 0;
+            pontuacaoTempo = 0;
+
             GerarOrdem();
             GerarDicas();
             EmbaralharMonitores();
 
+            movimentosMinimos = CalcularMovimentosMinimos();
+
             ExibirDicas();
+
+            cronometro.Restart();
         }
 
         #endregion
@@ -133,9 +166,10 @@ namespace ProjetoCruzeiro
             {
                 imagensMonitores.Add(nome, new Image[]
                 {
-                    Image.FromFile(Path.Combine(pasta, nome + ".png")),
-                    Image.FromFile(Path.Combine(pasta, nome + "hover.png")),
-                    Image.FromFile(Path.Combine(pasta, nome + "click.png"))
+                    Image.FromFile(Path.Combine(pasta, nome + ".gif")),
+                    Image.FromFile(Path.Combine(pasta, nome + "hover.gif")),
+                    Image.FromFile(Path.Combine(pasta, nome + "click.gif")),
+                    Image.FromFile(Path.Combine(pasta, nome + "on.gif"))
                 });
             }
         }
@@ -170,6 +204,9 @@ namespace ProjetoCruzeiro
 
         private void AtualizarMonitores()
         {
+            if (jogoFinalizado)
+                return;
+
             for (int i = 0; i < monitores.Length; i++)
             {
                 string nome = NomeArquivo(ordemAtual[i]);
@@ -201,6 +238,9 @@ namespace ProjetoCruzeiro
 
         private void Monitor_MouseEnter(object sender, EventArgs e)
         {
+            if (jogoFinalizado)
+                return;
+
             PictureBox monitor = sender as PictureBox;
 
             int indice = Array.IndexOf(monitores, monitor);
@@ -215,6 +255,9 @@ namespace ProjetoCruzeiro
 
         private void Monitor_MouseLeave(object sender, EventArgs e)
         {
+            if (jogoFinalizado)
+                return;
+
             PictureBox monitor = sender as PictureBox;
 
             int indice = Array.IndexOf(monitores, monitor);
@@ -260,6 +303,8 @@ namespace ProjetoCruzeiro
 
                 ordemAtual[primeiro] = ordemAtual[indice];
                 ordemAtual[indice] = temp;
+
+                movimentos++;
 
                 monitorSelecionado = -1;
             }
@@ -315,6 +360,39 @@ namespace ProjetoCruzeiro
             } while (ordemAtual.SequenceEqual(ordemCorreta));
 
             AtualizarMonitores();
+        }
+
+        #endregion
+
+        #region Cálculo de movimentos mínimos
+
+        private int CalcularMovimentosMinimos()
+        {
+            bool[] visitados = new bool[ordemAtual.Length];
+
+            int ciclos = 0;
+
+            for (int i = 0; i < ordemAtual.Length; i++)
+            {
+                if (visitados[i])
+                    continue;
+
+                int atual = i;
+
+                while (!visitados[atual])
+                {
+                    visitados[atual] = true;
+
+                    atual = Array.IndexOf(
+                        ordemCorreta,
+                        ordemAtual[atual]
+                    );
+                }
+
+                ciclos++;
+            }
+
+            return ordemAtual.Length - ciclos;
         }
 
         #endregion
@@ -542,27 +620,95 @@ namespace ProjetoCruzeiro
 
         #endregion
 
-        #region Verificar vitória
+        #region Pontuação
+
+        private void CalcularPontuacao()
+        {
+            tempoDecorrido = cronometro.Elapsed;
+
+            cronometro.Stop();
+
+            int movimentosExtras = Math.Max(
+                0,
+                movimentos - movimentosMinimos
+            );
+
+            pontuacaoMovimentos = Math.Max(
+                0,
+                3500 - (movimentosExtras * 200)
+            );
+
+            int segundosExcedentes = Math.Max(
+                0,
+                (int)Math.Ceiling(tempoDecorrido.TotalSeconds) - 20
+            );
+
+            pontuacaoTempo = Math.Max(
+                0,
+                1000 - (segundosExcedentes * 50)
+            );
+
+            int bonusConclusao = 500;
+
+            pontuacaoFinal =
+                pontuacaoMovimentos +
+                bonusConclusao +
+                pontuacaoTempo;
+
+        }
+
+        #endregion
+
+        #region Vitória
 
         private void VerificarVitoria()
         {
-            if (ordemAtual.SequenceEqual(ordemCorreta))
+            if (!ordemAtual.SequenceEqual(ordemCorreta))
+                return;
+
+            jogoFinalizado = true;
+
+            CalcularPontuacao();
+
+            monitorSelecionado = -1;
+            monitorMouse = -1;
+
+            foreach (PictureBox monitor in monitores)
             {
-                jogoFinalizado = true;
-
-                monitorSelecionado = -1;
-
-                AtualizarMonitores();
-
-                MessageBox.Show(
-                    "Sistema de monitoramento restaurado!",
-                    "Parabéns!",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information
-                );
-                Cruzeiro cruzeiro = (Cruzeiro)this.FindForm();
-                cruzeiro.AbrirTela(new LevelSelectControl(1));
+                monitor.Cursor = Cursors.Default;
             }
+
+            pbx_monitorloja.Cursor = Cursors.Default;
+
+            for (int i = 0; i < monitores.Length; i++)
+            {
+                string nome = NomeArquivo(ordemAtual[i]);
+
+                monitores[i].Image = imagensMonitores[nome][3];
+            }
+
+            pbx_monitorloja.Image = Image.FromFile(
+                Path.Combine(
+                    Application.StartupPath,
+                    "imagens",
+                    "cameraloja.gif"
+                )
+            );
+
+            pbx_monitorloja.Visible = true;
+
+            timerVitoria.Start();
+        }
+
+        private void TimerVitoria_Tick(object sender, EventArgs e)
+        {
+            timerVitoria.Stop();
+
+            Cruzeiro cruzeiro = (Cruzeiro)this.FindForm();
+
+            cruzeiro.AbrirTela(new VitoriaControl(1, pontuacaoFinal));
+
+            timerVitoria.Dispose();
         }
 
         #endregion

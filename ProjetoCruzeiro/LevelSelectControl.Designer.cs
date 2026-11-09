@@ -28,23 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LevelSelectControl));
             this.btn_menu = new System.Windows.Forms.Button();
             this.lbl_caso = new System.Windows.Forms.Label();
-            this.lbl_level_titulo = new System.Windows.Forms.Label();
             this.lbl_level_desc = new System.Windows.Forms.Label();
-            this.lbl_level1_button = new System.Windows.Forms.Label();
-            this.lbl_level2_button = new System.Windows.Forms.Label();
-            this.lbl_level3_button = new System.Windows.Forms.Label();
-            this.pbx_level_estrela1 = new System.Windows.Forms.PictureBox();
-            this.pbx_level_estrela2 = new System.Windows.Forms.PictureBox();
-            this.pbx_level_estrela3 = new System.Windows.Forms.PictureBox();
-            this.lbl_level_local = new System.Windows.Forms.Label();
-            this.pnl_level = new System.Windows.Forms.Panel();
+            this.pnl_painel = new System.Windows.Forms.Panel();
             this.lbl_level_highscore = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.pbx_level_estrela1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbx_level_estrela2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbx_level_estrela3)).BeginInit();
-            this.pnl_level.SuspendLayout();
+            this.pbx_estrelas = new System.Windows.Forms.PictureBox();
+            this.pbx_level1_button = new System.Windows.Forms.PictureBox();
+            this.pbx_level2_button = new System.Windows.Forms.PictureBox();
+            this.pbx_level3_button = new System.Windows.Forms.PictureBox();
+            this.pnl_painel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbx_estrelas)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbx_level1_button)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbx_level2_button)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbx_level3_button)).BeginInit();
             this.SuspendLayout();
             // 
             // btn_menu
@@ -74,18 +72,6 @@
             this.lbl_caso.Text = "ATO 1";
             this.lbl_caso.Click += new System.EventHandler(this.lbl_caso_Click);
             // 
-            // lbl_level_titulo
-            // 
-            this.lbl_level_titulo.AutoSize = true;
-            this.lbl_level_titulo.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_level_titulo.Font = new System.Drawing.Font("League Spartan ExtraBold", 50F);
-            this.lbl_level_titulo.ForeColor = System.Drawing.SystemColors.Control;
-            this.lbl_level_titulo.Location = new System.Drawing.Point(57, 29);
-            this.lbl_level_titulo.Name = "lbl_level_titulo";
-            this.lbl_level_titulo.Size = new System.Drawing.Size(326, 100);
-            this.lbl_level_titulo.TabIndex = 32;
-            this.lbl_level_titulo.Text = "\"O Furto\"";
-            // 
             // lbl_level_desc
             // 
             this.lbl_level_desc.AutoSize = true;
@@ -99,139 +85,88 @@
             this.lbl_level_desc.Text = "Encontre a combinação certa!";
             this.lbl_level_desc.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // lbl_level1_button
+            // pnl_painel
             // 
-            this.lbl_level1_button.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_level1_button.Font = new System.Drawing.Font("League Spartan ExtraBold", 45F);
-            this.lbl_level1_button.ForeColor = System.Drawing.SystemColors.Control;
-            this.lbl_level1_button.Image = global::ProjetoCruzeiro.Properties.Resources.botaojogarmanha_Photoroom;
-            this.lbl_level1_button.Location = new System.Drawing.Point(45, 379);
-            this.lbl_level1_button.Name = "lbl_level1_button";
-            this.lbl_level1_button.Size = new System.Drawing.Size(300, 80);
-            this.lbl_level1_button.TabIndex = 40;
-            this.lbl_level1_button.Click += new System.EventHandler(this.lbl_level1_button_Click);
-            this.lbl_level1_button.MouseLeave += new System.EventHandler(this.lbl_level1_button_MouseLeave);
-            this.lbl_level1_button.MouseHover += new System.EventHandler(this.lbl_level1_button_MouseHover);
-            // 
-            // lbl_level2_button
-            // 
-            this.lbl_level2_button.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_level2_button.Font = new System.Drawing.Font("League Spartan ExtraBold", 45F);
-            this.lbl_level2_button.ForeColor = System.Drawing.SystemColors.Control;
-            this.lbl_level2_button.Image = global::ProjetoCruzeiro.Properties.Resources.botaojogartarde_Photoroom;
-            this.lbl_level2_button.Location = new System.Drawing.Point(45, 487);
-            this.lbl_level2_button.Name = "lbl_level2_button";
-            this.lbl_level2_button.Size = new System.Drawing.Size(300, 80);
-            this.lbl_level2_button.TabIndex = 41;
-            this.lbl_level2_button.Click += new System.EventHandler(this.lbl_level2_button_Click);
-            // 
-            // lbl_level3_button
-            // 
-            this.lbl_level3_button.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_level3_button.Font = new System.Drawing.Font("League Spartan ExtraBold", 45F);
-            this.lbl_level3_button.ForeColor = System.Drawing.SystemColors.Control;
-            this.lbl_level3_button.Image = global::ProjetoCruzeiro.Properties.Resources.botaojogarnoitepng_Photoroom;
-            this.lbl_level3_button.Location = new System.Drawing.Point(45, 592);
-            this.lbl_level3_button.Name = "lbl_level3_button";
-            this.lbl_level3_button.Size = new System.Drawing.Size(300, 80);
-            this.lbl_level3_button.TabIndex = 42;
-            this.lbl_level3_button.Click += new System.EventHandler(this.lbl_level3_button_Click);
-            // 
-            // pbx_level_estrela1
-            // 
-            this.pbx_level_estrela1.BackColor = System.Drawing.Color.Transparent;
-            this.pbx_level_estrela1.BackgroundImage = global::ProjetoCruzeiro.Properties.Resources.estrelavazia;
-            this.pbx_level_estrela1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pbx_level_estrela1.Location = new System.Drawing.Point(487, 134);
-            this.pbx_level_estrela1.Name = "pbx_level_estrela1";
-            this.pbx_level_estrela1.Size = new System.Drawing.Size(45, 45);
-            this.pbx_level_estrela1.TabIndex = 43;
-            this.pbx_level_estrela1.TabStop = false;
-            // 
-            // pbx_level_estrela2
-            // 
-            this.pbx_level_estrela2.BackColor = System.Drawing.Color.Transparent;
-            this.pbx_level_estrela2.BackgroundImage = global::ProjetoCruzeiro.Properties.Resources.estrelavazia;
-            this.pbx_level_estrela2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pbx_level_estrela2.Location = new System.Drawing.Point(560, 150);
-            this.pbx_level_estrela2.Name = "pbx_level_estrela2";
-            this.pbx_level_estrela2.Size = new System.Drawing.Size(45, 45);
-            this.pbx_level_estrela2.TabIndex = 44;
-            this.pbx_level_estrela2.TabStop = false;
-            // 
-            // pbx_level_estrela3
-            // 
-            this.pbx_level_estrela3.BackColor = System.Drawing.Color.Transparent;
-            this.pbx_level_estrela3.BackgroundImage = global::ProjetoCruzeiro.Properties.Resources.estrelavazia;
-            this.pbx_level_estrela3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pbx_level_estrela3.Location = new System.Drawing.Point(631, 134);
-            this.pbx_level_estrela3.Name = "pbx_level_estrela3";
-            this.pbx_level_estrela3.Size = new System.Drawing.Size(45, 45);
-            this.pbx_level_estrela3.TabIndex = 45;
-            this.pbx_level_estrela3.TabStop = false;
-            // 
-            // lbl_level_local
-            // 
-            this.lbl_level_local.AutoSize = true;
-            this.lbl_level_local.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_level_local.Font = new System.Drawing.Font("League Spartan ExtraBold", 25F);
-            this.lbl_level_local.ForeColor = System.Drawing.SystemColors.Control;
-            this.lbl_level_local.Location = new System.Drawing.Point(171, 129);
-            this.lbl_level_local.Name = "lbl_level_local";
-            this.lbl_level_local.Size = new System.Drawing.Size(87, 50);
-            this.lbl_level_local.TabIndex = 52;
-            this.lbl_level_local.Text = "Loja";
-            this.lbl_level_local.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // pnl_level
-            // 
-            this.pnl_level.BackColor = System.Drawing.Color.Gainsboro;
-            this.pnl_level.Controls.Add(this.lbl_level_highscore);
-            this.pnl_level.Controls.Add(this.lbl_level_titulo);
-            this.pnl_level.Controls.Add(this.lbl_level_local);
-            this.pnl_level.Controls.Add(this.lbl_level_desc);
-            this.pnl_level.Controls.Add(this.pbx_level_estrela3);
-            this.pnl_level.Controls.Add(this.pbx_level_estrela2);
-            this.pnl_level.Controls.Add(this.pbx_level_estrela1);
-            this.pnl_level.Location = new System.Drawing.Point(513, 512);
-            this.pnl_level.Name = "pnl_level";
-            this.pnl_level.Size = new System.Drawing.Size(764, 205);
-            this.pnl_level.TabIndex = 53;
+            this.pnl_painel.BackColor = System.Drawing.Color.Transparent;
+            this.pnl_painel.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnl_painel.BackgroundImage")));
+            this.pnl_painel.Controls.Add(this.lbl_level_highscore);
+            this.pnl_painel.Controls.Add(this.lbl_level_desc);
+            this.pnl_painel.Controls.Add(this.pbx_estrelas);
+            this.pnl_painel.Location = new System.Drawing.Point(513, 512);
+            this.pnl_painel.Name = "pnl_painel";
+            this.pnl_painel.Size = new System.Drawing.Size(764, 205);
+            this.pnl_painel.TabIndex = 53;
             // 
             // lbl_level_highscore
             // 
             this.lbl_level_highscore.AutoSize = true;
             this.lbl_level_highscore.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_level_highscore.Font = new System.Drawing.Font("League Spartan SemiBold", 35F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_level_highscore.ForeColor = System.Drawing.SystemColors.Control;
-            this.lbl_level_highscore.Location = new System.Drawing.Point(461, 39);
+            this.lbl_level_highscore.Font = new System.Drawing.Font("Times New Roman", 35.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_level_highscore.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.lbl_level_highscore.Location = new System.Drawing.Point(55, 124);
             this.lbl_level_highscore.Name = "lbl_level_highscore";
-            this.lbl_level_highscore.Size = new System.Drawing.Size(268, 70);
+            this.lbl_level_highscore.Size = new System.Drawing.Size(275, 53);
             this.lbl_level_highscore.TabIndex = 53;
             this.lbl_level_highscore.Text = "*Highscore*";
             this.lbl_level_highscore.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // pbx_estrelas
+            // 
+            this.pbx_estrelas.BackColor = System.Drawing.Color.Transparent;
+            this.pbx_estrelas.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pbx_estrelas.BackgroundImage")));
+            this.pbx_estrelas.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pbx_estrelas.Location = new System.Drawing.Point(355, 71);
+            this.pbx_estrelas.Name = "pbx_estrelas";
+            this.pbx_estrelas.Size = new System.Drawing.Size(284, 117);
+            this.pbx_estrelas.TabIndex = 43;
+            this.pbx_estrelas.TabStop = false;
+            // 
+            // pbx_level1_button
+            // 
+            this.pbx_level1_button.Location = new System.Drawing.Point(60, 386);
+            this.pbx_level1_button.Name = "pbx_level1_button";
+            this.pbx_level1_button.Size = new System.Drawing.Size(299, 70);
+            this.pbx_level1_button.TabIndex = 54;
+            this.pbx_level1_button.TabStop = false;
+            // 
+            // pbx_level2_button
+            // 
+            this.pbx_level2_button.Location = new System.Drawing.Point(60, 510);
+            this.pbx_level2_button.Name = "pbx_level2_button";
+            this.pbx_level2_button.Size = new System.Drawing.Size(299, 70);
+            this.pbx_level2_button.TabIndex = 55;
+            this.pbx_level2_button.TabStop = false;
+            // 
+            // pbx_level3_button
+            // 
+            this.pbx_level3_button.Location = new System.Drawing.Point(60, 608);
+            this.pbx_level3_button.Name = "pbx_level3_button";
+            this.pbx_level3_button.Size = new System.Drawing.Size(299, 70);
+            this.pbx_level3_button.TabIndex = 56;
+            this.pbx_level3_button.TabStop = false;
             // 
             // LevelSelectControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Chartreuse;
-            this.BackgroundImage = global::ProjetoCruzeiro.Properties.Resources.altomar;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.Controls.Add(this.pnl_level);
-            this.Controls.Add(this.lbl_level3_button);
-            this.Controls.Add(this.lbl_level2_button);
-            this.Controls.Add(this.lbl_level1_button);
+            this.Controls.Add(this.pbx_level3_button);
+            this.Controls.Add(this.pbx_level2_button);
+            this.Controls.Add(this.pbx_level1_button);
+            this.Controls.Add(this.pnl_painel);
             this.Controls.Add(this.lbl_caso);
             this.Controls.Add(this.btn_menu);
             this.DoubleBuffered = true;
             this.Name = "LevelSelectControl";
             this.Size = new System.Drawing.Size(1280, 720);
-            ((System.ComponentModel.ISupportInitialize)(this.pbx_level_estrela1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbx_level_estrela2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbx_level_estrela3)).EndInit();
-            this.pnl_level.ResumeLayout(false);
-            this.pnl_level.PerformLayout();
+            this.pnl_painel.ResumeLayout(false);
+            this.pnl_painel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbx_estrelas)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbx_level1_button)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbx_level2_button)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbx_level3_button)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -242,15 +177,11 @@
         private System.Windows.Forms.Button btn_menu;
         private System.Windows.Forms.Label lbl_caso;
         private System.Windows.Forms.Label lbl_level_desc;
-        private System.Windows.Forms.Label lbl_level1_button;
-        private System.Windows.Forms.Label lbl_level2_button;
-        private System.Windows.Forms.Label lbl_level3_button;
-        private System.Windows.Forms.PictureBox pbx_level_estrela1;
-        private System.Windows.Forms.PictureBox pbx_level_estrela2;
-        private System.Windows.Forms.PictureBox pbx_level_estrela3;
-        private System.Windows.Forms.Label lbl_level_titulo;
-        private System.Windows.Forms.Label lbl_level_local;
-        private System.Windows.Forms.Panel pnl_level;
+        private System.Windows.Forms.Panel pnl_painel;
         private System.Windows.Forms.Label lbl_level_highscore;
+        private System.Windows.Forms.PictureBox pbx_estrelas;
+        private System.Windows.Forms.PictureBox pbx_level1_button;
+        private System.Windows.Forms.PictureBox pbx_level2_button;
+        private System.Windows.Forms.PictureBox pbx_level3_button;
     }
 }
