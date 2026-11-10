@@ -25,7 +25,7 @@ namespace ProjetoCruzeiro
         public void AbrirTela(UserControl tela)
         {
             panelPrincipal.Controls.Clear();
-            tela.Dock = DockStyle.Fill;
+            tela.Dock = DockStyle.None;
             panelPrincipal.Controls.Add(tela);
             AtualizarIdentidade(tela);
         }

@@ -102,7 +102,7 @@
       <DependentUpon>Ato3Level3.cs</DependentUpon>
     </Compile>
     <Compile Include="JogoForm.cs">
-      <SubType>Form</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="JogoForm.Designer.cs">
       <DependentUpon>JogoForm.cs</DependentUpon>
@@ -118,6 +118,12 @@
     </Compile>
     <Compile Include="MenuInicialForm.Designer.cs">
       <DependentUpon>MenuInicialForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MenuLateralControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MenuLateralControl.Designer.cs">
+      <DependentUpon>MenuLateralControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="ProgressoJogador.cs" />
@@ -188,6 +194,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MenuInicialForm.resx">
       <DependentUpon>MenuInicialForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MenuLateralControl.resx">
+      <DependentUpon>MenuLateralControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

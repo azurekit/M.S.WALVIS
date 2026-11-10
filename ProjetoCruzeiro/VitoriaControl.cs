@@ -443,52 +443,61 @@ namespace ProjetoCruzeiro
             }
         }
 
+
         private void pbx_voltar_Click(object sender, EventArgs e)
         {
-            Cruzeiro cruzeiro = (Cruzeiro)this.FindForm();
+            Control controle = this;
 
-            if (cruzeiro == null)
+            while (controle != null && !(controle is JogoForm))
+            {
+                controle = controle.Parent;
+            }
+
+            JogoForm jogo = controle as JogoForm;
+
+            if (jogo == null)
                 return;
 
             switch (identificador)
             {
                 case 1:
-                    cruzeiro.AbrirTela(new Ato1Level1());
+                    jogo.AbrirTela(new Ato1Level1());
                     break;
 
                 case 2:
-                    cruzeiro.AbrirTela(new Ato1Level2());
+                    jogo.AbrirTela(new Ato1Level2());
                     break;
 
                 case 3:
-                    cruzeiro.AbrirTela(new Ato1Level3());
+                    jogo.AbrirTela(new Ato1Level3());
                     break;
 
                 case 4:
-                    cruzeiro.AbrirTela(new Ato2Level1());
+                    jogo.AbrirTela(new Ato2Level1());
                     break;
 
                 case 5:
-                    cruzeiro.AbrirTela(new Ato2Level2());
+                    jogo.AbrirTela(new Ato2Level2());
                     break;
 
                 case 6:
-                    cruzeiro.AbrirTela(new Ato2Level3());
+                    jogo.AbrirTela(new Ato2Level3());
                     break;
 
                 case 7:
-                    cruzeiro.AbrirTela(new Ato3Level1());
+                    jogo.AbrirTela(new Ato3Level1());
                     break;
 
                 case 8:
-                    cruzeiro.AbrirTela(new Ato3Level2());
+                    jogo.AbrirTela(new Ato3Level2());
                     break;
 
                 case 9:
-                    cruzeiro.AbrirTela(new Ato3Level3());
+                    jogo.AbrirTela(new Ato3Level3());
                     break;
             }
         }
+
 
         #endregion
 

@@ -281,60 +281,21 @@ namespace ProjetoCruzeiro
         {
             Cruzeiro cruzeiro = (Cruzeiro)FindForm();
 
-            switch (DificuldadeSelecionada)
-            {
-                case 1:
-                    cruzeiro.AbrirTela(new Ato1Level1());
-                    break;
-
-                case 2:
-                    cruzeiro.AbrirTela(new Ato2Level1());
-                    break;
-
-                case 3:
-                    cruzeiro.AbrirTela(new Ato3Level1());
-                    break;
-            }
+            cruzeiro.AbrirTela(new JogoForm(DificuldadeSelecionada, 1));
         }
 
         private void lbl_level2_button_Click(object sender, EventArgs e)
         {
             Cruzeiro cruzeiro = (Cruzeiro)FindForm();
 
-            switch (DificuldadeSelecionada)
-            {
-                case 1:
-                    cruzeiro.AbrirTela(new Ato1Level2());
-                    break;
-
-                case 2:
-                    cruzeiro.AbrirTela(new Ato2Level2());
-                    break;
-
-                case 3:
-                    cruzeiro.AbrirTela(new Ato3Level2());
-                    break;
-            }
+            cruzeiro.AbrirTela(new JogoForm(DificuldadeSelecionada, 2));
         }
 
         private void lbl_level3_button_Click(object sender, EventArgs e)
         {
             Cruzeiro cruzeiro = (Cruzeiro)FindForm();
 
-            switch (DificuldadeSelecionada)
-            {
-                case 1:
-                    cruzeiro.AbrirTela(new Ato1Level3());
-                    break;
-
-                case 2:
-                    cruzeiro.AbrirTela(new Ato2Level3());
-                    break;
-
-                case 3:
-                    cruzeiro.AbrirTela(new Ato3Level3());
-                    break;
-            }
+            cruzeiro.AbrirTela(new JogoForm(DificuldadeSelecionada, 3));
         }
 
         #endregion

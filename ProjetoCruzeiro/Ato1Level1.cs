@@ -704,9 +704,19 @@ namespace ProjetoCruzeiro
         {
             timerVitoria.Stop();
 
-            Cruzeiro cruzeiro = (Cruzeiro)this.FindForm();
+            Control controle = this;
 
-            cruzeiro.AbrirTela(new VitoriaControl(1, pontuacaoFinal));
+            while (controle != null && !(controle is JogoForm))
+            {
+                controle = controle.Parent;
+            }
+
+            JogoForm jogo = controle as JogoForm;
+
+            if (jogo != null)
+            {
+                jogo.MostrarVitoria(1, pontuacaoFinal);
+            }
 
             timerVitoria.Dispose();
         }

@@ -24,7 +24,6 @@ namespace ProjetoCruzeiro
 
             efeitos.Add(new EfeitoBotao(pbx_jogar));
             efeitos.Add(new EfeitoBotao(pbx_loja));
-            efeitos.Add(new EfeitoBotao(pbx_opcoes));
             efeitos.Add(new EfeitoBotao(pbx_sair));
         }
 
