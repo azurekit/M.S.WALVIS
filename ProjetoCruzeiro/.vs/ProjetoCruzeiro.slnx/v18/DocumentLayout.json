@@ -3,64 +3,80 @@
   "WorkspaceRootPath": "C:\\Users\\Roberto Levi\\source\\repos\\ProjetoCruzeiro\\ProjetoCruzeiro\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{EFD5DDAE-7F71-42A2-A941-02658CDBE980}|ProjetoCruzeiro.csproj|C:\\Users\\Roberto Levi\\source\\repos\\ProjetoCruzeiro\\ProjetoCruzeiro\\menucontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EFD5DDAE-7F71-42A2-A941-02658CDBE980}|ProjetoCruzeiro.csproj|solutionrelative:menucontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EFD5DDAE-7F71-42A2-A941-02658CDBE980}|ProjetoCruzeiro.csproj|C:\\Users\\Roberto Levi\\source\\repos\\ProjetoCruzeiro\\ProjetoCruzeiro\\menucontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{EFD5DDAE-7F71-42A2-A941-02658CDBE980}|ProjetoCruzeiro.csproj|solutionrelative:menucontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EFD5DDAE-7F71-42A2-A941-02658CDBE980}|ProjetoCruzeiro.csproj|C:\\Users\\Roberto Levi\\source\\repos\\ProjetoCruzeiro\\ProjetoCruzeiro\\ato1level2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EFD5DDAE-7F71-42A2-A941-02658CDBE980}|ProjetoCruzeiro.csproj|solutionrelative:ato1level2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EFD5DDAE-7F71-42A2-A941-02658CDBE980}|ProjetoCruzeiro.csproj|C:\\Users\\Roberto Levi\\source\\repos\\ProjetoCruzeiro\\ProjetoCruzeiro\\dificuldadeselectcontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EFD5DDAE-7F71-42A2-A941-02658CDBE980}|ProjetoCruzeiro.csproj|solutionrelative:dificuldadeselectcontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EFD5DDAE-7F71-42A2-A941-02658CDBE980}|ProjetoCruzeiro.csproj|C:\\Users\\Roberto Levi\\source\\repos\\ProjetoCruzeiro\\ProjetoCruzeiro\\ato1level1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EFD5DDAE-7F71-42A2-A941-02658CDBE980}|ProjetoCruzeiro.csproj|solutionrelative:ato1level1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EFD5DDAE-7F71-42A2-A941-02658CDBE980}|ProjetoCruzeiro.csproj|c:\\users\\roberto levi\\source\\repos\\projetocruzeiro\\projetocruzeiro\\vitoriacontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{EFD5DDAE-7F71-42A2-A941-02658CDBE980}|ProjetoCruzeiro.csproj|C:\\Users\\Roberto Levi\\source\\repos\\ProjetoCruzeiro\\ProjetoCruzeiro\\vitoriacontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{EFD5DDAE-7F71-42A2-A941-02658CDBE980}|ProjetoCruzeiro.csproj|solutionrelative:vitoriacontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EFD5DDAE-7F71-42A2-A941-02658CDBE980}|ProjetoCruzeiro.csproj|c:\\users\\roberto levi\\source\\repos\\projetocruzeiro\\projetocruzeiro\\menulateralcontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{EFD5DDAE-7F71-42A2-A941-02658CDBE980}|ProjetoCruzeiro.csproj|C:\\Users\\Roberto Levi\\source\\repos\\ProjetoCruzeiro\\ProjetoCruzeiro\\vitoriacontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{EFD5DDAE-7F71-42A2-A941-02658CDBE980}|ProjetoCruzeiro.csproj|solutionrelative:vitoriacontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EFD5DDAE-7F71-42A2-A941-02658CDBE980}|ProjetoCruzeiro.csproj|C:\\Users\\Roberto Levi\\source\\repos\\ProjetoCruzeiro\\ProjetoCruzeiro\\ato1level3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EFD5DDAE-7F71-42A2-A941-02658CDBE980}|ProjetoCruzeiro.csproj|solutionrelative:ato1level3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EFD5DDAE-7F71-42A2-A941-02658CDBE980}|ProjetoCruzeiro.csproj|C:\\Users\\Roberto Levi\\source\\repos\\ProjetoCruzeiro\\ProjetoCruzeiro\\ato1level3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{EFD5DDAE-7F71-42A2-A941-02658CDBE980}|ProjetoCruzeiro.csproj|solutionrelative:ato1level3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EFD5DDAE-7F71-42A2-A941-02658CDBE980}|ProjetoCruzeiro.csproj|c:\\users\\roberto levi\\source\\repos\\projetocruzeiro\\projetocruzeiro\\derrotacontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{EFD5DDAE-7F71-42A2-A941-02658CDBE980}|ProjetoCruzeiro.csproj|solutionrelative:derrotacontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EFD5DDAE-7F71-42A2-A941-02658CDBE980}|ProjetoCruzeiro.csproj|c:\\users\\roberto levi\\source\\repos\\projetocruzeiro\\projetocruzeiro\\derrotacontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EFD5DDAE-7F71-42A2-A941-02658CDBE980}|ProjetoCruzeiro.csproj|solutionrelative:derrotacontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EFD5DDAE-7F71-42A2-A941-02658CDBE980}|ProjetoCruzeiro.csproj|C:\\Users\\Roberto Levi\\source\\repos\\ProjetoCruzeiro\\ProjetoCruzeiro\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EFD5DDAE-7F71-42A2-A941-02658CDBE980}|ProjetoCruzeiro.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EFD5DDAE-7F71-42A2-A941-02658CDBE980}|ProjetoCruzeiro.csproj|C:\\Users\\Roberto Levi\\source\\repos\\ProjetoCruzeiro\\ProjetoCruzeiro\\menulateralcontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{EFD5DDAE-7F71-42A2-A941-02658CDBE980}|ProjetoCruzeiro.csproj|solutionrelative:menulateralcontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EFD5DDAE-7F71-42A2-A941-02658CDBE980}|ProjetoCruzeiro.csproj|C:\\Users\\Roberto Levi\\source\\repos\\ProjetoCruzeiro\\ProjetoCruzeiro\\jogoform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EFD5DDAE-7F71-42A2-A941-02658CDBE980}|ProjetoCruzeiro.csproj|solutionrelative:jogoform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EFD5DDAE-7F71-42A2-A941-02658CDBE980}|ProjetoCruzeiro.csproj|C:\\Users\\Roberto Levi\\source\\repos\\ProjetoCruzeiro\\ProjetoCruzeiro\\jogoform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{EFD5DDAE-7F71-42A2-A941-02658CDBE980}|ProjetoCruzeiro.csproj|solutionrelative:jogoform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EFD5DDAE-7F71-42A2-A941-02658CDBE980}|ProjetoCruzeiro.csproj|C:\\Users\\Roberto Levi\\source\\repos\\ProjetoCruzeiro\\ProjetoCruzeiro\\ato1level2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{EFD5DDAE-7F71-42A2-A941-02658CDBE980}|ProjetoCruzeiro.csproj|solutionrelative:ato1level2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EFD5DDAE-7F71-42A2-A941-02658CDBE980}|ProjetoCruzeiro.csproj|C:\\Users\\Roberto Levi\\source\\repos\\ProjetoCruzeiro\\ProjetoCruzeiro\\menulateralcontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{EFD5DDAE-7F71-42A2-A941-02658CDBE980}|ProjetoCruzeiro.csproj|solutionrelative:menulateralcontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EFD5DDAE-7F71-42A2-A941-02658CDBE980}|ProjetoCruzeiro.csproj|C:\\Users\\Roberto Levi\\source\\repos\\ProjetoCruzeiro\\ProjetoCruzeiro\\avisocontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EFD5DDAE-7F71-42A2-A941-02658CDBE980}|ProjetoCruzeiro.csproj|solutionrelative:avisocontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{EFD5DDAE-7F71-42A2-A941-02658CDBE980}|ProjetoCruzeiro.csproj|c:\\users\\roberto levi\\source\\repos\\projetocruzeiro\\projetocruzeiro\\menucontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EFD5DDAE-7F71-42A2-A941-02658CDBE980}|ProjetoCruzeiro.csproj|solutionrelative:menucontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{EFD5DDAE-7F71-42A2-A941-02658CDBE980}|ProjetoCruzeiro.csproj|C:\\Users\\Roberto Levi\\source\\repos\\ProjetoCruzeiro\\ProjetoCruzeiro\\menuinicialform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{EFD5DDAE-7F71-42A2-A941-02658CDBE980}|ProjetoCruzeiro.csproj|solutionrelative:menuinicialform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EFD5DDAE-7F71-42A2-A941-02658CDBE980}|ProjetoCruzeiro.csproj|C:\\Users\\Roberto Levi\\source\\repos\\ProjetoCruzeiro\\ProjetoCruzeiro\\levelselectcontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EFD5DDAE-7F71-42A2-A941-02658CDBE980}|ProjetoCruzeiro.csproj|solutionrelative:levelselectcontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{EFD5DDAE-7F71-42A2-A941-02658CDBE980}|ProjetoCruzeiro.csproj|C:\\Users\\Roberto Levi\\source\\repos\\ProjetoCruzeiro\\ProjetoCruzeiro\\menulateralcontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{EFD5DDAE-7F71-42A2-A941-02658CDBE980}|ProjetoCruzeiro.csproj|solutionrelative:menulateralcontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EFD5DDAE-7F71-42A2-A941-02658CDBE980}|ProjetoCruzeiro.csproj|C:\\Users\\Roberto Levi\\source\\repos\\ProjetoCruzeiro\\ProjetoCruzeiro\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EFD5DDAE-7F71-42A2-A941-02658CDBE980}|ProjetoCruzeiro.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{EFD5DDAE-7F71-42A2-A941-02658CDBE980}|ProjetoCruzeiro.csproj|C:\\Users\\Roberto Levi\\source\\repos\\ProjetoCruzeiro\\ProjetoCruzeiro\\menucontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{EFD5DDAE-7F71-42A2-A941-02658CDBE980}|ProjetoCruzeiro.csproj|solutionrelative:menucontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EFD5DDAE-7F71-42A2-A941-02658CDBE980}|ProjetoCruzeiro.csproj|c:\\users\\roberto levi\\source\\repos\\projetocruzeiro\\projetocruzeiro\\ato1level3.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EFD5DDAE-7F71-42A2-A941-02658CDBE980}|ProjetoCruzeiro.csproj|solutionrelative:ato1level3.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EFD5DDAE-7F71-42A2-A941-02658CDBE980}|ProjetoCruzeiro.csproj|C:\\Users\\Roberto Levi\\source\\repos\\ProjetoCruzeiro\\ProjetoCruzeiro\\dificuldadeselectcontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EFD5DDAE-7F71-42A2-A941-02658CDBE980}|ProjetoCruzeiro.csproj|solutionrelative:dificuldadeselectcontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EFD5DDAE-7F71-42A2-A941-02658CDBE980}|ProjetoCruzeiro.csproj|C:\\Users\\Roberto Levi\\source\\repos\\ProjetoCruzeiro\\ProjetoCruzeiro\\jogoform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{EFD5DDAE-7F71-42A2-A941-02658CDBE980}|ProjetoCruzeiro.csproj|solutionrelative:jogoform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EFD5DDAE-7F71-42A2-A941-02658CDBE980}|ProjetoCruzeiro.csproj|C:\\Users\\Roberto Levi\\source\\repos\\ProjetoCruzeiro\\ProjetoCruzeiro\\jogoform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EFD5DDAE-7F71-42A2-A941-02658CDBE980}|ProjetoCruzeiro.csproj|solutionrelative:jogoform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EFD5DDAE-7F71-42A2-A941-02658CDBE980}|ProjetoCruzeiro.csproj|C:\\Users\\Roberto Levi\\source\\repos\\ProjetoCruzeiro\\ProjetoCruzeiro\\ato1level2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{EFD5DDAE-7F71-42A2-A941-02658CDBE980}|ProjetoCruzeiro.csproj|solutionrelative:ato1level2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EFD5DDAE-7F71-42A2-A941-02658CDBE980}|ProjetoCruzeiro.csproj|C:\\Users\\Roberto Levi\\source\\repos\\ProjetoCruzeiro\\ProjetoCruzeiro\\avisocontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EFD5DDAE-7F71-42A2-A941-02658CDBE980}|ProjetoCruzeiro.csproj|solutionrelative:avisocontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EFD5DDAE-7F71-42A2-A941-02658CDBE980}|ProjetoCruzeiro.csproj|C:\\Users\\Roberto Levi\\source\\repos\\ProjetoCruzeiro\\ProjetoCruzeiro\\levelselectcontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EFD5DDAE-7F71-42A2-A941-02658CDBE980}|ProjetoCruzeiro.csproj|solutionrelative:levelselectcontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{EFD5DDAE-7F71-42A2-A941-02658CDBE980}|ProjetoCruzeiro.csproj|C:\\Users\\Roberto Levi\\source\\repos\\ProjetoCruzeiro\\ProjetoCruzeiro\\menuinicialform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -73,10 +89,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{EFD5DDAE-7F71-42A2-A941-02658CDBE980}|ProjetoCruzeiro.csproj|C:\\Users\\Roberto Levi\\source\\repos\\ProjetoCruzeiro\\ProjetoCruzeiro\\ato2level1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{EFD5DDAE-7F71-42A2-A941-02658CDBE980}|ProjetoCruzeiro.csproj|solutionrelative:ato2level1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EFD5DDAE-7F71-42A2-A941-02658CDBE980}|ProjetoCruzeiro.csproj|C:\\Users\\Roberto Levi\\source\\repos\\ProjetoCruzeiro\\ProjetoCruzeiro\\vitoriacontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{EFD5DDAE-7F71-42A2-A941-02658CDBE980}|ProjetoCruzeiro.csproj|solutionrelative:vitoriacontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{EFD5DDAE-7F71-42A2-A941-02658CDBE980}|ProjetoCruzeiro.csproj|C:\\Users\\Roberto Levi\\source\\repos\\ProjetoCruzeiro\\ProjetoCruzeiro\\levelselectcontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
@@ -127,10 +139,6 @@
       "RelativeMoniker": "D:0:0:{EFD5DDAE-7F71-42A2-A941-02658CDBE980}|ProjetoCruzeiro.csproj|solutionrelative:ato2level2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EFD5DDAE-7F71-42A2-A941-02658CDBE980}|ProjetoCruzeiro.csproj|C:\\Users\\Roberto Levi\\source\\repos\\ProjetoCruzeiro\\ProjetoCruzeiro\\ato1level3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EFD5DDAE-7F71-42A2-A941-02658CDBE980}|ProjetoCruzeiro.csproj|solutionrelative:ato1level3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{EFD5DDAE-7F71-42A2-A941-02658CDBE980}|ProjetoCruzeiro.csproj|C:\\Users\\Roberto Levi\\source\\repos\\ProjetoCruzeiro\\ProjetoCruzeiro\\vitoriacontrol.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{EFD5DDAE-7F71-42A2-A941-02658CDBE980}|ProjetoCruzeiro.csproj|solutionrelative:vitoriacontrol.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -149,10 +157,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{EFD5DDAE-7F71-42A2-A941-02658CDBE980}|ProjetoCruzeiro.csproj|C:\\Users\\Roberto Levi\\source\\repos\\ProjetoCruzeiro\\ProjetoCruzeiro\\ato2level3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{EFD5DDAE-7F71-42A2-A941-02658CDBE980}|ProjetoCruzeiro.csproj|solutionrelative:ato2level3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EFD5DDAE-7F71-42A2-A941-02658CDBE980}|ProjetoCruzeiro.csproj|C:\\Users\\Roberto Levi\\source\\repos\\ProjetoCruzeiro\\ProjetoCruzeiro\\ato1level3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{EFD5DDAE-7F71-42A2-A941-02658CDBE980}|ProjetoCruzeiro.csproj|solutionrelative:ato1level3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{EFD5DDAE-7F71-42A2-A941-02658CDBE980}|ProjetoCruzeiro.csproj|C:\\Users\\Roberto Levi\\source\\repos\\ProjetoCruzeiro\\ProjetoCruzeiro\\progressojogador.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -174,7 +178,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 11,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Document",
@@ -190,6 +194,20 @@
               "EditorCaption": " [Design]"
             },
             {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Roberto Levi\\source\\repos\\ProjetoCruzeiro\\ProjetoCruzeiro\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\Roberto Levi\\source\\repos\\ProjetoCruzeiro\\ProjetoCruzeiro\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-08T05:22:07.928Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
               "$type": "Bookmark",
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
             },
@@ -199,109 +217,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "AvisoControl.cs",
-              "DocumentMoniker": "C:\\Users\\Roberto Levi\\source\\repos\\ProjetoCruzeiro\\ProjetoCruzeiro\\AvisoControl.cs",
-              "RelativeDocumentMoniker": "AvisoControl.cs",
-              "ToolTip": "C:\\Users\\Roberto Levi\\source\\repos\\ProjetoCruzeiro\\ProjetoCruzeiro\\AvisoControl.cs",
-              "RelativeToolTip": "AvisoControl.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAyAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-11-10T04:45:47.265Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "JogoForm.cs",
-              "DocumentMoniker": "C:\\Users\\Roberto Levi\\source\\repos\\ProjetoCruzeiro\\ProjetoCruzeiro\\JogoForm.cs",
-              "RelativeDocumentMoniker": "JogoForm.cs",
-              "ToolTip": "C:\\Users\\Roberto Levi\\source\\repos\\ProjetoCruzeiro\\ProjetoCruzeiro\\JogoForm.cs",
-              "RelativeToolTip": "JogoForm.cs",
-              "ViewState": "AgIAAEUAAAAAAAAAAAAwwGsAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-19T16:27:41.249Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 8,
-              "Title": "JogoForm.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\Roberto Levi\\source\\repos\\ProjetoCruzeiro\\ProjetoCruzeiro\\JogoForm.cs",
-              "RelativeDocumentMoniker": "JogoForm.cs",
-              "ToolTip": "C:\\Users\\Roberto Levi\\source\\repos\\ProjetoCruzeiro\\ProjetoCruzeiro\\JogoForm.cs [Design]",
-              "RelativeToolTip": "JogoForm.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-11-10T04:28:18.602Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "MenuLateralControl.cs",
-              "DocumentMoniker": "C:\\Users\\Roberto Levi\\source\\repos\\ProjetoCruzeiro\\ProjetoCruzeiro\\MenuLateralControl.cs",
-              "RelativeDocumentMoniker": "MenuLateralControl.cs",
-              "ToolTip": "C:\\Users\\Roberto Levi\\source\\repos\\ProjetoCruzeiro\\ProjetoCruzeiro\\MenuLateralControl.cs",
-              "RelativeToolTip": "MenuLateralControl.cs",
-              "ViewState": "AgIAAHkAAAAAAAAAAAAIwJ8AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-11-10T04:57:53.864Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "DificuldadeSelectControl.cs",
-              "DocumentMoniker": "C:\\Users\\Roberto Levi\\source\\repos\\ProjetoCruzeiro\\ProjetoCruzeiro\\DificuldadeSelectControl.cs",
-              "RelativeDocumentMoniker": "DificuldadeSelectControl.cs",
-              "ToolTip": "C:\\Users\\Roberto Levi\\source\\repos\\ProjetoCruzeiro\\ProjetoCruzeiro\\DificuldadeSelectControl.cs",
-              "RelativeToolTip": "DificuldadeSelectControl.cs",
-              "ViewState": "AgIAAIMAAAAAAAAAAAAQwKYAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-15T04:50:13.05Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Ato1Level2.cs",
-              "DocumentMoniker": "C:\\Users\\Roberto Levi\\source\\repos\\ProjetoCruzeiro\\ProjetoCruzeiro\\Ato1Level2.cs",
-              "RelativeDocumentMoniker": "Ato1Level2.cs",
-              "ToolTip": "C:\\Users\\Roberto Levi\\source\\repos\\ProjetoCruzeiro\\ProjetoCruzeiro\\Ato1Level2.cs",
-              "RelativeToolTip": "Ato1Level2.cs",
-              "ViewState": "AgIAAEYCAAAAAAAAAAAwwGYCAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-21T18:16:31.702Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Ato1Level1.cs",
-              "DocumentMoniker": "C:\\Users\\Roberto Levi\\source\\repos\\ProjetoCruzeiro\\ProjetoCruzeiro\\Ato1Level1.cs",
-              "RelativeDocumentMoniker": "Ato1Level1.cs",
-              "ToolTip": "C:\\Users\\Roberto Levi\\source\\repos\\ProjetoCruzeiro\\ProjetoCruzeiro\\Ato1Level1.cs",
-              "RelativeToolTip": "Ato1Level1.cs",
-              "ViewState": "AgIAALcCAAAAAAAAAAAwwNECAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-11-06T00:03:30.887Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "MenuControl.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\Roberto Levi\\source\\repos\\ProjetoCruzeiro\\ProjetoCruzeiro\\MenuControl.cs",
-              "RelativeDocumentMoniker": "MenuControl.cs",
-              "ToolTip": "C:\\Users\\Roberto Levi\\source\\repos\\ProjetoCruzeiro\\ProjetoCruzeiro\\MenuControl.cs [Design]",
-              "RelativeToolTip": "MenuControl.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-11-08T04:37:52.243Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
               "Title": "MenuControl.cs",
               "DocumentMoniker": "C:\\Users\\Roberto Levi\\source\\repos\\ProjetoCruzeiro\\ProjetoCruzeiro\\MenuControl.cs",
               "RelativeDocumentMoniker": "MenuControl.cs",
@@ -314,7 +230,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 9,
               "Title": "MenuInicialForm.cs [Design]",
               "DocumentMoniker": "C:\\Users\\Roberto Levi\\source\\repos\\ProjetoCruzeiro\\ProjetoCruzeiro\\MenuInicialForm.cs",
               "RelativeDocumentMoniker": "MenuInicialForm.cs",
@@ -326,20 +242,170 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 0,
               "Title": "VitoriaControl.cs",
               "DocumentMoniker": "C:\\Users\\Roberto Levi\\source\\repos\\ProjetoCruzeiro\\ProjetoCruzeiro\\VitoriaControl.cs",
               "RelativeDocumentMoniker": "VitoriaControl.cs",
               "ToolTip": "C:\\Users\\Roberto Levi\\source\\repos\\ProjetoCruzeiro\\ProjetoCruzeiro\\VitoriaControl.cs",
               "RelativeToolTip": "VitoriaControl.cs",
-              "ViewState": "AgIAALUBAAAAAAAAAAAwwMYBAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAC4CAAAAAAAAAADwvz4CAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-11-10T06:05:47.613Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "VitoriaControl.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Roberto Levi\\source\\repos\\ProjetoCruzeiro\\ProjetoCruzeiro\\VitoriaControl.cs",
+              "RelativeDocumentMoniker": "VitoriaControl.cs",
+              "ToolTip": "C:\\Users\\Roberto Levi\\source\\repos\\ProjetoCruzeiro\\ProjetoCruzeiro\\VitoriaControl.cs [Design]",
+              "RelativeToolTip": "VitoriaControl.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-06T02:20:47.424Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Ato1Level3.cs",
+              "DocumentMoniker": "C:\\Users\\Roberto Levi\\source\\repos\\ProjetoCruzeiro\\ProjetoCruzeiro\\Ato1Level3.cs",
+              "RelativeDocumentMoniker": "Ato1Level3.cs",
+              "ToolTip": "C:\\Users\\Roberto Levi\\source\\repos\\ProjetoCruzeiro\\ProjetoCruzeiro\\Ato1Level3.cs",
+              "RelativeToolTip": "Ato1Level3.cs",
+              "ViewState": "AgIAANMDAAAAAAAAAAAwwCkEAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-27T18:48:16.52Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Ato1Level3.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Roberto Levi\\source\\repos\\ProjetoCruzeiro\\ProjetoCruzeiro\\Ato1Level3.cs",
+              "RelativeDocumentMoniker": "Ato1Level3.cs",
+              "ToolTip": "C:\\Users\\Roberto Levi\\source\\repos\\ProjetoCruzeiro\\ProjetoCruzeiro\\Ato1Level3.cs [Design]",
+              "RelativeToolTip": "Ato1Level3.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-27T18:27:56.745Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "DerrotaControl.cs",
+              "DocumentMoniker": "C:\\Users\\Roberto Levi\\source\\repos\\ProjetoCruzeiro\\ProjetoCruzeiro\\DerrotaControl.cs",
+              "RelativeDocumentMoniker": "DerrotaControl.cs",
+              "ToolTip": "C:\\Users\\Roberto Levi\\source\\repos\\ProjetoCruzeiro\\ProjetoCruzeiro\\DerrotaControl.cs",
+              "RelativeToolTip": "DerrotaControl.cs",
+              "ViewState": "AgIAAJoBAAAAAAAAAAAuwLkBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-10T19:31:27.043Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "DerrotaControl.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Roberto Levi\\source\\repos\\ProjetoCruzeiro\\ProjetoCruzeiro\\DerrotaControl.cs",
+              "RelativeDocumentMoniker": "DerrotaControl.cs",
+              "ToolTip": "C:\\Users\\Roberto Levi\\source\\repos\\ProjetoCruzeiro\\ProjetoCruzeiro\\DerrotaControl.cs [Design]",
+              "RelativeToolTip": "DerrotaControl.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-10T19:22:18.365Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "MenuLateralControl.cs",
+              "DocumentMoniker": "C:\\Users\\Roberto Levi\\source\\repos\\ProjetoCruzeiro\\ProjetoCruzeiro\\MenuLateralControl.cs",
+              "RelativeDocumentMoniker": "MenuLateralControl.cs",
+              "ToolTip": "C:\\Users\\Roberto Levi\\source\\repos\\ProjetoCruzeiro\\ProjetoCruzeiro\\MenuLateralControl.cs",
+              "RelativeToolTip": "MenuLateralControl.cs",
+              "ViewState": "AgIAAIEAAAAAAAAAAAAuwJ0AAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-10T04:57:53.864Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "MenuControl.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Roberto Levi\\source\\repos\\ProjetoCruzeiro\\ProjetoCruzeiro\\MenuControl.cs",
+              "RelativeDocumentMoniker": "MenuControl.cs",
+              "ToolTip": "C:\\Users\\Roberto Levi\\source\\repos\\ProjetoCruzeiro\\ProjetoCruzeiro\\MenuControl.cs [Design]",
+              "RelativeToolTip": "MenuControl.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-08T04:37:52.243Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 13,
+              "Title": "DificuldadeSelectControl.cs",
+              "DocumentMoniker": "C:\\Users\\Roberto Levi\\source\\repos\\ProjetoCruzeiro\\ProjetoCruzeiro\\DificuldadeSelectControl.cs",
+              "RelativeDocumentMoniker": "DificuldadeSelectControl.cs",
+              "ToolTip": "C:\\Users\\Roberto Levi\\source\\repos\\ProjetoCruzeiro\\ProjetoCruzeiro\\DificuldadeSelectControl.cs",
+              "RelativeToolTip": "DificuldadeSelectControl.cs",
+              "ViewState": "AgIAAIMAAAAAAAAAAAAQwKYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-15T04:50:13.05Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Ato1Level3.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\Roberto Levi\\source\\repos\\ProjetoCruzeiro\\ProjetoCruzeiro\\Ato1Level3.Designer.cs",
+              "RelativeDocumentMoniker": "Ato1Level3.Designer.cs",
+              "ToolTip": "C:\\Users\\Roberto Levi\\source\\repos\\ProjetoCruzeiro\\ProjetoCruzeiro\\Ato1Level3.Designer.cs",
+              "RelativeToolTip": "Ato1Level3.Designer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-10T19:01:00.745Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "JogoForm.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Roberto Levi\\source\\repos\\ProjetoCruzeiro\\ProjetoCruzeiro\\JogoForm.cs",
+              "RelativeDocumentMoniker": "JogoForm.cs",
+              "ToolTip": "C:\\Users\\Roberto Levi\\source\\repos\\ProjetoCruzeiro\\ProjetoCruzeiro\\JogoForm.cs [Design]",
+              "RelativeToolTip": "JogoForm.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-10T04:28:18.602Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "JogoForm.cs",
+              "DocumentMoniker": "C:\\Users\\Roberto Levi\\source\\repos\\ProjetoCruzeiro\\ProjetoCruzeiro\\JogoForm.cs",
+              "RelativeDocumentMoniker": "JogoForm.cs",
+              "ToolTip": "C:\\Users\\Roberto Levi\\source\\repos\\ProjetoCruzeiro\\ProjetoCruzeiro\\JogoForm.cs",
+              "RelativeToolTip": "JogoForm.cs",
+              "ViewState": "AgIAAEUAAAAAAAAAAAAwwGsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-19T16:27:41.249Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "AvisoControl.cs",
+              "DocumentMoniker": "C:\\Users\\Roberto Levi\\source\\repos\\ProjetoCruzeiro\\ProjetoCruzeiro\\AvisoControl.cs",
+              "RelativeDocumentMoniker": "AvisoControl.cs",
+              "ToolTip": "C:\\Users\\Roberto Levi\\source\\repos\\ProjetoCruzeiro\\ProjetoCruzeiro\\AvisoControl.cs",
+              "RelativeToolTip": "AvisoControl.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-10T04:45:47.265Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
               "Title": "LevelSelectControl.cs",
               "DocumentMoniker": "C:\\Users\\Roberto Levi\\source\\repos\\ProjetoCruzeiro\\ProjetoCruzeiro\\LevelSelectControl.cs",
               "RelativeDocumentMoniker": "LevelSelectControl.cs",
@@ -351,7 +417,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 16,
               "Title": "Ato1Level2.cs [Design]",
               "DocumentMoniker": "C:\\Users\\Roberto Levi\\source\\repos\\ProjetoCruzeiro\\ProjetoCruzeiro\\Ato1Level2.cs",
               "RelativeDocumentMoniker": "Ato1Level2.cs",
@@ -363,7 +429,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 19,
               "Title": "MenuInicialForm.cs",
               "DocumentMoniker": "C:\\Users\\Roberto Levi\\source\\repos\\ProjetoCruzeiro\\ProjetoCruzeiro\\MenuInicialForm.cs",
               "RelativeDocumentMoniker": "MenuInicialForm.cs",
@@ -376,19 +442,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\Roberto Levi\\source\\repos\\ProjetoCruzeiro\\ProjetoCruzeiro\\Program.cs",
-              "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "C:\\Users\\Roberto Levi\\source\\repos\\ProjetoCruzeiro\\ProjetoCruzeiro\\Program.cs",
-              "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-11-08T05:22:07.928Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 20,
               "Title": "JogoForm.Designer.cs",
               "DocumentMoniker": "C:\\Users\\Roberto Levi\\source\\repos\\ProjetoCruzeiro\\ProjetoCruzeiro\\JogoForm.Designer.cs",
               "RelativeDocumentMoniker": "JogoForm.Designer.cs",
@@ -401,7 +455,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 21,
               "Title": "Ato2Level1.cs [Design]",
               "DocumentMoniker": "C:\\Users\\Roberto Levi\\source\\repos\\ProjetoCruzeiro\\ProjetoCruzeiro\\Ato2Level1.cs",
               "RelativeDocumentMoniker": "Ato2Level1.cs",
@@ -412,7 +466,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 25,
               "Title": "SaveManager.cs",
               "DocumentMoniker": "C:\\Users\\Roberto Levi\\source\\repos\\ProjetoCruzeiro\\ProjetoCruzeiro\\SaveManager.cs",
               "RelativeDocumentMoniker": "SaveManager.cs",
@@ -424,7 +478,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 24,
               "Title": "Ato3Level2.cs [Design]",
               "DocumentMoniker": "C:\\Users\\Roberto Levi\\source\\repos\\ProjetoCruzeiro\\ProjetoCruzeiro\\Ato3Level2.cs",
               "RelativeDocumentMoniker": "Ato3Level2.cs",
@@ -435,7 +489,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 23,
               "Title": "Ato3Level3.cs",
               "DocumentMoniker": "C:\\Users\\Roberto Levi\\source\\repos\\ProjetoCruzeiro\\ProjetoCruzeiro\\Ato3Level3.cs",
               "RelativeDocumentMoniker": "Ato3Level3.cs",
@@ -447,19 +501,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "VitoriaControl.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\Roberto Levi\\source\\repos\\ProjetoCruzeiro\\ProjetoCruzeiro\\VitoriaControl.cs",
-              "RelativeDocumentMoniker": "VitoriaControl.cs",
-              "ToolTip": "C:\\Users\\Roberto Levi\\source\\repos\\ProjetoCruzeiro\\ProjetoCruzeiro\\VitoriaControl.cs [Design]",
-              "RelativeToolTip": "VitoriaControl.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-11-06T02:20:47.424Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 22,
               "Title": "LevelSelectControl.cs [Design]",
               "DocumentMoniker": "C:\\Users\\Roberto Levi\\source\\repos\\ProjetoCruzeiro\\ProjetoCruzeiro\\LevelSelectControl.cs",
               "RelativeDocumentMoniker": "LevelSelectControl.cs",
@@ -470,7 +512,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 27,
               "Title": "Ato2Level2.cs [Design]",
               "DocumentMoniker": "C:\\Users\\Roberto Levi\\source\\repos\\ProjetoCruzeiro\\ProjetoCruzeiro\\Ato2Level2.cs",
               "RelativeDocumentMoniker": "Ato2Level2.cs",
@@ -481,7 +523,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 26,
               "Title": "Ato2Level3.cs [Design]",
               "DocumentMoniker": "C:\\Users\\Roberto Levi\\source\\repos\\ProjetoCruzeiro\\ProjetoCruzeiro\\Ato2Level3.cs",
               "RelativeDocumentMoniker": "Ato2Level3.cs",
@@ -492,7 +534,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 28,
               "Title": "DificuldadeSelectControl.cs [Design]",
               "DocumentMoniker": "C:\\Users\\Roberto Levi\\source\\repos\\ProjetoCruzeiro\\ProjetoCruzeiro\\DificuldadeSelectControl.cs",
               "RelativeDocumentMoniker": "DificuldadeSelectControl.cs",
@@ -504,7 +546,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 29,
               "Title": "Ato2Level1.cs",
               "DocumentMoniker": "C:\\Users\\Roberto Levi\\source\\repos\\ProjetoCruzeiro\\ProjetoCruzeiro\\Ato2Level1.cs",
               "RelativeDocumentMoniker": "Ato2Level1.cs",
@@ -516,7 +558,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 31,
               "Title": "Ato3Level2.cs",
               "DocumentMoniker": "C:\\Users\\Roberto Levi\\source\\repos\\ProjetoCruzeiro\\ProjetoCruzeiro\\Ato3Level2.cs",
               "RelativeDocumentMoniker": "Ato3Level2.cs",
@@ -528,7 +570,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 30,
               "Title": "Ato3Level3.cs [Design]",
               "DocumentMoniker": "C:\\Users\\Roberto Levi\\source\\repos\\ProjetoCruzeiro\\ProjetoCruzeiro\\Ato3Level3.cs",
               "RelativeDocumentMoniker": "Ato3Level3.cs",
@@ -539,7 +581,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 32,
               "Title": "Ato3Level1.cs",
               "DocumentMoniker": "C:\\Users\\Roberto Levi\\source\\repos\\ProjetoCruzeiro\\ProjetoCruzeiro\\Ato3Level1.cs",
               "RelativeDocumentMoniker": "Ato3Level1.cs",
@@ -551,7 +593,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 38,
+              "DocumentIndex": 39,
               "Title": "ProgressoJogador.cs",
               "DocumentMoniker": "C:\\Users\\Roberto Levi\\source\\repos\\ProjetoCruzeiro\\ProjetoCruzeiro\\ProgressoJogador.cs",
               "RelativeDocumentMoniker": "ProgressoJogador.cs",
@@ -563,7 +605,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 33,
               "Title": "Ato2Level2.cs",
               "DocumentMoniker": "C:\\Users\\Roberto Levi\\source\\repos\\ProjetoCruzeiro\\ProjetoCruzeiro\\Ato2Level2.cs",
               "RelativeDocumentMoniker": "Ato2Level2.cs",
@@ -575,19 +617,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
-              "Title": "Ato1Level3.cs",
-              "DocumentMoniker": "C:\\Users\\Roberto Levi\\source\\repos\\ProjetoCruzeiro\\ProjetoCruzeiro\\Ato1Level3.cs",
-              "RelativeDocumentMoniker": "Ato1Level3.cs",
-              "ToolTip": "C:\\Users\\Roberto Levi\\source\\repos\\ProjetoCruzeiro\\ProjetoCruzeiro\\Ato1Level3.cs",
-              "RelativeToolTip": "Ato1Level3.cs",
-              "ViewState": "AgIAAGcDAAAAAAAAAAAnwDYDAAAwAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-27T18:48:16.52Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 35,
+              "DocumentIndex": 37,
               "Title": "Ato3Level1.cs [Design]",
               "DocumentMoniker": "C:\\Users\\Roberto Levi\\source\\repos\\ProjetoCruzeiro\\ProjetoCruzeiro\\Ato3Level1.cs",
               "RelativeDocumentMoniker": "Ato3Level1.cs",
@@ -598,7 +628,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
+              "DocumentIndex": 34,
               "Title": "VitoriaControl.Designer.cs",
               "DocumentMoniker": "C:\\Users\\Roberto Levi\\source\\repos\\ProjetoCruzeiro\\ProjetoCruzeiro\\VitoriaControl.Designer.cs",
               "RelativeDocumentMoniker": "VitoriaControl.Designer.cs",
@@ -611,7 +641,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 33,
+              "DocumentIndex": 35,
               "Title": "VitoriaControl.resx",
               "DocumentMoniker": "C:\\Users\\Roberto Levi\\source\\repos\\ProjetoCruzeiro\\ProjetoCruzeiro\\VitoriaControl.resx",
               "RelativeDocumentMoniker": "VitoriaControl.resx",
@@ -623,19 +653,18 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 34,
+              "DocumentIndex": 36,
               "Title": "Ato1Level1.cs [Design]",
               "DocumentMoniker": "C:\\Users\\Roberto Levi\\source\\repos\\ProjetoCruzeiro\\ProjetoCruzeiro\\Ato1Level1.cs",
               "RelativeDocumentMoniker": "Ato1Level1.cs",
               "ToolTip": "C:\\Users\\Roberto Levi\\source\\repos\\ProjetoCruzeiro\\ProjetoCruzeiro\\Ato1Level1.cs [Design]",
               "RelativeToolTip": "Ato1Level1.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-19T16:28:41.659Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2026-10-19T16:28:41.659Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 36,
+              "DocumentIndex": 38,
               "Title": "Ato2Level3.cs",
               "DocumentMoniker": "C:\\Users\\Roberto Levi\\source\\repos\\ProjetoCruzeiro\\ProjetoCruzeiro\\Ato2Level3.cs",
               "RelativeDocumentMoniker": "Ato2Level3.cs",
@@ -647,18 +676,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 37,
-              "Title": "Ato1Level3.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\Roberto Levi\\source\\repos\\ProjetoCruzeiro\\ProjetoCruzeiro\\Ato1Level3.cs",
-              "RelativeDocumentMoniker": "Ato1Level3.cs",
-              "ToolTip": "C:\\Users\\Roberto Levi\\source\\repos\\ProjetoCruzeiro\\ProjetoCruzeiro\\Ato1Level3.cs [Design]",
-              "RelativeToolTip": "Ato1Level3.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-27T18:27:56.745Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 39,
+              "DocumentIndex": 40,
               "Title": "CutsceneIntroControl.cs",
               "DocumentMoniker": "C:\\Users\\Roberto Levi\\source\\repos\\ProjetoCruzeiro\\ProjetoCruzeiro\\CutsceneIntroControl.cs",
               "RelativeDocumentMoniker": "CutsceneIntroControl.cs",
@@ -669,7 +687,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 40,
+              "DocumentIndex": 41,
               "Title": "CutsceneIntroControl.cs [Design]",
               "DocumentMoniker": "C:\\Users\\Roberto Levi\\source\\repos\\ProjetoCruzeiro\\ProjetoCruzeiro\\CutsceneIntroControl.cs",
               "RelativeDocumentMoniker": "CutsceneIntroControl.cs",

@@ -12,55 +12,63 @@ namespace ProjetoCruzeiro
     {
         #region Configurações
 
-        const int TAMANHO_TABULEIRO = 9;
-        const int TAMANHO_CELULA = 50;
+        private const int TAMANHO_TABULEIRO = 9;
+        private const int TAMANHO_CELULA = 38;
 
-        const int NORTE = 1;
-        const int LESTE = 2;
-        const int SUL = 4;
-        const int OESTE = 8;
+        private const int POSICAO_TABULEIRO_X = 302;
+        private const int POSICAO_TABULEIRO_Y = 375;
 
-        Random random = new Random();
+        private const int NORTE = 1;
+        private const int LESTE = 2;
+        private const int SUL = 4;
+        private const int OESTE = 8;
+
+        private const int DURACAO_ANIMACAO_VITORIA = 7800;
+
+        private static readonly Color COR_FUNDO_CANOS =
+            Color.FromArgb(12, 30, 33);
+
+        private readonly Random random = new Random();
 
         #endregion
 
-        #region Variáveis Globais
+        #region Variáveis
 
-        List<Peca> pecas = new List<Peca>();
+        private readonly List<Peca> pecas = new List<Peca>();
 
-        Bitmap imagemReta;
-        Bitmap imagemL1;
-        Bitmap imagemL2;
-        Bitmap imagemT;
-        Bitmap imagemTotal;
+        private Bitmap imagemReta;
+        private Bitmap imagemL1;
+        private Bitmap imagemL2;
+        private Bitmap imagemT;
+        private Bitmap imagemTotal;
 
-        Panel painelTabuleiro;
+        private Image imagemFumaca;
+        private Image imagemVitoria;
+        private Image imagemAnimadaFundo;
 
-        Label lblStatus;
-        Label lblMovimentos;
+        private EventHandler eventoFrameAlterado;
 
-        int movimentos = 0;
-        int movimentosLimite = 0;
-        int mapaAtual = -1;
+        private Panel painelTabuleiro;
 
-        public int MovimentosRestantes { get; private set; }
+        private Timer timerVitoria;
 
-        bool jogoFinalizado = false;
+        private int movimentos;
+        private int movimentosLimite;
+        private int mapaAtual;
 
-        Stopwatch cronometro = new Stopwatch();
+        private bool jogoFinalizado;
 
-        TimeSpan tempoDecorrido;
+        private int pontuacaoMovimentos;
+        private int pontuacaoTempo;
+        private int pontuacaoFinal;
 
-        int pontuacaoMovimentos = 0;
-        int pontuacaoTempo = 0;
-        int bonusConclusao = 500;
-        int pontuacaoFinal = 0;
+        private readonly Stopwatch cronometro = new Stopwatch();
 
         #endregion
 
         #region Mapas
 
-        string[] mapas =
+        private readonly string[] mapas =
         {
             "AC66AAAEC" +
             "553BC6C95" +
@@ -167,7 +175,7 @@ namespace ProjetoCruzeiro
 
         #region Classe Peca
 
-        class Peca
+        private class Peca
         {
             public int Linha;
             public int Coluna;
@@ -186,10 +194,13 @@ namespace ProjetoCruzeiro
         {
             InitializeComponent();
 
-            Size = new Size(550, 590);
-            BackColor = Color.FromArgb(30, 30, 35);
+            eventoFrameAlterado = EventoFrameAlterado;
 
             ConfigurarInterface();
+
+            ConfigurarTimerVitoria();
+
+            Disposed += Ato1Level3_Disposed;
 
             if (!CarregarImagens())
                 return;
@@ -199,29 +210,24 @@ namespace ProjetoCruzeiro
 
         #endregion
 
-        #region Configurar interface
+        #region Interface e camadas
 
-        void ConfigurarInterface()
+        private void ConfigurarInterface()
         {
-            lblStatus = new Label();
+            SetStyle(
+                ControlStyles.AllPaintingInWmPaint |
+                ControlStyles.UserPaint |
+                ControlStyles.DoubleBuffer |
+                ControlStyles.OptimizedDoubleBuffer,
+                true
+            );
 
-            lblStatus.Text = "Conecte a entrada à saída.";
-            lblStatus.ForeColor = Color.White;
-            lblStatus.Font = new Font("Arial", 11, FontStyle.Bold);
-            lblStatus.AutoSize = true;
-            lblStatus.Location = new Point(20, 12);
+            UpdateStyles();
 
-            Controls.Add(lblStatus);
+            pbx_canos.BackColor = Color.Transparent;
+            pbx_movimentos.BackColor = Color.Transparent;
 
-            lblMovimentos = new Label();
-
-            lblMovimentos.Text = "MOVIMENTOS ATÉ FALHA CRÍTICA: 0";
-            lblMovimentos.ForeColor = Color.White;
-            lblMovimentos.Font = new Font("Arial", 10, FontStyle.Bold);
-            lblMovimentos.AutoSize = true;
-            lblMovimentos.Location = new Point(50, 225);
-
-            Controls.Add(lblMovimentos);
+            lbl_movimentos.BackColor = COR_FUNDO_CANOS;
 
             painelTabuleiro = new Panel();
 
@@ -230,17 +236,108 @@ namespace ProjetoCruzeiro
                 TAMANHO_TABULEIRO * TAMANHO_CELULA
             );
 
-            painelTabuleiro.Location = new Point(50, 250);
-            painelTabuleiro.BackColor = Color.FromArgb(40, 40, 45);
+            painelTabuleiro.Parent = pbx_canos;
 
-            Controls.Add(painelTabuleiro);
+            painelTabuleiro.Location = new Point(
+                POSICAO_TABULEIRO_X - pbx_canos.Left,
+                POSICAO_TABULEIRO_Y - pbx_canos.Top
+            );
+
+            painelTabuleiro.BackColor = COR_FUNDO_CANOS;
+            painelTabuleiro.BorderStyle = BorderStyle.None;
+
+            pbx_canos.BringToFront();
+            pbx_movimentos.BringToFront();
+            lbl_movimentos.BringToFront();
+
+            painelTabuleiro.BringToFront();
+
+            lbl_movimentos.Text = "0";
+        }
+
+        private void ConfigurarTimerVitoria()
+        {
+            timerVitoria = new Timer();
+
+            timerVitoria.Interval = DURACAO_ANIMACAO_VITORIA;
+
+            timerVitoria.Tick += TimerVitoria_Tick;
+        }
+
+        #endregion
+
+        #region Desenho do GIF no fundo
+
+        protected override void OnPaintBackground(PaintEventArgs e)
+        {
+            base.OnPaintBackground(e);
+
+            if (imagemAnimadaFundo == null || pbx_canos == null)
+                return;
+
+            ImageAnimator.UpdateFrames(imagemAnimadaFundo);
+
+            Rectangle area = pbx_canos.Bounds;
+
+            e.Graphics.DrawImage(
+                imagemAnimadaFundo,
+                area
+            );
+        }
+
+        private void DefinirAnimacaoFundo(Image imagem)
+        {
+            if (imagemAnimadaFundo != null && eventoFrameAlterado != null)
+            {
+                ImageAnimator.StopAnimate(
+                    imagemAnimadaFundo,
+                    eventoFrameAlterado
+                );
+            }
+
+            imagemAnimadaFundo = imagem;
+
+            if (imagemAnimadaFundo != null)
+            {
+                ImageAnimator.Animate(
+                    imagemAnimadaFundo,
+                    eventoFrameAlterado
+                );
+            }
+
+            Invalidate();
+        }
+
+        private void EventoFrameAlterado(object sender, EventArgs e)
+        {
+            if (IsDisposed || Disposing || !IsHandleCreated)
+                return;
+
+            try
+            {
+                if (InvokeRequired)
+                {
+                    BeginInvoke(new MethodInvoker(() =>
+                    {
+                        if (!IsDisposed && !Disposing)
+                            Invalidate();
+                    }));
+                }
+                else
+                {
+                    Invalidate();
+                }
+            }
+            catch (InvalidOperationException)
+            {
+            }
         }
 
         #endregion
 
         #region Carregar imagens
 
-        bool CarregarImagens()
+        private bool CarregarImagens()
         {
             string pasta = Path.Combine(
                 Application.StartupPath,
@@ -269,15 +366,25 @@ namespace ProjetoCruzeiro
                     Path.Combine(pasta, "canototal.png")
                 );
 
+                imagemFumaca = Image.FromFile(
+                    Path.Combine(pasta, "canosfumaça.gif")
+                );
+
+                imagemVitoria = Image.FromFile(
+                    Path.Combine(pasta, "canosvitoria.gif")
+                );
+
+                DefinirAnimacaoFundo(imagemFumaca);
+
                 return true;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 MessageBox.Show(
-                    "Não foi possível carregar as imagens dos canos.\n\n" +
-                    "Verifique se a pasta 'imagens' está ao lado do executável " +
-                    "e contém os cinco arquivos PNG necessários.",
-                    "Erro ao carregar imagens",
+                    "Não foi possível carregar as imagens do nível.\n\n" +
+                    "Verifique a pasta imagens.\n\n" +
+                    ex.Message,
+                    "Erro",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error
                 );
@@ -290,12 +397,11 @@ namespace ProjetoCruzeiro
 
         #region Gerar tabuleiro
 
-        void GerarTabuleiro()
+        private void GerarTabuleiro()
         {
             LimparTabuleiro();
 
             movimentos = 0;
-            MovimentosRestantes = 0;
             jogoFinalizado = false;
 
             mapaAtual = random.Next(mapas.Length);
@@ -317,7 +423,6 @@ namespace ProjetoCruzeiro
 
                     peca.Linha = linha;
                     peca.Coluna = coluna;
-
                     peca.ConexaoSolucao = conexao;
 
                     peca.ConexaoAtual = Rotacionar(
@@ -338,17 +443,17 @@ namespace ProjetoCruzeiro
                     );
 
                     imagem.SizeMode = PictureBoxSizeMode.StretchImage;
-                    imagem.BackColor = Color.FromArgb(40, 40, 45);
+                    imagem.BackColor = COR_FUNDO_CANOS;
                     imagem.Cursor = Cursors.Hand;
-
                     imagem.Tag = peca;
+
                     imagem.Click += Peca_Click;
 
                     peca.Imagem = imagem;
 
                     pecas.Add(peca);
 
-                    painelTabuleiro.Controls.Add(imagem);
+                    imagem.Parent = painelTabuleiro;
 
                     AtualizarImagem(peca);
                 }
@@ -373,18 +478,14 @@ namespace ProjetoCruzeiro
 
             movimentosLimite = CalcularLimiteMovimentos();
 
-            MovimentosRestantes = movimentosLimite;
-
-            lblMovimentos.Text =
-                "MOVIMENTOS ATÉ FALHA CRÍTICA: " + MovimentosRestantes;
-
-            lblStatus.Text = "Conecte a entrada à saída.";
-            lblStatus.ForeColor = Color.White;
+            lbl_movimentos.Text = movimentosLimite.ToString();
 
             cronometro.Restart();
+
+            Invalidate();
         }
 
-        void LimparTabuleiro()
+        private void LimparTabuleiro()
         {
             foreach (Peca peca in pecas)
             {
@@ -399,14 +500,15 @@ namespace ProjetoCruzeiro
 
             pecas.Clear();
 
-            painelTabuleiro.Controls.Clear();
+            if (painelTabuleiro != null)
+                painelTabuleiro.Controls.Clear();
         }
 
         #endregion
 
-        #region Rotação das peças
+        #region Rotação
 
-        int Rotacionar(int conexoes, int vezes)
+        private int Rotacionar(int conexoes, int vezes)
         {
             for (int i = 0; i < vezes; i++)
             {
@@ -430,7 +532,7 @@ namespace ProjetoCruzeiro
             return conexoes;
         }
 
-        void AtualizarImagem(Peca peca)
+        private void AtualizarImagem(Peca peca)
         {
             int tipo;
             int rotacao;
@@ -466,6 +568,9 @@ namespace ProjetoCruzeiro
                     break;
             }
 
+            if (imagemOriginal == null)
+                return;
+
             Bitmap novaImagem = new Bitmap(imagemOriginal);
 
             for (int i = 0; i < rotacao; i++)
@@ -479,9 +584,11 @@ namespace ProjetoCruzeiro
                 peca.Imagem.Image.Dispose();
 
             peca.Imagem.Image = novaImagem;
+
+            peca.Imagem.BackColor = COR_FUNDO_CANOS;
         }
 
-        void IdentificarPeca(
+        private void IdentificarPeca(
             int conexoes,
             out int tipo,
             out int rotacao)
@@ -514,9 +621,9 @@ namespace ProjetoCruzeiro
 
         #endregion
 
-        #region Movimentação
+        #region Clique nas peças
 
-        void Peca_Click(object sender, EventArgs e)
+        private void Peca_Click(object sender, EventArgs e)
         {
             if (jogoFinalizado)
                 return;
@@ -534,13 +641,7 @@ namespace ProjetoCruzeiro
 
             movimentos++;
 
-            MovimentosRestantes = Math.Max(
-                0,
-                movimentosLimite - movimentos
-            );
-
-            lblMovimentos.Text =
-                "MOVIMENTOS ATÉ FALHA CRÍTICA: " + MovimentosRestantes;
+            lbl_movimentos.Text = MovimentosRestantes.ToString();
 
             if (VerificarConexao())
             {
@@ -549,16 +650,14 @@ namespace ProjetoCruzeiro
             }
 
             if (movimentos >= movimentosLimite)
-            {
                 FinalizarDerrota();
-            }
         }
 
         #endregion
 
         #region Verificar conexão
 
-        bool VerificarConexao()
+        private bool VerificarConexao()
         {
             if (pecas.Count != TAMANHO_TABULEIRO * TAMANHO_TABULEIRO)
                 return false;
@@ -637,7 +736,7 @@ namespace ProjetoCruzeiro
             return false;
         }
 
-        void VerificarVizinho(
+        private void VerificarVizinho(
             Peca atual,
             int linha,
             int coluna,
@@ -669,7 +768,7 @@ namespace ProjetoCruzeiro
             fila.Enqueue(vizinha);
         }
 
-        Peca ObterPeca(int linha, int coluna)
+        private Peca ObterPeca(int linha, int coluna)
         {
             if (linha < 0 || linha >= TAMANHO_TABULEIRO ||
                 coluna < 0 || coluna >= TAMANHO_TABULEIRO)
@@ -682,7 +781,7 @@ namespace ProjetoCruzeiro
 
         #region Caminho da solução
 
-        List<int> ObterCaminhoSolucao()
+        private List<int> ObterCaminhoSolucao()
         {
             int[] anterior = new int[
                 TAMANHO_TABULEIRO * TAMANHO_TABULEIRO
@@ -697,25 +796,11 @@ namespace ProjetoCruzeiro
 
             fila.Enqueue(0);
 
-            int[] linhas =
-            {
-                -1, 0, 1, 0
-            };
+            int[] linhas = { -1, 0, 1, 0 };
+            int[] colunas = { 0, 1, 0, -1 };
 
-            int[] colunas =
-            {
-                0, 1, 0, -1
-            };
-
-            int[] conexoes =
-            {
-                NORTE, LESTE, SUL, OESTE
-            };
-
-            int[] opostas =
-            {
-                SUL, OESTE, NORTE, LESTE
-            };
+            int[] conexoes = { NORTE, LESTE, SUL, OESTE };
+            int[] opostas = { SUL, OESTE, NORTE, LESTE };
 
             while (fila.Count > 0)
             {
@@ -772,7 +857,7 @@ namespace ProjetoCruzeiro
             return caminho;
         }
 
-        int CalcularLimiteMovimentos()
+        private int CalcularLimiteMovimentos()
         {
             List<int> caminho = ObterCaminhoSolucao();
 
@@ -807,7 +892,15 @@ namespace ProjetoCruzeiro
 
         #region Pontuação
 
-        void CalcularPontuacao()
+        private int MovimentosRestantes
+        {
+            get
+            {
+                return Math.Max(0, movimentosLimite - movimentos);
+            }
+        }
+
+        private void CalcularPontuacao()
         {
             int bonusConclusao = 500;
 
@@ -816,60 +909,26 @@ namespace ProjetoCruzeiro
                 (MovimentosRestantes / (movimentosLimite * 0.6)) * 3500
             );
 
-            int segundos = (int)Math.Floor(cronometro.Elapsed.TotalSeconds);
+            int segundos = (int)Math.Floor(
+                cronometro.Elapsed.TotalSeconds
+            );
 
             pontuacaoTempo = Math.Max(
                 0,
                 1000 - Math.Max(0, segundos - 25) * 50
             );
 
-            pontuacaoFinal = bonusConclusao +
-                             pontuacaoMovimentos +
-                             pontuacaoTempo;
-
-            Console.WriteLine("========== RESULTADO DO NÍVEL ==========");
-            Console.WriteLine($"Movimentos restantes: {MovimentosRestantes}");
-            Console.WriteLine($"Pontuação por movimentos: {pontuacaoMovimentos}");
-            Console.WriteLine($"Pontuação por tempo: {pontuacaoTempo}");
-            Console.WriteLine($"Bônus de conclusão: {bonusConclusao}");
-            Console.WriteLine($"Pontuação final: {pontuacaoFinal}");
-            Console.WriteLine("========================================");
+            pontuacaoFinal =
+                bonusConclusao +
+                pontuacaoMovimentos +
+                pontuacaoTempo;
         }
 
         #endregion
 
         #region Vitória
 
-        void FinalizarJogo()
-        {
-            if (jogoFinalizado)
-                return;
-
-            jogoFinalizado = true;
-
-            CalcularPontuacao();
-
-            lblStatus.Text = "Conexão estabelecida!";
-            lblStatus.ForeColor = Color.LightGreen;
-
-            foreach (Peca peca in pecas)
-            {
-                peca.Imagem.Enabled = false;
-                peca.Imagem.Cursor = Cursors.Default;
-            }
-
-            Cruzeiro cruzeiro = (Cruzeiro)this.FindForm();
-
-            cruzeiro.AbrirTela(
-                new VitoriaControl(3, pontuacaoFinal)
-            );
-        }
-
-        #endregion
-
-        #region Derrota
-
-        void FinalizarDerrota()
+        private void FinalizarJogo()
         {
             if (jogoFinalizado)
                 return;
@@ -878,10 +937,7 @@ namespace ProjetoCruzeiro
 
             cronometro.Stop();
 
-            MovimentosRestantes = 0;
-
-            lblStatus.Text = "Limite de movimentos atingido!";
-            lblStatus.ForeColor = Color.OrangeRed;
+            CalcularPontuacao();
 
             foreach (Peca peca in pecas)
             {
@@ -889,18 +945,163 @@ namespace ProjetoCruzeiro
                 peca.Imagem.Cursor = Cursors.Default;
             }
 
-            MessageBox.Show(
-                "Você não conseguiu estabelecer a conexão a tempo!\n\n" +
-                "Movimentos realizados: " + movimentos +
-                "\nMovimentos restantes: " + MovimentosRestantes,
-                "Desafio não concluído",
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Warning
-            );
+            // Bloqueia o botão de voltar durante a animação.
+            MenuLateralControl menu = EncontrarMenuLateral();
 
-            Cruzeiro cruzeiro = (Cruzeiro)this.FindForm();
+            if (menu != null)
+                menu.BloquearVoltarMenu();
 
-            cruzeiro.AbrirTela(new LevelSelectControl(1));
+            // Inicia a animação de vitória.
+            DefinirAnimacaoFundo(imagemVitoria);
+
+            timerVitoria.Stop();
+            timerVitoria.Start();
+        }
+
+        private void TimerVitoria_Tick(object sender, EventArgs e)
+        {
+            timerVitoria.Stop();
+
+            JogoForm jogo = EncontrarJogoForm();
+
+            if (jogo != null)
+            {
+                jogo.AbrirTela(
+                    new VitoriaControl(3, pontuacaoFinal)
+                );
+            }
+        }
+
+        #endregion
+
+        #region Derrota
+
+        private void FinalizarDerrota()
+        {
+            if (jogoFinalizado)
+                return;
+
+            jogoFinalizado = true;
+
+            cronometro.Stop();
+
+            foreach (Peca peca in pecas)
+            {
+                peca.Imagem.Enabled = false;
+                peca.Imagem.Cursor = Cursors.Default;
+            }
+
+            JogoForm jogo = EncontrarJogoForm();
+
+            if (jogo != null)
+            {
+                jogo.AbrirTela(
+                    new DerrotaControl(
+                        3,
+                        "Você não conseguiu estabelecer a conexão a tempo!\n\n" +
+                        "Movimentos realizados: " + movimentos +
+                        "\nMovimentos restantes: 0"
+                    )
+                );
+            }
+        }
+
+        #endregion
+
+        #region Localizar JogoForm e MenuLateral
+
+        private JogoForm EncontrarJogoForm()
+        {
+            Control controle = this;
+
+            while (controle != null && !(controle is JogoForm))
+            {
+                controle = controle.Parent;
+            }
+
+            return controle as JogoForm;
+        }
+
+        private MenuLateralControl EncontrarMenuLateral()
+        {
+            JogoForm jogo = EncontrarJogoForm();
+
+            if (jogo == null)
+                return null;
+
+            return EncontrarMenuLateralRecursivo(jogo);
+        }
+
+        private MenuLateralControl EncontrarMenuLateralRecursivo(
+            Control controle)
+        {
+            foreach (Control filho in controle.Controls)
+            {
+                if (filho is MenuLateralControl)
+                    return filho as MenuLateralControl;
+
+                MenuLateralControl encontrado =
+                    EncontrarMenuLateralRecursivo(filho);
+
+                if (encontrado != null)
+                    return encontrado;
+            }
+
+            return null;
+        }
+
+        #endregion
+
+        #region Limpeza
+
+        private void Ato1Level3_Disposed(object sender, EventArgs e)
+        {
+            cronometro.Stop();
+
+            if (timerVitoria != null)
+            {
+                timerVitoria.Stop();
+                timerVitoria.Tick -= TimerVitoria_Tick;
+                timerVitoria.Dispose();
+                timerVitoria = null;
+            }
+
+            if (imagemAnimadaFundo != null && eventoFrameAlterado != null)
+            {
+                ImageAnimator.StopAnimate(
+                    imagemAnimadaFundo,
+                    eventoFrameAlterado
+                );
+
+                imagemAnimadaFundo = null;
+            }
+
+            if (imagemFumaca != null)
+            {
+                imagemFumaca.Dispose();
+                imagemFumaca = null;
+            }
+
+            if (imagemVitoria != null)
+            {
+                imagemVitoria.Dispose();
+                imagemVitoria = null;
+            }
+
+            if (imagemReta != null)
+                imagemReta.Dispose();
+
+            if (imagemL1 != null)
+                imagemL1.Dispose();
+
+            if (imagemL2 != null)
+                imagemL2.Dispose();
+
+            if (imagemT != null)
+                imagemT.Dispose();
+
+            if (imagemTotal != null)
+                imagemTotal.Dispose();
         }
 
         #endregion

@@ -17,6 +17,8 @@ namespace ProjetoCruzeiro
 
         private List<EfeitoBotao> efeitos = new List<EfeitoBotao>();
 
+        private bool voltarBloqueado;
+
         #endregion
 
         public MenuLateralControl()
@@ -50,6 +52,8 @@ namespace ProjetoCruzeiro
 
             Identificador = ((ato - 1) * 3) + nivel;
 
+            PermitirVoltarMenu();
+
             CarregarBackground();
             AtualizarInstrucoes();
         }
@@ -60,12 +64,16 @@ namespace ProjetoCruzeiro
 
         public void BloquearVoltarMenu()
         {
+            voltarBloqueado = true;
+
             pbx_voltarmenu.Enabled = false;
             pbx_voltarmenu.Cursor = Cursors.No;
         }
 
         public void PermitirVoltarMenu()
         {
+            voltarBloqueado = false;
+
             pbx_voltarmenu.Enabled = true;
             pbx_voltarmenu.Cursor = Cursors.Hand;
         }
@@ -127,6 +135,13 @@ namespace ProjetoCruzeiro
                 lbl_instrucao2.Text = "Clique nas caixas de entrada para selecionar o valor!";
                 lbl_instrucao3.Text = "Faça no menor tempo possível!";
             }
+
+            if (Identificador == 3)
+            {
+                lbl_instrucao1.Text = "Conecte os canos!";
+                lbl_instrucao2.Text = "Clique nos canos para virá-los!";
+                lbl_instrucao3.Text = "Cuidado com o limite de movimentos!";
+            }
         }
 
         #endregion
@@ -135,11 +150,11 @@ namespace ProjetoCruzeiro
 
         private void pbx_voltarmenu_Click(object sender, EventArgs e)
         {
-            if (!pbx_voltarmenu.Enabled)
+            if (voltarBloqueado || !pbx_voltarmenu.Enabled)
                 return;
 
             DialogResult resposta = MessageBox.Show(
-                "Deseja realmente voltar ao menu principal?",
+                "Deseja realmente voltar ao menu?",
                 "Voltar ao menu",
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Question
@@ -150,7 +165,11 @@ namespace ProjetoCruzeiro
                 Cruzeiro cruzeiro = FindForm() as Cruzeiro;
 
                 if (cruzeiro != null)
-                    cruzeiro.AbrirTela(new LevelSelectControl(AtoAtual));
+                {
+                    cruzeiro.AbrirTela(
+                        new LevelSelectControl(AtoAtual)
+                    );
+                }
             }
         }
 

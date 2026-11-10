@@ -44,9 +44,9 @@
             // 
             this.pbx_voltarmenu.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pbx_voltarmenu.BackgroundImage")));
             this.pbx_voltarmenu.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pbx_voltarmenu.Location = new System.Drawing.Point(21, 3);
+            this.pbx_voltarmenu.Location = new System.Drawing.Point(25, 3);
             this.pbx_voltarmenu.Name = "pbx_voltarmenu";
-            this.pbx_voltarmenu.Size = new System.Drawing.Size(161, 129);
+            this.pbx_voltarmenu.Size = new System.Drawing.Size(161, 123);
             this.pbx_voltarmenu.TabIndex = 0;
             this.pbx_voltarmenu.TabStop = false;
             // 
@@ -54,7 +54,7 @@
             // 
             this.pbx_mute.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pbx_mute.BackgroundImage")));
             this.pbx_mute.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pbx_mute.Location = new System.Drawing.Point(204, 20);
+            this.pbx_mute.Location = new System.Drawing.Point(218, 16);
             this.pbx_mute.Name = "pbx_mute";
             this.pbx_mute.Size = new System.Drawing.Size(98, 97);
             this.pbx_mute.TabIndex = 1;

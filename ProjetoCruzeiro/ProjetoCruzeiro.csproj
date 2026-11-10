@@ -101,6 +101,12 @@
     <Compile Include="Ato3Level3.Designer.cs">
       <DependentUpon>Ato3Level3.cs</DependentUpon>
     </Compile>
+    <Compile Include="DerrotaControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DerrotaControl.Designer.cs">
+      <DependentUpon>DerrotaControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="JogoForm.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -185,6 +191,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Ato3Level3.resx">
       <DependentUpon>Ato3Level3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DerrotaControl.resx">
+      <DependentUpon>DerrotaControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="JogoForm.resx">
       <DependentUpon>JogoForm.cs</DependentUpon>

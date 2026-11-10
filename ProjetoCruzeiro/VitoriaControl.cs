@@ -39,6 +39,7 @@ namespace ProjetoCruzeiro
         private Point posicaoInicialPainel = new Point(123, 720);
 
         private bool animacaoIniciada;
+        private bool menuBloqueado;
 
         #endregion
 
@@ -69,6 +70,8 @@ namespace ProjetoCruzeiro
             ConfigurarEfeitosBotoes();
 
             PrepararAnimacao();
+
+            ParentChanged += VitoriaControl_ParentChanged;
 
             Disposed += VitoriaControl_Disposed;
         }
@@ -324,6 +327,72 @@ namespace ProjetoCruzeiro
 
         #endregion
 
+        #region Bloquear menu lateral
+
+        private void VitoriaControl_ParentChanged(object sender, EventArgs e)
+        {
+            if (Visible)
+                BloquearMenuLateral();
+        }
+
+        private void BloquearMenuLateral()
+        {
+            if (menuBloqueado)
+                return;
+
+            Control controle = this;
+
+            while (controle != null && !(controle is JogoForm))
+            {
+                controle = controle.Parent;
+            }
+
+            JogoForm jogo = controle as JogoForm;
+
+            if (jogo == null)
+                return;
+
+            MenuLateralControl menu = EncontrarMenuLateral(jogo);
+
+            if (menu == null)
+                return;
+
+            menu.BloquearVoltarMenu();
+
+            menuBloqueado = true;
+        }
+
+        private MenuLateralControl EncontrarMenuLateral(Control controle)
+        {
+            foreach (Control filho in controle.Controls)
+            {
+                if (filho is MenuLateralControl)
+                    return filho as MenuLateralControl;
+
+                MenuLateralControl encontrado =
+                    EncontrarMenuLateral(filho);
+
+                if (encontrado != null)
+                    return encontrado;
+            }
+
+            return null;
+        }
+
+        private void DesbloquearMenuLateral(JogoForm jogo)
+        {
+            MenuLateralControl menu = EncontrarMenuLateral(jogo);
+
+            if (menu == null)
+                return;
+
+            menu.PermitirVoltarMenu();
+
+            menuBloqueado = false;
+        }
+
+        #endregion
+
         #region Efeitos dos botões
 
         private void ConfigurarEfeitosBotoes()
@@ -354,13 +423,21 @@ namespace ProjetoCruzeiro
             VisibleChanged += VitoriaControl_VisibleChanged;
 
             if (Visible)
+            {
+                BloquearMenuLateral();
                 IniciarAnimacao();
+            }
         }
 
         private void VitoriaControl_VisibleChanged(object sender, EventArgs e)
         {
-            if (Visible && !animacaoIniciada)
-                IniciarAnimacao();
+            if (Visible)
+            {
+                BloquearMenuLateral();
+
+                if (!animacaoIniciada)
+                    IniciarAnimacao();
+            }
         }
 
         private void IniciarAnimacao()
@@ -429,20 +506,31 @@ namespace ProjetoCruzeiro
 
         private void btn_continuar_Click(object sender, EventArgs e)
         {
-            Cruzeiro cruzeiro = (Cruzeiro)this.FindForm();
+            Cruzeiro cruzeiro = this.FindForm() as Cruzeiro;
 
             if (cruzeiro == null)
                 return;
 
             if (identificador >= 1 && identificador <= 9)
             {
+                Control controle = this;
+
+                while (controle != null && !(controle is JogoForm))
+                {
+                    controle = controle.Parent;
+                }
+
+                JogoForm jogo = controle as JogoForm;
+
+                if (jogo != null)
+                    DesbloquearMenuLateral(jogo);
+
                 int ato = identificador <= 3 ? 1 :
                           identificador <= 6 ? 2 : 3;
 
                 cruzeiro.AbrirTela(new LevelSelectControl(ato));
             }
         }
-
 
         private void pbx_voltar_Click(object sender, EventArgs e)
         {
@@ -457,6 +545,8 @@ namespace ProjetoCruzeiro
 
             if (jogo == null)
                 return;
+
+            DesbloquearMenuLateral(jogo);
 
             switch (identificador)
             {
@@ -498,10 +588,6 @@ namespace ProjetoCruzeiro
             }
         }
 
-
-        #endregion
-
-        #region Lixeira
         #endregion
     }
 }
