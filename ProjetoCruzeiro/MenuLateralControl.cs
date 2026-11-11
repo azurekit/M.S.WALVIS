@@ -142,6 +142,13 @@ namespace ProjetoCruzeiro
                 lbl_instrucao2.Text = "Clique nos canos para virá-los!";
                 lbl_instrucao3.Text = "Cuidado com o limite de movimentos!";
             }
+
+            if (Identificador == 4)
+            {
+                lbl_instrucao1.Text = "Ordene os pratos corretamente na pilha da direita!";
+                lbl_instrucao2.Text = "Clique nos pratos para seleciona-los e movê-los!";
+                lbl_instrucao3.Text = "Faça no menor tempo e movimentos possíveis!";
+            }
         }
 
         #endregion
