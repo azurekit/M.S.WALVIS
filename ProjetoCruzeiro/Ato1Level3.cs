@@ -341,7 +341,8 @@ namespace ProjetoCruzeiro
         {
             string pasta = Path.Combine(
                 Application.StartupPath,
-                "imagens"
+                "imagens",
+                "Level3"
             );
 
             try
@@ -382,7 +383,7 @@ namespace ProjetoCruzeiro
             {
                 MessageBox.Show(
                     "Não foi possível carregar as imagens do nível.\n\n" +
-                    "Verifique a pasta imagens.\n\n" +
+                    "Verifique a pasta imagens/Level3.\n\n" +
                     ex.Message,
                     "Erro",
                     MessageBoxButtons.OK,

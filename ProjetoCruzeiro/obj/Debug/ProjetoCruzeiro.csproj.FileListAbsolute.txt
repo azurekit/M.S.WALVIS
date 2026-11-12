@@ -33,3 +33,4 @@ C:\Users\Roberto Levi\source\repos\ProjetoCruzeiro\ProjetoCruzeiro\obj\Debug\Pro
 C:\Users\Roberto Levi\source\repos\ProjetoCruzeiro\ProjetoCruzeiro\obj\Debug\ProjetoCruzeiro.Ato3Level3.resources
 C:\Users\Roberto Levi\source\repos\ProjetoCruzeiro\ProjetoCruzeiro\obj\Debug\ProjetoCruzeiro.MenuLateralControl.resources
 C:\Users\Roberto Levi\source\repos\ProjetoCruzeiro\ProjetoCruzeiro\obj\Debug\ProjetoCruzeiro.DerrotaControl.resources
+C:\Users\Roberto Levi\source\repos\ProjetoCruzeiro\ProjetoCruzeiro\obj\Debug\ProjetoCruzeiro.LojaControl.resources

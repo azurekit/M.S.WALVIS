@@ -125,6 +125,7 @@ namespace ProjetoCruzeiro
             string caminho = Path.Combine(
                 Application.StartupPath,
                 "imagens",
+                "Derrota",
                 "level" + identificador + "derrotabg.png"
             );
 
@@ -152,6 +153,7 @@ namespace ProjetoCruzeiro
             string caminho = Path.Combine(
                 Application.StartupPath,
                 "imagens",
+                "Derrota",
                 "derrotabase.png"
             );
 
@@ -179,6 +181,7 @@ namespace ProjetoCruzeiro
             string caminho = Path.Combine(
                 Application.StartupPath,
                 "imagens",
+                "Derrota",
                 "estrelas0.png"
             );
 
@@ -217,12 +220,12 @@ namespace ProjetoCruzeiro
             {
                 case 1:
                     lbl_texto.Text =
-                        "As câmeras continuam fora de ordem! Você não conseguiu identificar a sequência correta.";
+                        "Como você chegou aqui?";
                     break;
 
                 case 2:
                     lbl_texto.Text =
-                        "Os dados não revelaram a combinação esperada. Você não conseguiu resolver o desafio.";
+                        "Como você chegou aqui?";
                     break;
 
                 case 3:
@@ -232,27 +235,27 @@ namespace ProjetoCruzeiro
 
                 case 4:
                     lbl_texto.Text =
-                        "Os pratos não foram organizados corretamente. O desafio não foi concluído.";
+                        "Como você chegou aqui?";
                     break;
 
                 case 5:
                     lbl_texto.Text =
-                        "A combinação das bebidas não foi descoberta. Você não conseguiu concluir o desafio.";
+                        "Você não acertou a mistura do coquetel a tempo.";
                     break;
 
                 case 6:
                     lbl_texto.Text =
-                        "As luzes da pista foram apagadas na sequência errada. O truque não foi desvendado.";
+                        "Como você chegou aqui?";
                     break;
 
                 case 7:
                     lbl_texto.Text =
-                        "A pressão da piscina não foi estabilizada. As evidências não puderam ser recuperadas.";
+                        "Como você chegou aqui?";
                     break;
 
                 case 8:
                     lbl_texto.Text =
-                        "As falas da apresentação ficaram fora de ordem. Você não conseguiu reconstruir a sequência.";
+                        "Como você chegou aqui?";
                     break;
 
                 case 9:

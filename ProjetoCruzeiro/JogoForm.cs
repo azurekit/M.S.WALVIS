@@ -12,6 +12,16 @@ namespace ProjetoCruzeiro
 
         private MenuLateralControl menuLateral;
 
+        public int AtoAtual
+        {
+            get { return atoAtual; }
+        }
+
+        public int NivelAtual
+        {
+            get { return nivelAtual; }
+        }
+
         public JogoForm(int ato, int nivel)
         {
             InitializeComponent();

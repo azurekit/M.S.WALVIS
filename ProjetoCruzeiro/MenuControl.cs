@@ -36,6 +36,13 @@ namespace ProjetoCruzeiro
             cruzeiro.AbrirTela(new DificuldadeSelectControl());
         }
 
+        private void btn_loja_Click(object sender, EventArgs e)
+        {
+            Cruzeiro cruzeiro = (Cruzeiro)this.FindForm();
+
+            cruzeiro.AbrirTela(new LojaControl());
+        }
+
         private void btn_sair_Click(object sender, EventArgs e)
         {
             Application.Exit();

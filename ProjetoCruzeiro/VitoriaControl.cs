@@ -144,7 +144,8 @@ namespace ProjetoCruzeiro
         {
             string pasta = Path.Combine(
                 Application.StartupPath,
-                "imagens"
+                "imagens",
+                "Vitoria"
             );
 
             string caminho = Path.Combine(
@@ -203,6 +204,7 @@ namespace ProjetoCruzeiro
             string caminho = Path.Combine(
                 Application.StartupPath,
                 "imagens",
+                "Vitoria",
                 "estrelas" + novoNivel + ".png"
             );
 

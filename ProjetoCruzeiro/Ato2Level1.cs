@@ -64,7 +64,8 @@ namespace ProjetoCruzeiro
         {
             string pasta = Path.Combine(
                 Application.StartupPath,
-                "imagens"
+                "imagens",
+                "Level4"
             );
 
             imagemNormal = Image.FromFile(
@@ -526,11 +527,10 @@ namespace ProjetoCruzeiro
             AtualizarImagemSuporte(indice);
         }
 
-
-
         #endregion
 
         #region lixeira
+
         private void lbl_movimentos2_Click(object sender, EventArgs e)
         {
 

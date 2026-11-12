@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
@@ -79,6 +80,7 @@ namespace ProjetoCruzeiro
             string caminho = Path.Combine(
                 Application.StartupPath,
                 "imagens",
+                "LevelSelect",
                 nome
             );
 
@@ -314,11 +316,11 @@ namespace ProjetoCruzeiro
 
         #region lixeira
 
-
         private void lbl_caso_Click(object sender, EventArgs e)
         {
 
         }
+
         #endregion
     }
 }

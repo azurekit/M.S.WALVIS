@@ -149,7 +149,8 @@ namespace ProjetoCruzeiro
         {
             string pasta = Path.Combine(
                 Application.StartupPath,
-                "imagens"
+                "imagens",
+                "Level1"
             );
 
             string[] nomes =
@@ -654,7 +655,6 @@ namespace ProjetoCruzeiro
                 pontuacaoMovimentos +
                 bonusConclusao +
                 pontuacaoTempo;
-
         }
 
         #endregion
@@ -691,6 +691,7 @@ namespace ProjetoCruzeiro
                 Path.Combine(
                     Application.StartupPath,
                     "imagens",
+                    "Level1",
                     "cameraloja.gif"
                 )
             );

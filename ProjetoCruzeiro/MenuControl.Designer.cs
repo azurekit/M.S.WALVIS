@@ -59,6 +59,7 @@
             this.pbx_loja.Size = new System.Drawing.Size(300, 133);
             this.pbx_loja.TabIndex = 7;
             this.pbx_loja.TabStop = false;
+            this.pbx_loja.Click += new System.EventHandler(this.btn_loja_Click);
             // 
             // pbx_sair
             // 

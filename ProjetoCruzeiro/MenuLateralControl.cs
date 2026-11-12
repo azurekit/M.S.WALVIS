@@ -87,6 +87,7 @@ namespace ProjetoCruzeiro
             string caminho = Path.Combine(
                 Application.StartupPath,
                 "imagens",
+                "MenuLateral",
                 "menulateral" + Identificador + ".png"
             );
 
@@ -148,6 +149,28 @@ namespace ProjetoCruzeiro
                 lbl_instrucao1.Text = "Ordene os pratos corretamente na pilha da direita!";
                 lbl_instrucao2.Text = "Clique nos pratos para seleciona-los e movê-los!";
                 lbl_instrucao3.Text = "Faça no menor tempo e movimentos possíveis!";
+            }
+
+            if (Identificador == 5)
+            {
+
+                lbl_instrucao1.Text = "Bola branca = Algum ingrediente certo na posição errada";
+                lbl_instrucao2.Text = "Bola preta = Algum ingrediente certo na posição correta";
+                lbl_instrucao3.Text = "Faça a combinação correta de ingredientes!";
+            }
+            if (Identificador == 6)
+            {
+
+                lbl_instrucao1.Text = "Clique nos painéis para acender as luzes!";
+                lbl_instrucao2.Text = "Acenda todas as luzes!";
+                lbl_instrucao3.Text = "Derrote Zelo!";
+            }
+            if (Identificador == 7)
+            {
+
+                lbl_instrucao1.Text = "Clique nas valvulas para mudar a pressão!";
+                lbl_instrucao2.Text = "Atinja as metas de cada painel!";
+                lbl_instrucao3.Text = "Faça no menor tempo e movimentos possiveis!";
             }
         }
 

@@ -60,9 +60,7 @@ namespace ProjetoCruzeiro
                 levels = new Dictionary<string, LevelSave>();
 
                 for (int i = 1; i <= 9; i++)
-                {
                     levels.Add(i.ToString(), new LevelSave());
-                }
             }
         }
 
@@ -81,10 +79,12 @@ namespace ProjetoCruzeiro
         public class CosmeticosSave
         {
             public List<string> possuidos { get; set; }
+            public string equipado { get; set; }
 
             public CosmeticosSave()
             {
                 possuidos = new List<string>();
+                equipado = "";
             }
         }
 
@@ -126,7 +126,6 @@ namespace ProjetoCruzeiro
             }
 
             PrepararDados();
-
             Salvar();
         }
 
@@ -147,6 +146,9 @@ namespace ProjetoCruzeiro
             if (Dados.cosmeticos.possuidos == null)
                 Dados.cosmeticos.possuidos = new List<string>();
 
+            if (Dados.cosmeticos.equipado == null)
+                Dados.cosmeticos.equipado = "";
+
             for (int i = 1; i <= 9; i++)
             {
                 string id = i.ToString();
@@ -163,6 +165,13 @@ namespace ProjetoCruzeiro
 
             if (Dados.configuracoes.volume > 100)
                 Dados.configuracoes.volume = 100;
+
+            // Verifica se o cosmético equipado ainda é possuído.
+            if (!string.IsNullOrEmpty(Dados.cosmeticos.equipado) &&
+                !Dados.cosmeticos.possuidos.Contains(Dados.cosmeticos.equipado))
+            {
+                Dados.cosmeticos.equipado = "";
+            }
         }
 
         #endregion
@@ -173,6 +182,9 @@ namespace ProjetoCruzeiro
         {
             if (Dados == null)
                 return;
+
+            if (!Directory.Exists(diretorio))
+                Directory.CreateDirectory(diretorio);
 
             JavaScriptSerializer serializer =
                 new JavaScriptSerializer();
@@ -249,7 +261,6 @@ namespace ProjetoCruzeiro
         public static void DefinirMoedas(int quantidade)
         {
             Dados.progresso.moedas = Math.Max(0, quantidade);
-
             Salvar();
         }
 
@@ -278,7 +289,6 @@ namespace ProjetoCruzeiro
         public static void DefinirMutado(bool mutado)
         {
             Dados.configuracoes.mutado = mutado;
-
             Salvar();
         }
 
@@ -299,7 +309,6 @@ namespace ProjetoCruzeiro
             if (!Dados.cosmeticos.possuidos.Contains(identificador))
             {
                 Dados.cosmeticos.possuidos.Add(identificador);
-
                 Salvar();
             }
         }
@@ -312,12 +321,44 @@ namespace ProjetoCruzeiro
         public static void RemoverCosmetico(string identificador)
         {
             if (Dados.cosmeticos.possuidos.Remove(identificador))
+            {
+                if (Dados.cosmeticos.equipado == identificador)
+                    Dados.cosmeticos.equipado = "";
+
                 Salvar();
+            }
         }
 
         public static List<string> ObterCosmeticos()
         {
             return new List<string>(Dados.cosmeticos.possuidos);
+        }
+
+        public static void EquiparCosmetico(string identificador)
+        {
+            if (string.IsNullOrWhiteSpace(identificador))
+                return;
+
+            if (!PossuiCosmetico(identificador))
+                return;
+
+            // Se já estiver equipado, desequipa.
+            if (Dados.cosmeticos.equipado == identificador)
+            {
+                Dados.cosmeticos.equipado = "";
+            }
+            else
+            {
+                // Substitui o cosmético atualmente equipado.
+                Dados.cosmeticos.equipado = identificador;
+            }
+
+            Salvar();
+        }
+
+        public static string ObterCosmeticoEquipado()
+        {
+            return Dados.cosmeticos.equipado;
         }
 
         #endregion

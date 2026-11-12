@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -131,6 +132,7 @@ namespace ProjetoCruzeiro
             string caminho = Path.Combine(
                 Application.StartupPath,
                 "imagens",
+                "Level2",
                 arquivo
             );
 
@@ -153,6 +155,7 @@ namespace ProjetoCruzeiro
             string caminho = Path.Combine(
                 Application.StartupPath,
                 "imagens",
+                "Level2",
                 arquivo
             );
 
@@ -593,7 +596,6 @@ namespace ProjetoCruzeiro
             timerVitoria.Start();
         }
 
-
         private void TimerVitoria_Tick(object sender, EventArgs e)
         {
             timerVitoria.Stop();
@@ -612,7 +614,6 @@ namespace ProjetoCruzeiro
                 jogo.MostrarVitoria(2, pontuacaoFinal);
             }
         }
-
 
         #endregion
 

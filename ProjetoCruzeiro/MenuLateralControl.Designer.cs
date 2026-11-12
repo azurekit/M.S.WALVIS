@@ -31,13 +31,13 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MenuLateralControl));
             this.pbx_voltarmenu = new System.Windows.Forms.PictureBox();
             this.pbx_mute = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pbx_espelho = new System.Windows.Forms.PictureBox();
             this.lbl_instrucao1 = new System.Windows.Forms.Label();
             this.lbl_instrucao2 = new System.Windows.Forms.Label();
             this.lbl_instrucao3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pbx_voltarmenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbx_mute)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbx_espelho)).BeginInit();
             this.SuspendLayout();
             // 
             // pbx_voltarmenu
@@ -60,14 +60,14 @@
             this.pbx_mute.TabIndex = 1;
             this.pbx_mute.TabStop = false;
             // 
-            // pictureBox1
+            // pbx_espelho
             // 
-            this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
-            this.pictureBox1.Location = new System.Drawing.Point(0, 449);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(332, 271);
-            this.pictureBox1.TabIndex = 2;
-            this.pictureBox1.TabStop = false;
+            this.pbx_espelho.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pbx_espelho.BackgroundImage")));
+            this.pbx_espelho.Location = new System.Drawing.Point(0, 449);
+            this.pbx_espelho.Name = "pbx_espelho";
+            this.pbx_espelho.Size = new System.Drawing.Size(332, 271);
+            this.pbx_espelho.TabIndex = 2;
+            this.pbx_espelho.TabStop = false;
             // 
             // lbl_instrucao1
             // 
@@ -110,14 +110,14 @@
             this.Controls.Add(this.lbl_instrucao3);
             this.Controls.Add(this.lbl_instrucao2);
             this.Controls.Add(this.lbl_instrucao1);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.pbx_espelho);
             this.Controls.Add(this.pbx_mute);
             this.Controls.Add(this.pbx_voltarmenu);
             this.Name = "MenuLateralControl";
             this.Size = new System.Drawing.Size(328, 720);
             ((System.ComponentModel.ISupportInitialize)(this.pbx_voltarmenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbx_mute)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbx_espelho)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -126,7 +126,7 @@
 
         private System.Windows.Forms.PictureBox pbx_voltarmenu;
         private System.Windows.Forms.PictureBox pbx_mute;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pbx_espelho;
         private System.Windows.Forms.Label lbl_instrucao1;
         private System.Windows.Forms.Label lbl_instrucao2;
         private System.Windows.Forms.Label lbl_instrucao3;
