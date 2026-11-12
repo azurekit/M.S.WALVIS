@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Web.Script.Serialization;
 
 namespace ProjetoCruzeiro
@@ -29,11 +30,15 @@ namespace ProjetoCruzeiro
             public ProgressoSave progresso { get; set; }
             public CosmeticosSave cosmeticos { get; set; }
 
+            public List<string> historiasAto3Level2Concluidas { get; set; }
+
             public DadosSave()
             {
                 configuracoes = new ConfiguracoesSave();
                 progresso = new ProgressoSave();
                 cosmeticos = new CosmeticosSave();
+
+                historiasAto3Level2Concluidas = new List<string>();
             }
         }
 
@@ -149,6 +154,9 @@ namespace ProjetoCruzeiro
             if (Dados.cosmeticos.equipado == null)
                 Dados.cosmeticos.equipado = "";
 
+            if (Dados.historiasAto3Level2Concluidas == null)
+                Dados.historiasAto3Level2Concluidas = new List<string>();
+
             for (int i = 1; i <= 9; i++)
             {
                 string id = i.ToString();
@@ -166,7 +174,6 @@ namespace ProjetoCruzeiro
             if (Dados.configuracoes.volume > 100)
                 Dados.configuracoes.volume = 100;
 
-            // Verifica se o cosmético equipado ainda é possuído.
             if (!string.IsNullOrEmpty(Dados.cosmeticos.equipado) &&
                 !Dados.cosmeticos.possuidos.Contains(Dados.cosmeticos.equipado))
             {
@@ -194,6 +201,66 @@ namespace ProjetoCruzeiro
             string json = serializer.Serialize(Dados);
 
             File.WriteAllText(caminhoSave, json);
+        }
+
+        #endregion
+
+        #region Histórias Ato 3 - Nível 2
+
+        public static List<string> ObterHistoriasAto3Level2Concluidas()
+        {
+            if (Dados == null)
+                Inicializar();
+
+            if (Dados.historiasAto3Level2Concluidas == null)
+                Dados.historiasAto3Level2Concluidas = new List<string>();
+
+            return new List<string>(
+                Dados.historiasAto3Level2Concluidas
+            );
+        }
+
+        public static bool HistoriaAto3Level2FoiConcluida(string nome)
+        {
+            if (string.IsNullOrWhiteSpace(nome))
+                return false;
+
+            return ObterHistoriasAto3Level2Concluidas().Contains(nome);
+        }
+
+        public static void MarcarHistoriaAto3Level2Concluida(
+            string nome,
+            int totalHistorias)
+        {
+            if (Dados == null)
+                Inicializar();
+
+            if (string.IsNullOrWhiteSpace(nome))
+                return;
+
+            if (Dados.historiasAto3Level2Concluidas == null)
+                Dados.historiasAto3Level2Concluidas = new List<string>();
+
+            if (!Dados.historiasAto3Level2Concluidas.Contains(nome))
+                Dados.historiasAto3Level2Concluidas.Add(nome);
+
+            // Ao concluir todas as histórias, inicia um novo ciclo.
+            if (totalHistorias > 0 &&
+                Dados.historiasAto3Level2Concluidas.Count >= totalHistorias)
+            {
+                Dados.historiasAto3Level2Concluidas.Clear();
+            }
+
+            Salvar();
+        }
+
+        public static void ReiniciarHistoriasAto3Level2()
+        {
+            if (Dados == null)
+                Inicializar();
+
+            Dados.historiasAto3Level2Concluidas.Clear();
+            Salvar();
         }
 
         #endregion
@@ -342,16 +409,10 @@ namespace ProjetoCruzeiro
             if (!PossuiCosmetico(identificador))
                 return;
 
-            // Se já estiver equipado, desequipa.
             if (Dados.cosmeticos.equipado == identificador)
-            {
                 Dados.cosmeticos.equipado = "";
-            }
             else
-            {
-                // Substitui o cosmético atualmente equipado.
                 Dados.cosmeticos.equipado = identificador;
-            }
 
             Salvar();
         }
