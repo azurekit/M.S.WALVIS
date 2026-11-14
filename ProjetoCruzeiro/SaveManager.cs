@@ -37,7 +37,6 @@ namespace ProjetoCruzeiro
                 configuracoes = new ConfiguracoesSave();
                 progresso = new ProgressoSave();
                 cosmeticos = new CosmeticosSave();
-
                 historiasAto3Level2Concluidas = new List<string>();
             }
         }
@@ -134,6 +133,12 @@ namespace ProjetoCruzeiro
             Salvar();
         }
 
+        private static void GarantirInicializado()
+        {
+            if (Dados == null)
+                Inicializar();
+        }
+
         private static void PrepararDados()
         {
             if (Dados.configuracoes == null)
@@ -209,8 +214,7 @@ namespace ProjetoCruzeiro
 
         public static List<string> ObterHistoriasAto3Level2Concluidas()
         {
-            if (Dados == null)
-                Inicializar();
+            GarantirInicializado();
 
             if (Dados.historiasAto3Level2Concluidas == null)
                 Dados.historiasAto3Level2Concluidas = new List<string>();
@@ -232,8 +236,7 @@ namespace ProjetoCruzeiro
             string nome,
             int totalHistorias)
         {
-            if (Dados == null)
-                Inicializar();
+            GarantirInicializado();
 
             if (string.IsNullOrWhiteSpace(nome))
                 return;
@@ -244,7 +247,6 @@ namespace ProjetoCruzeiro
             if (!Dados.historiasAto3Level2Concluidas.Contains(nome))
                 Dados.historiasAto3Level2Concluidas.Add(nome);
 
-            // Ao concluir todas as histórias, inicia um novo ciclo.
             if (totalHistorias > 0 &&
                 Dados.historiasAto3Level2Concluidas.Count >= totalHistorias)
             {
@@ -256,8 +258,7 @@ namespace ProjetoCruzeiro
 
         public static void ReiniciarHistoriasAto3Level2()
         {
-            if (Dados == null)
-                Inicializar();
+            GarantirInicializado();
 
             Dados.historiasAto3Level2Concluidas.Clear();
             Salvar();
@@ -272,6 +273,8 @@ namespace ProjetoCruzeiro
             bool completo,
             int melhorPontuacao)
         {
+            GarantirInicializado();
+
             if (identificador < 1 || identificador > 9)
                 return;
 
@@ -290,6 +293,8 @@ namespace ProjetoCruzeiro
 
         public static bool EstaConcluido(int identificador)
         {
+            GarantirInicializado();
+
             if (identificador < 1 || identificador > 9)
                 return false;
 
@@ -300,6 +305,8 @@ namespace ProjetoCruzeiro
 
         public static int ObterHighscore(int identificador)
         {
+            GarantirInicializado();
+
             if (identificador < 1 || identificador > 9)
                 return 0;
 
@@ -310,6 +317,8 @@ namespace ProjetoCruzeiro
 
         public static int QuantidadeNiveisConcluidos()
         {
+            GarantirInicializado();
+
             int quantidade = 0;
 
             foreach (LevelSave level in Dados.progresso.levels.Values)
@@ -327,12 +336,15 @@ namespace ProjetoCruzeiro
 
         public static void DefinirMoedas(int quantidade)
         {
+            GarantirInicializado();
+
             Dados.progresso.moedas = Math.Max(0, quantidade);
             Salvar();
         }
 
         public static int ObterMoedas()
         {
+            GarantirInicializado();
             return Dados.progresso.moedas;
         }
 
@@ -342,6 +354,8 @@ namespace ProjetoCruzeiro
 
         public static void DefinirVolume(int volume)
         {
+            GarantirInicializado();
+
             Dados.configuracoes.volume =
                 Math.Max(0, Math.Min(100, volume));
 
@@ -350,17 +364,21 @@ namespace ProjetoCruzeiro
 
         public static int ObterVolume()
         {
+            GarantirInicializado();
             return Dados.configuracoes.volume;
         }
 
         public static void DefinirMutado(bool mutado)
         {
+            GarantirInicializado();
+
             Dados.configuracoes.mutado = mutado;
             Salvar();
         }
 
         public static bool EstaMutado()
         {
+            GarantirInicializado();
             return Dados.configuracoes.mutado;
         }
 
@@ -370,6 +388,8 @@ namespace ProjetoCruzeiro
 
         public static void AdicionarCosmetico(string identificador)
         {
+            GarantirInicializado();
+
             if (string.IsNullOrWhiteSpace(identificador))
                 return;
 
@@ -382,11 +402,15 @@ namespace ProjetoCruzeiro
 
         public static bool PossuiCosmetico(string identificador)
         {
+            GarantirInicializado();
+
             return Dados.cosmeticos.possuidos.Contains(identificador);
         }
 
         public static void RemoverCosmetico(string identificador)
         {
+            GarantirInicializado();
+
             if (Dados.cosmeticos.possuidos.Remove(identificador))
             {
                 if (Dados.cosmeticos.equipado == identificador)
@@ -398,27 +422,38 @@ namespace ProjetoCruzeiro
 
         public static List<string> ObterCosmeticos()
         {
+            GarantirInicializado();
+
             return new List<string>(Dados.cosmeticos.possuidos);
         }
 
         public static void EquiparCosmetico(string identificador)
         {
+            GarantirInicializado();
+
             if (string.IsNullOrWhiteSpace(identificador))
                 return;
 
             if (!PossuiCosmetico(identificador))
                 return;
 
+            // Clicar na skin equipada novamente remove o equipamento.
             if (Dados.cosmeticos.equipado == identificador)
+            {
                 Dados.cosmeticos.equipado = "";
+            }
             else
+            {
                 Dados.cosmeticos.equipado = identificador;
+            }
 
             Salvar();
         }
 
         public static string ObterCosmeticoEquipado()
         {
+            GarantirInicializado();
+
             return Dados.cosmeticos.equipado;
         }
 

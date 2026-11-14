@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LevelSelectControl));
-            this.btn_menu = new System.Windows.Forms.Button();
             this.lbl_caso = new System.Windows.Forms.Label();
             this.lbl_level_desc = new System.Windows.Forms.Label();
             this.pnl_painel = new System.Windows.Forms.Panel();
@@ -38,26 +37,14 @@
             this.pbx_level1_button = new System.Windows.Forms.PictureBox();
             this.pbx_level2_button = new System.Windows.Forms.PictureBox();
             this.pbx_level3_button = new System.Windows.Forms.PictureBox();
+            this.btn_menu = new System.Windows.Forms.PictureBox();
             this.pnl_painel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbx_estrelas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbx_level1_button)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbx_level2_button)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbx_level3_button)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btn_menu)).BeginInit();
             this.SuspendLayout();
-            // 
-            // btn_menu
-            // 
-            this.btn_menu.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.btn_menu.Font = new System.Drawing.Font("League Spartan SemiBold", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_menu.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.btn_menu.Location = new System.Drawing.Point(14, 14);
-            this.btn_menu.Name = "btn_menu";
-            this.btn_menu.Size = new System.Drawing.Size(144, 48);
-            this.btn_menu.TabIndex = 29;
-            this.btn_menu.Text = "Voltar";
-            this.btn_menu.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btn_menu.UseVisualStyleBackColor = false;
-            this.btn_menu.Click += new System.EventHandler(this.btn_menu_Click);
             // 
             // lbl_caso
             // 
@@ -145,6 +132,18 @@
             this.pbx_level3_button.TabIndex = 56;
             this.pbx_level3_button.TabStop = false;
             // 
+            // btn_menu
+            // 
+            this.btn_menu.BackColor = System.Drawing.Color.Transparent;
+            this.btn_menu.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_menu.BackgroundImage")));
+            this.btn_menu.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn_menu.Location = new System.Drawing.Point(15, 16);
+            this.btn_menu.Name = "btn_menu";
+            this.btn_menu.Size = new System.Drawing.Size(182, 71);
+            this.btn_menu.TabIndex = 57;
+            this.btn_menu.TabStop = false;
+            this.btn_menu.Click += new System.EventHandler(this.btn_menu_Click);
+            // 
             // LevelSelectControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -152,12 +151,12 @@
             this.BackColor = System.Drawing.Color.Chartreuse;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.Controls.Add(this.btn_menu);
             this.Controls.Add(this.pbx_level3_button);
             this.Controls.Add(this.pbx_level2_button);
             this.Controls.Add(this.pbx_level1_button);
             this.Controls.Add(this.pnl_painel);
             this.Controls.Add(this.lbl_caso);
-            this.Controls.Add(this.btn_menu);
             this.DoubleBuffered = true;
             this.Name = "LevelSelectControl";
             this.Size = new System.Drawing.Size(1280, 720);
@@ -167,14 +166,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbx_level1_button)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbx_level2_button)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbx_level3_button)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btn_menu)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Button btn_menu;
         private System.Windows.Forms.Label lbl_caso;
         private System.Windows.Forms.Label lbl_level_desc;
         private System.Windows.Forms.Panel pnl_painel;
@@ -183,5 +181,6 @@
         private System.Windows.Forms.PictureBox pbx_level1_button;
         private System.Windows.Forms.PictureBox pbx_level2_button;
         private System.Windows.Forms.PictureBox pbx_level3_button;
+        private System.Windows.Forms.PictureBox btn_menu;
     }
 }

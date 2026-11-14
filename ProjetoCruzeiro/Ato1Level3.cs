@@ -903,24 +903,32 @@ namespace ProjetoCruzeiro
 
         private void CalcularPontuacao()
         {
-            int bonusConclusao = 500;
+            const int PONTUACAO_MAXIMA_MOVIMENTOS = 3500;
+            const int PONTUACAO_MAXIMA_TEMPO = 1000;
+            const int BONUS_CONCLUSAO = 500;
 
-            pontuacaoMovimentos = (int)Math.Min(
-                3500,
-                (MovimentosRestantes / (movimentosLimite * 0.6)) * 3500
+            // Calcula o desempenho proporcional aos movimentos disponíveis.
+            double aproveitamentoMovimentos = movimentosLimite > 0
+                ? (double)MovimentosRestantes / movimentosLimite
+                : 0;
+
+            pontuacaoMovimentos = (int)Math.Round(
+                aproveitamentoMovimentos * PONTUACAO_MAXIMA_MOVIMENTOS
             );
 
+            // Pontuação por tempo.
             int segundos = (int)Math.Floor(
                 cronometro.Elapsed.TotalSeconds
             );
 
             pontuacaoTempo = Math.Max(
                 0,
-                1000 - Math.Max(0, segundos - 25) * 50
+                PONTUACAO_MAXIMA_TEMPO - Math.Max(0, segundos - 25) * 50
             );
 
+            // Pontuação final.
             pontuacaoFinal =
-                bonusConclusao +
+                BONUS_CONCLUSAO +
                 pontuacaoMovimentos +
                 pontuacaoTempo;
         }
@@ -946,11 +954,7 @@ namespace ProjetoCruzeiro
                 peca.Imagem.Cursor = Cursors.Default;
             }
 
-            // Bloqueia o botão de voltar durante a animação.
-            MenuLateralControl menu = EncontrarMenuLateral();
-
-            if (menu != null)
-                menu.BloquearVoltarMenu();
+          
 
             // Inicia a animação de vitória.
             DefinirAnimacaoFundo(imagemVitoria);
@@ -1021,16 +1025,6 @@ namespace ProjetoCruzeiro
             }
 
             return controle as JogoForm;
-        }
-
-        private MenuLateralControl EncontrarMenuLateral()
-        {
-            JogoForm jogo = EncontrarJogoForm();
-
-            if (jogo == null)
-                return null;
-
-            return EncontrarMenuLateralRecursivo(jogo);
         }
 
         private MenuLateralControl EncontrarMenuLateralRecursivo(

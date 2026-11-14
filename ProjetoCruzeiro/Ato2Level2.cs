@@ -400,14 +400,7 @@ namespace ProjetoCruzeiro
             pbx_laranja.Cursor = Cursors.No;
             pbx_verde.Cursor = Cursors.No;
 
-            JogoForm jogo = ObterJogoForm();
-
-            MenuLateralControl menu = EncontrarMenuLateral(jogo);
-
-            if (menu != null)
-            {
-                menu.BloquearVoltarMenu();
-            }
+            
         }
 
         #endregion

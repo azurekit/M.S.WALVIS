@@ -513,25 +513,24 @@ namespace ProjetoCruzeiro
             if (cruzeiro == null)
                 return;
 
-            if (identificador >= 1 && identificador <= 9)
+            if (identificador < 1 || identificador > 9)
+                return;
+
+            Control controle = this;
+
+            while (controle != null && !(controle is JogoForm))
             {
-                Control controle = this;
-
-                while (controle != null && !(controle is JogoForm))
-                {
-                    controle = controle.Parent;
-                }
-
-                JogoForm jogo = controle as JogoForm;
-
-                if (jogo != null)
-                    DesbloquearMenuLateral(jogo);
-
-                int ato = identificador <= 3 ? 1 :
-                          identificador <= 6 ? 2 : 3;
-
-                cruzeiro.AbrirTela(new LevelSelectControl(ato));
+                controle = controle.Parent;
             }
+
+            JogoForm jogo = controle as JogoForm;
+
+            if (jogo != null)
+                DesbloquearMenuLateral(jogo);
+
+            int cutscene = (identificador * 2);
+
+            cruzeiro.AbrirTela(new CutsceneControl(cutscene));
         }
 
         private void pbx_voltar_Click(object sender, EventArgs e)

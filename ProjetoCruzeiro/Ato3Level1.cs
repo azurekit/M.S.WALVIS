@@ -486,8 +486,6 @@ namespace ProjetoCruzeiro
 
                 AtualizarImagensVitoria();
 
-                BloquearMenuLateral();
-
                 timerVitoria.Start();
             }
         }
@@ -577,21 +575,7 @@ namespace ProjetoCruzeiro
             return null;
         }
 
-        void BloquearMenuLateral()
-        {
-            JogoForm jogo = EncontrarPai<JogoForm>();
-
-            if (jogo == null)
-                return;
-
-            MenuLateralControl menu =
-                EncontrarControleRecursivo<MenuLateralControl>(jogo);
-
-            if (menu != null)
-            {
-                menu.BloquearVoltarMenu();
-            }
-        }
+       
 
         T EncontrarControleRecursivo<T>(Control controle)
             where T : Control

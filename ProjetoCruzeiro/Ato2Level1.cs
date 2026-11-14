@@ -438,20 +438,7 @@ namespace ProjetoCruzeiro
                     prato.Enabled = false;
                 }
 
-                // Bloquear botão de voltar do menu lateral
-
-                JogoForm jogo = EncontrarJogoForm();
-
-                if (jogo != null)
-                {
-                    MenuLateralControl menu =
-                        BuscarMenuLateral(jogo);
-
-                    if (menu != null)
-                    {
-                        menu.BloquearVoltarMenu();
-                    }
-                }
+                
 
                 // Iniciar espera de 2 segundos
 

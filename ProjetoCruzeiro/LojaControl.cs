@@ -12,7 +12,6 @@ namespace ProjetoCruzeiro
         #region Variáveis Globais
 
         private List<EfeitoBotao> efeitos = new List<EfeitoBotao>();
-
         private PictureBox[] itens = new PictureBox[9];
 
         private string[] nomes =
@@ -30,20 +29,14 @@ namespace ProjetoCruzeiro
 
         private int[] precos =
         {
-            3000,
-            3000,
-            8000,
-            4000,
-            8000,
-            3000,
-            4000,
-            5000,
-            3000
+            3000, 3000, 8000, 4000, 8000,
+            3000, 4000, 5000, 3000
         };
 
         private int cosmeticoSelecionado = 0;
-
         private string pastaImagens;
+        private string pastaExpressoes;
+        private Random random = new Random();
 
         #endregion
 
@@ -53,7 +46,7 @@ namespace ProjetoCruzeiro
         {
             InitializeComponent();
 
-            this.DoubleBuffered = true;
+            DoubleBuffered = true;
 
             pastaImagens = Path.Combine(
                 Application.StartupPath,
@@ -61,13 +54,24 @@ namespace ProjetoCruzeiro
                 "Loja"
             );
 
+            pastaExpressoes = Path.Combine(
+                Application.StartupPath,
+                "imagens",
+                "MenuLateral",
+                "Coala"
+            );
+
             InicializarItens();
             InicializarEfeitos();
 
+            // Evita que o evento seja executado duas vezes.
+            pbx_botao.Click -= pbx_botao_Click;
             pbx_botao.Click += pbx_botao_Click;
-            pbx_voltar.Click += pbx_voltar_Click;
+
+            pbx_espelho.BackgroundImageLayout = ImageLayout.Stretch;
 
             AtualizarMoedas();
+            AtualizarEspelho(ObterSkinEquipada());
 
             SelecionarCosmetico(0);
         }
@@ -121,14 +125,13 @@ namespace ProjetoCruzeiro
                 itens[i].BackgroundImage =
                     CarregarImagem("cosmetico" + identificador + ".png");
 
-                itens[i].BackgroundImageLayout =
-                    ImageLayout.Stretch;
-
+                itens[i].BackgroundImageLayout = ImageLayout.Stretch;
                 itens[i].Cursor = Cursors.Hand;
 
                 itens[i].Click += (s, e) =>
                 {
                     SelecionarCosmetico(identificador);
+                    AtualizarEspelho(identificador);
                 };
             }
 
@@ -149,6 +152,68 @@ namespace ProjetoCruzeiro
             {
                 efeitos.Add(new EfeitoBotao(item));
             }
+        }
+
+        #endregion
+
+        #region Espelho do personagem
+
+        private int ObterSkinEquipada()
+        {
+            string equipada = SaveManager.ObterCosmeticoEquipado();
+
+            int skin;
+
+            if (int.TryParse(equipada, out skin))
+            {
+                if (skin >= 1 && skin <= 9)
+                    return skin;
+            }
+
+            return 0;
+        }
+
+        private void AtualizarEspelho(int skin)
+        {
+            if (skin < 0 || skin > 9)
+                skin = 0;
+
+            int expressao = random.Next(1, 9);
+
+            string caminho = Path.Combine(
+                pastaExpressoes,
+                "item" + skin,
+                "expressao" + expressao + "-" + skin + ".png"
+            );
+
+            if (!File.Exists(caminho))
+            {
+                MessageBox.Show(
+                    "Não foi possível encontrar a expressão:\n" + caminho,
+                    "Erro ao carregar expressão",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                );
+
+                return;
+            }
+
+            Image imagem;
+
+            using (Image original = Image.FromFile(caminho))
+            {
+                imagem = new Bitmap(original);
+            }
+
+            if (pbx_espelho.BackgroundImage != null)
+            {
+                Image anterior = pbx_espelho.BackgroundImage;
+                pbx_espelho.BackgroundImage = null;
+                anterior.Dispose();
+            }
+
+            pbx_espelho.BackgroundImage = imagem;
+            pbx_espelho.BackgroundImageLayout = ImageLayout.Stretch;
         }
 
         #endregion
@@ -247,7 +312,6 @@ namespace ProjetoCruzeiro
             if (!SaveManager.PossuiCosmetico(id))
             {
                 int preco = precos[cosmeticoSelecionado - 1];
-
                 int moedas = SaveManager.ObterMoedas();
 
                 if (moedas < preco)
@@ -275,7 +339,6 @@ namespace ProjetoCruzeiro
                     return;
 
                 SaveManager.DefinirMoedas(moedas - preco);
-
                 SaveManager.AdicionarCosmetico(id);
 
                 AtualizarMoedas();
@@ -284,8 +347,13 @@ namespace ProjetoCruzeiro
                 return;
             }
 
+            // Equipa ou desequipa a skin selecionada.
             SaveManager.EquiparCosmetico(id);
 
+            // Atualiza usando o estado realmente salvo.
+            int skinEquipada = ObterSkinEquipada();
+
+            AtualizarEspelho(skinEquipada);
             AtualizarBotao();
         }
 
@@ -305,9 +373,20 @@ namespace ProjetoCruzeiro
 
         private void pbx_voltar_Click(object sender, EventArgs e)
         {
-            Cruzeiro cruzeiro = (Cruzeiro)this.FindForm();
-
+            Cruzeiro cruzeiro = (Cruzeiro)FindForm();
             cruzeiro.AbrirTela(new MenuControl());
+        }
+
+        #endregion
+
+        #region lixeira
+        private void LojaControl_Load(object sender, EventArgs e)
+        {
+        }
+
+        private void lbl_moedas_Click(object sender, EventArgs e)
+        {
+
         }
 
         #endregion

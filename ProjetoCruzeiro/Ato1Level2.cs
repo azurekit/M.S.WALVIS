@@ -96,6 +96,37 @@ namespace ProjetoCruzeiro
             IniciarJogo();
         }
 
+        #region Inicialização do menu lateral
+
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+
+            PermitirVoltarMenu();
+        }
+
+        private void PermitirVoltarMenu()
+        {
+            Control controle = this;
+
+            while (controle != null && !(controle is JogoForm))
+            {
+                controle = controle.Parent;
+            }
+
+            JogoForm jogo = controle as JogoForm;
+
+            if (jogo != null)
+            {
+                MenuLateralControl menu = EncontrarMenuLateral(jogo);
+
+                if (menu != null)
+                    menu.PermitirVoltarMenu();
+            }
+        }
+
+        #endregion
+
         #region Finalização
 
         private void Ato1Level2_Disposed(object sender, EventArgs e)
@@ -508,6 +539,60 @@ namespace ProjetoCruzeiro
 
         #endregion
 
+        #region Bloquear interações
+
+        private void BloquearControles(Control controle)
+        {
+            foreach (Control filho in controle.Controls)
+            {
+                if (filho is ButtonBase ||
+                    filho is PictureBox ||
+                    filho is NumericUpDown ||
+                    filho is ComboBox ||
+                    filho is CheckBox ||
+                    filho is RadioButton)
+                {
+                    filho.Enabled = false;
+                    filho.Cursor = Cursors.No;
+                }
+
+                if (filho.HasChildren)
+                    BloquearControles(filho);
+            }
+        }
+
+        private MenuLateralControl EncontrarMenuLateral(Control controle)
+        {
+            if (controle is MenuLateralControl)
+                return controle as MenuLateralControl;
+
+            foreach (Control filho in controle.Controls)
+            {
+                MenuLateralControl menu = EncontrarMenuLateral(filho);
+
+                if (menu != null)
+                    return menu;
+            }
+
+            return null;
+        }
+
+        private void BloquearInteracoes()
+        {
+            BloquearControles(this);
+
+            Control controle = this;
+
+            while (controle != null && !(controle is JogoForm))
+            {
+                controle = controle.Parent;
+            }
+
+           
+        }
+
+        #endregion
+
         #region Vitória
 
         private void VerificarVitoria()
@@ -526,11 +611,7 @@ namespace ProjetoCruzeiro
 
             lbl_aviso.Visible = false;
 
-            btn_confirmar.Enabled = false;
-
-            nud_dadoA.Enabled = false;
-            nud_dadoB.Enabled = false;
-            nud_dadoC.Enabled = false;
+            BloquearInteracoes();
 
             CarregarFundo("ato1level2bg2.png");
 

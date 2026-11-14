@@ -198,15 +198,7 @@ namespace ProjetoCruzeiro
             return null;
         }
 
-        private void BloquearVoltarMenu()
-        {
-            MenuLateralControl menu = EncontrarMenuLateral();
-
-            if (menu != null)
-            {
-                menu.BloquearVoltarMenu();
-            }
-        }
+        
 
         #endregion
 
@@ -387,8 +379,6 @@ namespace ProjetoCruzeiro
 
                     DefinirImagem(pbx_luz2, "luz_pista2.png");
                     DefinirImagem(pbx_zelo, "zelo3.png");
-
-                    BloquearVoltarMenu();
 
                     FinalizarJogo();
                 }

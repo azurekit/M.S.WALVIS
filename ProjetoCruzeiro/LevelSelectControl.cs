@@ -109,7 +109,19 @@ namespace ProjetoCruzeiro
 
                 case 3:
                     lbl_caso.Text = "ATO 3";
-                    ConfigurarBackgroundAto(7);
+
+                    bool nivel8Concluido = VitoriaControl.EstaConcluido(8);
+
+                    if (nivel8Concluido)
+                    {
+                        BackgroundImage = CarregarImagem("cruzeiro_chuva.png");
+                        BackgroundImageLayout = ImageLayout.Stretch;
+                    }
+                    else
+                    {
+                        ConfigurarBackgroundAto(7);
+                    }
+
                     break;
             }
         }
@@ -277,30 +289,38 @@ namespace ProjetoCruzeiro
 
         #endregion
 
+
         #region Selecionar nível
 
         private void lbl_level1_button_Click(object sender, EventArgs e)
         {
             Cruzeiro cruzeiro = (Cruzeiro)FindForm();
 
-            cruzeiro.AbrirTela(new JogoForm(DificuldadeSelecionada, 1));
+            int identificador = ((DificuldadeSelecionada - 1) * 6) + 1;
+
+            cruzeiro.AbrirTela(new CutsceneControl(identificador));
         }
 
         private void lbl_level2_button_Click(object sender, EventArgs e)
         {
             Cruzeiro cruzeiro = (Cruzeiro)FindForm();
 
-            cruzeiro.AbrirTela(new JogoForm(DificuldadeSelecionada, 2));
+            int identificador = ((DificuldadeSelecionada - 1) * 6) + 3;
+
+            cruzeiro.AbrirTela(new CutsceneControl(identificador));
         }
 
         private void lbl_level3_button_Click(object sender, EventArgs e)
         {
             Cruzeiro cruzeiro = (Cruzeiro)FindForm();
 
-            cruzeiro.AbrirTela(new JogoForm(DificuldadeSelecionada, 3));
+            int identificador = ((DificuldadeSelecionada - 1) * 6) + 5;
+
+            cruzeiro.AbrirTela(new CutsceneControl(identificador));
         }
 
         #endregion
+
 
         #region Eventos auxiliares
 

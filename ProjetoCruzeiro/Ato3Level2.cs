@@ -634,11 +634,6 @@ namespace ProjetoCruzeiro
 
             pbx_reiniciar.Cursor = Cursors.No;
             pbx_confirmar.Cursor = Cursors.No;
-
-            MenuLateralControl menu = EncontrarMenuLateral(FindForm());
-
-            if (menu != null)
-                menu.BloquearVoltarMenu();
         }
 
         private JogoForm EncontrarJogoForm(Control controle)

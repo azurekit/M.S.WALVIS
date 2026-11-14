@@ -79,6 +79,8 @@ namespace ProjetoCruzeiro
         {
             InitializeComponent();
 
+            
+
             monitores = new PictureBox[]
             {
                 pbx_monitor1,
