@@ -288,6 +288,7 @@ namespace ProjetoCruzeiro
                     "*O carro capota três vezes no ar, explode em câmera lenta e o protagonista sai dos escombros apenas limpando a poeira do paletó*"
                 }),
 
+
                 new Historia("'O Paradoxo da Conveniência'", new List<string>
                 {
                     "Professor: 'Rápido! Ative os circuits do capacitor cronológico e viaje para 1930 para impedir que o ditador construa a bomba!'",

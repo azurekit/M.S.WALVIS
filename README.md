@@ -1,6 +1,6 @@
 # 🚢 Cruzeiro Ushuaia
 
-Um jogo de investigação e raciocínio lógico desenvolvido em **C# e Windows Forms**, ambientado em um cruzeiro marítimo onde cada ambiente esconde um desafio e cada personagem pode guardar um segredo.
+Um jogo de investigação e raciocínio lógico desenvolvido em **C# e Windows Forms**, ambientado em um cruzeiro marítimo onde cada ambiente esconde um desafio e cada personagem pode guardar uma nova pista.
 
 <p align="center">
   <!-- CAPA DO JOGO -->
@@ -9,7 +9,7 @@ Um jogo de investigação e raciocínio lógico desenvolvido em **C# e Windows F
 
 ## 📖 Sobre o projeto
 
-A bordo do Cruzeiro Ushuaia, uma sequência de acontecimentos misteriosos começa a chamar a atenção dos passageiros e funcionários.
+A bordo do Cruzeiro Ushuaia, o roubo repentino de 'Rosa' chama a atenção dos investigadores Koala e Gio, que partem numa grande investigação.
 
 Durante três dias, o jogador deverá investigar diferentes situações, explorar a embarcação, conversar com seus habitantes e solucionar desafios para descobrir o que está por trás de cada acontecimento.
 
@@ -17,16 +17,16 @@ A investigação é dividida em três atos, cada um composto por três fases. Pa
 
 ## 🎮 Gameplay
 
-O jogo apresenta diferentes mecânicas, desenvolvidas especialmente para cada etapa da investigação.
+O jogo, baseado no princípio *point and click*, apresenta diferentes mecânicas, desenvolvidas especialmente para cada etapa da investigação.
 
 Entre os principais recursos estão:
 
 - **Minigames:** desafios de raciocínio lógico com mecânicas variadas.
-- **Investigação:** exploração e descoberta de pistas.
+- **Investigação:** exploração e descoberta de pistas por meio de cutscenes.
 - **Personagens:** interação com diferentes habitantes do cruzeiro.
-- **Progressão:** avanço por três atos e nove fases.
-- **Sistema de pontuação:** classificação de até três estrelas por fase.
+- **Sistema de pontuação:** classificação de até três (quatro!) estrelas por fase.
 - **Rejogabilidade:** possibilidade de repetir desafios e melhorar resultados.
+- **Loja:** gaste seus pontos comprando roupas para o personagem na loja.
 
 ## 🗺️ Estrutura do jogo
 
@@ -102,7 +102,7 @@ Conheça os habitantes do Cruzeiro Ushuaia.
 
 Algumas imagens da interface, dos ambientes e dos desafios presentes no jogo.
 
-### Menu principal
+### Seleção de Ato
 
 <p align="center">
   <img src="imagens/readme/menu.png" width="800" alt="Menu principal">
@@ -111,19 +111,14 @@ Algumas imagens da interface, dos ambientes e dos desafios presentes no jogo.
 ### Minigames
 
 <p align="center">
-  <img src="imagens/readme/minigame1.png" width="48%" alt="Minigame 1">
-  <img src="imagens/readme/minigame2.png" width="48%" alt="Minigame 2">
-</p>
-
-<p align="center">
-  <img src="imagens/readme/minigame3.png" width="48%" alt="Minigame 3">
-  <img src="imagens/readme/minigame4.png" width="48%" alt="Minigame 4">
+  <img src="imagens/readme/print2.png" width="48%" alt="Minigame 1">
+  <img src="imagens/readme/print3.png" width="48%" alt="Minigame 2">
 </p>
 
 ### Ambientes e cutscenes
 
 <p align="center">
-  <img src="imagens/readme/ambiente1.png" width="48%" alt="Ambiente do cruzeiro">
+  <img src="imagens/readme/print4.png" width="48%" alt="Loja">
   <img src="imagens/readme/cutscene.png" width="48%" alt="Cutscene">
 </p>
 
@@ -140,19 +135,20 @@ Todas as artes, elementos visuais e musicais do Cruzeiro Ushuaia foram feitos ma
 | C# | Linguagem principal do projeto |
 | .NET / Windows Forms | Desenvolvimento da aplicação desktop |
 | Visual Studio | Ambiente de desenvolvimento |
-| Git | Controle de versão |
-| GitHub | Hospedagem do código-fonte |
+| Clip Studio | Artes |
+| MediBang Paint | Assets |
+
 
 ## ⚙️ Conceitos aplicados
 
-Durante o desenvolvimento, são trabalhados conceitos como:
+Durante o desenvolvimento, foram trabalhados conceitos como:
 
 - Programação Orientada a Objetos (POO).
 - Estruturas condicionais e de repetição.
 - Matrizes, listas e coleções.
 - Algoritmos de lógica e resolução de problemas.
 - Manipulação de eventos e componentes gráficos.
-- Geração de desafios com elementos aleatórios.
+- Geração de desafios com elementos aleatórios e semi aleatórios.
 - Gerenciamento de estados e progressão de jogo.
 
 ## 💻 Como executar o jogo
@@ -175,12 +171,6 @@ Para visualizar ou modificar o código do projeto:
 2. Abra o arquivo `.slnx` do projeto.
 3. Aguarde o carregamento das dependências.
 4. Execute a aplicação pressionando `F5` ou `Ctrl + F5`.
-
-## 🚧 Status do projeto
-
-**Em desenvolvimento.**
-
-Novas mecânicas, personagens, ambientes e funcionalidades estão sendo implementados gradualmente.
 
 ## 👨‍💻 Autores
 
