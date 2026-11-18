@@ -355,7 +355,7 @@ namespace ProjetoCruzeiro
             {
                 Panel cartao = new Panel
                 {
-                    Height = 56,
+                    Height = 65,
                     Width = 400,
                     BackColor = Color.FromArgb(60, 38, 38, 43),
                     BorderStyle = BorderStyle.FixedSingle,
@@ -372,7 +372,7 @@ namespace ProjetoCruzeiro
                     Padding = new Padding(12, 5, 12, 5),
                     ForeColor = Color.Black,
                     BackColor = Color.Transparent,
-                    Font = new Font("Times New Roman", 8.5f, FontStyle.Regular),
+                    Font = new Font("Times New Roman", 11f, FontStyle.Regular),
                     Cursor = Cursors.Hand,
                     AllowDrop = true
                 };

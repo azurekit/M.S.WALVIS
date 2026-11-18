@@ -277,9 +277,9 @@
             // 
             this.btn_confirmar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_confirmar.BackgroundImage")));
             this.btn_confirmar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btn_confirmar.Location = new System.Drawing.Point(822, 28);
+            this.btn_confirmar.Location = new System.Drawing.Point(806, 28);
             this.btn_confirmar.Name = "btn_confirmar";
-            this.btn_confirmar.Size = new System.Drawing.Size(109, 54);
+            this.btn_confirmar.Size = new System.Drawing.Size(125, 54);
             this.btn_confirmar.TabIndex = 95;
             this.btn_confirmar.TabStop = false;
             this.btn_confirmar.Click += new System.EventHandler(this.btn_confirmar_Click);

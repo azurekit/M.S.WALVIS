@@ -32,6 +32,7 @@ namespace ProjetoCruzeiro
             ConfigurarBotoes();
             ConfigurarAnimacao();
             ConfigurarAto();
+            AtualizarBotoesNiveis();
             EsconderInfoLevels();
         }
 
@@ -48,10 +49,7 @@ namespace ProjetoCruzeiro
             efeitos.Add(new EfeitoBotao(pbx_level1_button));
             efeitos.Add(new EfeitoBotao(pbx_level2_button));
             efeitos.Add(new EfeitoBotao(pbx_level3_button));
-
-            pbx_level1_button.Cursor = Cursors.Hand;
-            pbx_level2_button.Cursor = Cursors.Hand;
-            pbx_level3_button.Cursor = Cursors.Hand;
+            efeitos.Add(new EfeitoBotao(btn_menu));
 
             pbx_level1_button.MouseEnter += Level1_MouseEnter;
             pbx_level2_button.MouseEnter += Level2_MouseEnter;
@@ -146,11 +144,81 @@ namespace ProjetoCruzeiro
 
         #endregion
 
+        #region Desbloqueio dos níveis
+
+        private bool NivelDesbloqueado(int identificador)
+        {
+            if (identificador == 1)
+                return true;
+
+            return SaveManager.EstaConcluido(identificador - 1);
+        }
+
+        private void AtualizarBotoesNiveis()
+        {
+            int primeiroNivel = ((DificuldadeSelecionada - 1) * 3) + 1;
+
+            bool nivel1Desbloqueado = NivelDesbloqueado(primeiroNivel);
+            bool nivel2Desbloqueado = NivelDesbloqueado(primeiroNivel + 1);
+            bool nivel3Desbloqueado = NivelDesbloqueado(primeiroNivel + 2);
+
+            AtualizarBotaoNivel(
+                pbx_level1_button,
+                primeiroNivel,
+                nivel1Desbloqueado
+            );
+
+            AtualizarBotaoNivel(
+                pbx_level2_button,
+                primeiroNivel + 1,
+                nivel2Desbloqueado
+            );
+
+            AtualizarBotaoNivel(
+                pbx_level3_button,
+                primeiroNivel + 2,
+                nivel3Desbloqueado
+            );
+        }
+
+        private void AtualizarBotaoNivel(
+            PictureBox botao,
+            int identificador,
+            bool desbloqueado)
+                {
+                    string periodo;
+
+                    if (identificador % 3 == 1)
+                        periodo = "manha";
+                    else if (identificador % 3 == 2)
+                        periodo = "tarde";
+                    else
+                        periodo = "noite";
+
+                    string nomeImagem = desbloqueado
+                        ? $"botao{periodo}.png"
+                        : $"botao{periodo}block.png";
+
+                    botao.BackgroundImage = CarregarImagem(nomeImagem);
+                    botao.BackgroundImageLayout = ImageLayout.Stretch;
+
+                    botao.Enabled = desbloqueado;
+
+                    botao.Cursor = desbloqueado
+                        ? Cursors.Hand
+                        : Cursors.Default;
+                }
+
+        #endregion
+
         #region Informações dos níveis
 
         private void ExibirInfoLevel(int numeroLevel)
         {
             int identificador = ((DificuldadeSelecionada - 1) * 3) + numeroLevel;
+
+            if (!NivelDesbloqueado(identificador))
+                return;
 
             EsconderInfoLevels();
 
@@ -259,16 +327,25 @@ namespace ProjetoCruzeiro
 
         private void Level1_MouseEnter(object sender, EventArgs e)
         {
+            if (!NivelDesbloqueado(((DificuldadeSelecionada - 1) * 3) + 1))
+                return;
+
             ExibirInfoLevel(1);
         }
 
         private void Level2_MouseEnter(object sender, EventArgs e)
         {
+            if (!NivelDesbloqueado(((DificuldadeSelecionada - 1) * 3) + 2))
+                return;
+
             ExibirInfoLevel(2);
         }
 
         private void Level3_MouseEnter(object sender, EventArgs e)
         {
+            if (!NivelDesbloqueado(((DificuldadeSelecionada - 1) * 3) + 3))
+                return;
+
             ExibirInfoLevel(3);
         }
 
@@ -289,38 +366,38 @@ namespace ProjetoCruzeiro
 
         #endregion
 
-
         #region Selecionar nível
+
+        private void AbrirNivel(int numeroLevel)
+        {
+            int identificador = ((DificuldadeSelecionada - 1) * 3) + numeroLevel;
+
+            if (!NivelDesbloqueado(identificador))
+                return;
+
+            int identificadorCutscene = (identificador * 2) - 1;
+
+            Cruzeiro cruzeiro = (Cruzeiro)FindForm();
+
+            cruzeiro.AbrirTela(new CutsceneControl(identificadorCutscene));
+        }
 
         private void lbl_level1_button_Click(object sender, EventArgs e)
         {
-            Cruzeiro cruzeiro = (Cruzeiro)FindForm();
-
-            int identificador = ((DificuldadeSelecionada - 1) * 6) + 1;
-
-            cruzeiro.AbrirTela(new CutsceneControl(identificador));
+            AbrirNivel(1);
         }
 
         private void lbl_level2_button_Click(object sender, EventArgs e)
         {
-            Cruzeiro cruzeiro = (Cruzeiro)FindForm();
-
-            int identificador = ((DificuldadeSelecionada - 1) * 6) + 3;
-
-            cruzeiro.AbrirTela(new CutsceneControl(identificador));
+            AbrirNivel(2);
         }
 
         private void lbl_level3_button_Click(object sender, EventArgs e)
         {
-            Cruzeiro cruzeiro = (Cruzeiro)FindForm();
-
-            int identificador = ((DificuldadeSelecionada - 1) * 6) + 5;
-
-            cruzeiro.AbrirTela(new CutsceneControl(identificador));
+            AbrirNivel(3);
         }
 
         #endregion
-
 
         #region Eventos auxiliares
 

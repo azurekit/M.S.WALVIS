@@ -41,7 +41,8 @@ namespace ProjetoCruzeiro
                 "Tem certeza de que deseja sair do jogo?",
                 "Sair",
                 MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question
+                MessageBoxIcon.Question,
+                MessageBoxDefaultButton.Button2
             );
 
             if (resultado == DialogResult.No)

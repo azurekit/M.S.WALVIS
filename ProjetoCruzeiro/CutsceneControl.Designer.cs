@@ -51,9 +51,10 @@
             this.pbx_pular.BackColor = System.Drawing.Color.Transparent;
             this.pbx_pular.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pbx_pular.BackgroundImage")));
             this.pbx_pular.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pbx_pular.Location = new System.Drawing.Point(1038, 478);
+            this.pbx_pular.ErrorImage = null;
+            this.pbx_pular.Location = new System.Drawing.Point(1209, 659);
             this.pbx_pular.Name = "pbx_pular";
-            this.pbx_pular.Size = new System.Drawing.Size(242, 59);
+            this.pbx_pular.Size = new System.Drawing.Size(71, 61);
             this.pbx_pular.TabIndex = 2;
             this.pbx_pular.TabStop = false;
             this.pbx_pular.Click += new System.EventHandler(this.btn_pular_Click);

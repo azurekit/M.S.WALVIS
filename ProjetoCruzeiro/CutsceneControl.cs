@@ -1,6 +1,8 @@
 ﻿
 using AxWMPLib;
 using System;
+using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 
@@ -14,6 +16,12 @@ namespace ProjetoCruzeiro
         private string video;
         private bool redirecionando = false;
 
+        private List<EfeitoBotao> efeitos = new List<EfeitoBotao>();
+
+        private string pastaImagens;
+
+        private Image imagemOriginal;
+
         #endregion
 
         #region Construtor
@@ -22,6 +30,18 @@ namespace ProjetoCruzeiro
         {
             InitializeComponent();
 
+            SetStyle(
+                ControlStyles.AllPaintingInWmPaint |
+                ControlStyles.UserPaint |
+                ControlStyles.OptimizedDoubleBuffer |
+                ControlStyles.ResizeRedraw,
+                true
+            );
+
+            UpdateStyles();
+
+            DoubleBuffered = true;
+
             if (identificador < 1 || identificador > 18)
                 throw new ArgumentOutOfRangeException(
                     "identificador",
@@ -29,6 +49,12 @@ namespace ProjetoCruzeiro
                 );
 
             this.identificador = identificador;
+
+            pastaImagens = Path.Combine(
+                Application.StartupPath,
+                "imagens",
+                "Cutscenes"
+            );
 
             string pastaVideos = Path.Combine(
                 Application.StartupPath,
@@ -40,7 +66,6 @@ namespace ProjetoCruzeiro
                 "cutscene" + identificador + ".mp4"
             );
 
-            // Utiliza intro2.mp4 caso o vídeo original não exista.
             if (!File.Exists(video))
             {
                 video = Path.Combine(
@@ -53,8 +78,56 @@ namespace ProjetoCruzeiro
             axCutsceneIntro.uiMode = "none";
             axCutsceneIntro.enableContextMenu = false;
 
+            ConfigurarBotaoPular();
+
             axCutsceneIntro.URL = video;
             axCutsceneIntro.Ctlcontrols.play();
+
+            pbx_pular.BringToFront();
+        }
+
+        #endregion
+
+        #region Configuração do botão pular
+
+        private Image CarregarImagem(string caminho)
+        {
+            if (!File.Exists(caminho))
+                return null;
+
+            using (Image imagem = Image.FromFile(caminho))
+            {
+                return new Bitmap(imagem);
+            }
+        }
+
+        private void ConfigurarBotaoPular()
+        {
+            Point posicaoOriginal = pbx_pular.Location;
+            Size tamanhoOriginal = pbx_pular.Size;
+
+            pbx_pular.Parent = this;
+
+            pbx_pular.Location = posicaoOriginal;
+            pbx_pular.Size = tamanhoOriginal;
+
+            pbx_pular.BackColor = Color.Transparent;
+            pbx_pular.BackgroundImageLayout = ImageLayout.Stretch;
+            pbx_pular.Image = null;
+
+            imagemOriginal = CarregarImagem(
+                Path.Combine(pastaImagens, "botaopular.png")
+            );
+
+            pbx_pular.BackgroundImage = imagemOriginal;
+
+            pbx_pular.Cursor = Cursors.Hand;
+
+            pbx_pular.Click += btn_pular_Click;
+
+            efeitos.Add(new EfeitoBotao(pbx_pular));
+
+            pbx_pular.BringToFront();
         }
 
         #endregion
@@ -68,7 +141,16 @@ namespace ProjetoCruzeiro
 
             redirecionando = true;
 
-            axCutsceneIntro.Ctlcontrols.stop();
+            axCutsceneIntro.PlayStateChange -=
+                axCutsceneIntro_PlayStateChange;
+
+            try
+            {
+                axCutsceneIntro.Ctlcontrols.stop();
+            }
+            catch
+            {
+            }
 
             Cruzeiro cruzeiro = this.FindForm() as Cruzeiro;
 
@@ -180,12 +262,10 @@ namespace ProjetoCruzeiro
 
         private void CutsceneIntroControl_Load(object sender, EventArgs e)
         {
-
         }
 
         private void axCutsceneIntro_Enter(object sender, EventArgs e)
         {
-
         }
 
         #endregion

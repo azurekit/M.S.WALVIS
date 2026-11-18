@@ -332,7 +332,8 @@ namespace ProjetoCruzeiro
                     " por " + preco.ToString("N0") + " moedas?",
                     "Confirmar compra",
                     MessageBoxButtons.YesNo,
-                    MessageBoxIcon.Question
+                    MessageBoxIcon.Question,
+                    MessageBoxDefaultButton.Button2
                 );
 
                 if (resposta != DialogResult.Yes)

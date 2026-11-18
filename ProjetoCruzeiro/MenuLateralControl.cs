@@ -372,7 +372,8 @@ namespace ProjetoCruzeiro
                 "Deseja realmente voltar ao menu?",
                 "Voltar ao menu",
                 MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question
+                MessageBoxIcon.Question,
+                MessageBoxDefaultButton.Button2
             );
 
             if (resposta == DialogResult.Yes)

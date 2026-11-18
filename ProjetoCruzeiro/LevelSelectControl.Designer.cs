@@ -50,11 +50,11 @@
             // 
             this.lbl_caso.AutoSize = true;
             this.lbl_caso.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_caso.Font = new System.Drawing.Font("League Spartan ExtraBold", 60F);
-            this.lbl_caso.ForeColor = System.Drawing.SystemColors.Control;
-            this.lbl_caso.Location = new System.Drawing.Point(40, 243);
+            this.lbl_caso.Font = new System.Drawing.Font("Algerian", 60F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_caso.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lbl_caso.Location = new System.Drawing.Point(997, 30);
             this.lbl_caso.Name = "lbl_caso";
-            this.lbl_caso.Size = new System.Drawing.Size(249, 119);
+            this.lbl_caso.Size = new System.Drawing.Size(263, 89);
             this.lbl_caso.TabIndex = 30;
             this.lbl_caso.Text = "ATO 1";
             this.lbl_caso.Click += new System.EventHandler(this.lbl_caso_Click);
@@ -110,7 +110,10 @@
             // 
             // pbx_level1_button
             // 
-            this.pbx_level1_button.Location = new System.Drawing.Point(60, 386);
+            this.pbx_level1_button.BackColor = System.Drawing.Color.Transparent;
+            this.pbx_level1_button.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pbx_level1_button.BackgroundImage")));
+            this.pbx_level1_button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pbx_level1_button.Location = new System.Drawing.Point(60, 411);
             this.pbx_level1_button.Name = "pbx_level1_button";
             this.pbx_level1_button.Size = new System.Drawing.Size(299, 70);
             this.pbx_level1_button.TabIndex = 54;
@@ -118,6 +121,9 @@
             // 
             // pbx_level2_button
             // 
+            this.pbx_level2_button.BackColor = System.Drawing.Color.Transparent;
+            this.pbx_level2_button.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pbx_level2_button.BackgroundImage")));
+            this.pbx_level2_button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pbx_level2_button.Location = new System.Drawing.Point(60, 510);
             this.pbx_level2_button.Name = "pbx_level2_button";
             this.pbx_level2_button.Size = new System.Drawing.Size(299, 70);
@@ -126,6 +132,9 @@
             // 
             // pbx_level3_button
             // 
+            this.pbx_level3_button.BackColor = System.Drawing.Color.Transparent;
+            this.pbx_level3_button.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pbx_level3_button.BackgroundImage")));
+            this.pbx_level3_button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pbx_level3_button.Location = new System.Drawing.Point(60, 608);
             this.pbx_level3_button.Name = "pbx_level3_button";
             this.pbx_level3_button.Size = new System.Drawing.Size(299, 70);
