@@ -1,15 +1,15 @@
-# 🚢 Cruzeiro Ushuaia
+# 🚢 M.S. WALVIS
 
 Um jogo de investigação e raciocínio lógico desenvolvido em **C# e Windows Forms**, ambientado em um cruzeiro marítimo onde cada ambiente esconde um desafio e cada personagem pode guardar uma nova pista.
 
 <p align="center">
   <!-- CAPA DO JOGO -->
-  <img src="imagens/readme/capa.png" width="800" alt="Cruzeiro Ushuaia">
+  <img src="imagens/readme/capa.png" width="800" alt="M.S. Walvis">
 </p>
 
 ## 📖 Sobre o projeto
 
-A bordo do Cruzeiro Ushuaia, o roubo repentino de 'Rosa' chama a atenção dos investigadores Koala e Gio, que partem numa grande investigação.
+A bordo do M.S. Walvis, o roubo repentino de uma maleta de joias chama a atenção dos investigadores Koala e Gio, que partem numa grande investigação.
 
 Durante três dias, o jogador deverá investigar diferentes situações, explorar a embarcação, conversar com seus habitantes e solucionar desafios para descobrir o que está por trás de cada acontecimento.
 
@@ -42,7 +42,7 @@ Ao todo, são nove fases que compõem a narrativa principal do jogo.
 
 ## 🎭 Personagens
 
-Conheça os habitantes do Cruzeiro Ushuaia.
+Conheça os habitantes do M.S. Walvis.
 
 <table>
   <tr>
@@ -196,7 +196,7 @@ Para visualizar ou modificar o código do projeto:
       <br>
       <sub>Programação, música e roteiro.</sub>
       <br><br>
-      <a href="https://github.com/insiraaqui">
+      <a href="https://github.com/Thandidy">
         <img src="https://img.shields.io/badge/GitHub-Perfil-181717?style=for-the-badge&logo=github" alt="GitHub">
       </a>
     </td>
@@ -208,7 +208,7 @@ Para visualizar ou modificar o código do projeto:
       <br>
       <sub>Programação, revisão e polimento.</sub>
       <br><br>
-      <a href="https://github.com/insiraaqui">
+      <a href="https://github.com/Kajes05">
         <img src="https://img.shields.io/badge/GitHub-Perfil-181717?style=for-the-badge&logo=github" alt="GitHub">
       </a>
     </td>
@@ -218,4 +218,4 @@ Para visualizar ou modificar o código do projeto:
 ---
 
 <h5 align="center">Projeto destinado à disciplina de Programação Visual e Games.</h5>
-<h6 align="center">SS3, Submarinos e Energéticos.</h6>
+<h6 align="center">Balena Crew.</h6>
