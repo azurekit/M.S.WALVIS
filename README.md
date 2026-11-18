@@ -159,7 +159,7 @@ Não é necessário instalar ferramentas de desenvolvimento ou compilar o projet
 
 1. Baixe ou clone este repositório.
 2. Acesse a pasta `bin/Debug`.
-3. Localize e execute o arquivo `ProjetoCruzeiro.exe`.
+3. Localize e execute o arquivo `M.S. Walvis.exe`.
 
 > **Importante:** mantenha todos os arquivos e pastas que acompanham o executável, pois eles contêm recursos necessários para o funcionamento do jogo, como imagens, vídeos e outros assets.
 
