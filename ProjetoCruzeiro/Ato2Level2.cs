@@ -1,10 +1,9 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Reflection;
-using System.Diagnostics;
 using System.Windows.Forms;
 
 namespace ProjetoCruzeiro
@@ -13,13 +12,13 @@ namespace ProjetoCruzeiro
     {
         #region Variáveis Globais
 
-        Random random = new Random();
+        private Random random = new Random();
 
-        int[] codigo = new int[4];
-        int[] tentativa = new int[4];
+        private int[] codigo = new int[4];
+        private int[] tentativa = new int[4];
 
-        int posicaoAtual = 0;
-        int tentativas = 0;
+        private int posicaoAtual = 0;
+        private int tentativas = 0;
 
         private const int IDENTIFICADOR_NIVEL = 5;
 
@@ -40,12 +39,29 @@ namespace ProjetoCruzeiro
 
         #endregion
 
+        #region Construtor
+
         public Ato2Level2()
         {
             InitializeComponent();
 
-            #region Double Buffering
+            ConfigurarDoubleBuffering();
+            ConfigurarTimerFinalizacao();
+            ConfigurarEfeitosBotoes();
+            ConfigurarHoverBebidas();
+            CarregarPistas();
+            GerarCodigoAleatorio();
+            EsconderTentativas();
 
+            cronometro.Start();
+        }
+
+        #endregion
+
+        #region Configuração inicial
+
+        private void ConfigurarDoubleBuffering()
+        {
             this.DoubleBuffered = true;
 
             this.SetStyle(
@@ -59,44 +75,39 @@ namespace ProjetoCruzeiro
             this.UpdateStyles();
 
             HabilitarDoubleBuffering(this);
+        }
 
-            #endregion
-
-            #region Timer de finalização
-
+        private void ConfigurarTimerFinalizacao()
+        {
             timerFinalizacao = new Timer();
             timerFinalizacao.Interval = 2000;
             timerFinalizacao.Tick += TimerFinalizacao_Tick;
+        }
 
-            #endregion
-
-            #region Animação dos botões
-
+        private void ConfigurarEfeitosBotoes()
+        {
             efeitos.Add(new EfeitoBotao(btn_voltar));
             efeitos.Add(new EfeitoBotao(btn_confirmar));
+        }
 
-            #endregion
-
-            #region Hover das bebidas
-
+        private void ConfigurarHoverBebidas()
+        {
             ConfigurarHoverBebida(pbx_rosa, "rosa");
             ConfigurarHoverBebida(pbx_azul, "azul");
             ConfigurarHoverBebida(pbx_amarelo, "amarelo");
             ConfigurarHoverBebida(pbx_roxo, "roxo");
             ConfigurarHoverBebida(pbx_laranja, "laranja");
             ConfigurarHoverBebida(pbx_verde, "verde");
+        }
 
-            #endregion
-
-            #region Carregar pistas
-
+        private void CarregarPistas()
+        {
             pistaPreta = CarregarImagem("pistaPreta.png");
             pistaBranca = CarregarImagem("pistaBranca.png");
+        }
 
-            #endregion
-
-            #region Gerar código aleatório
-
+        private void GerarCodigoAleatorio()
+        {
             List<int> cores = new List<int>
             {
                 0, 1, 2, 3, 4, 5
@@ -112,11 +123,10 @@ namespace ProjetoCruzeiro
 
                 Console.WriteLine($"Código gerado: {codigo[i]}");
             }
+        }
 
-            #endregion
-
-            #region Esconder tentativas
-
+        private void EsconderTentativas()
+        {
             for (int i = 1; i <= 4; i++)
             {
                 for (int j = 1; j <= 8; j++)
@@ -128,15 +138,28 @@ namespace ProjetoCruzeiro
                     pbx.Visible = false;
                 }
             }
-
-            #endregion
-
-            #region Iniciar cronômetro
-
-            cronometro.Start();
-
-            #endregion
         }
+
+        #endregion
+
+        #region Carregamento de imagens
+
+        private Image CarregarImagem(string nome)
+        {
+            string caminho = Path.Combine(
+                Application.StartupPath,
+                "imagens",
+                "Level5",
+                nome
+            );
+
+            using (Image imagem = Image.FromFile(caminho))
+            {
+                return new Bitmap(imagem);
+            }
+        }
+
+        #endregion
 
         #region Double Buffering
 
@@ -160,26 +183,7 @@ namespace ProjetoCruzeiro
 
         #endregion
 
-        #region Carregar imagens
-
-        private Image CarregarImagem(string nome)
-        {
-            string caminho = Path.Combine(
-                Application.StartupPath,
-                "imagens",
-                "Level5",
-                nome
-            );
-
-            using (Image imagem = Image.FromFile(caminho))
-            {
-                return new Bitmap(imagem);
-            }
-        }
-
-        #endregion
-
-        #region Hover das bebidas
+        #region Efeitos visuais das bebidas
 
         private void ConfigurarHoverBebida(PictureBox pbx, string cor)
         {
@@ -208,7 +212,7 @@ namespace ProjetoCruzeiro
 
         #endregion
 
-        #region Selecionar cores
+        #region Seleção de cores
 
         private void btn_rosa_Click(object sender, EventArgs e)
         {
@@ -239,10 +243,6 @@ namespace ProjetoCruzeiro
         {
             SelecionarCor(5);
         }
-
-        #endregion
-
-        #region Selecionar cor
 
         private void SelecionarCor(int cor)
         {
@@ -305,201 +305,7 @@ namespace ProjetoCruzeiro
 
         #endregion
 
-        #region Sistema de pontuação
-
-        private int CalcularPontuacao()
-        {
-            int pontuacaoConclusao = 500;
-
-            int pontuacaoTentativas = Math.Max(
-                0,
-                3000 - (Math.Max(2, tentativas) - 2) * 500
-            );
-
-            int segundos = (int)Math.Floor(
-                cronometro.Elapsed.TotalSeconds
-            );
-
-            int pontuacaoTempo = Math.Max(
-                0,
-                1500 - Math.Max(0, segundos - 40) * 50
-            );
-
-            int pontuacaoFinal =
-                pontuacaoConclusao +
-                pontuacaoTentativas +
-                pontuacaoTempo;
-
-            return pontuacaoFinal;
-        }
-
-        #endregion
-
-        #region Localizar controles
-
-        private JogoForm ObterJogoForm()
-        {
-            Control atual = this;
-
-            while (atual != null)
-            {
-                JogoForm jogo = atual as JogoForm;
-
-                if (jogo != null)
-                    return jogo;
-
-                atual = atual.Parent;
-            }
-
-            throw new InvalidOperationException(
-                "Não foi possível localizar o JogoForm."
-            );
-        }
-
-        private MenuLateralControl EncontrarMenuLateral(Control raiz)
-        {
-            MenuLateralControl menu = raiz as MenuLateralControl;
-
-            if (menu != null)
-                return menu;
-
-            foreach (Control filho in raiz.Controls)
-            {
-                menu = EncontrarMenuLateral(filho);
-
-                if (menu != null)
-                    return menu;
-            }
-
-            return null;
-        }
-
-        #endregion
-
-        #region Bloquear controles
-
-        private void BloquearControles()
-        {
-            btn_voltar.Enabled = false;
-            btn_confirmar.Enabled = false;
-
-            btn_voltar.Cursor = Cursors.No;
-            btn_confirmar.Cursor = Cursors.No;
-
-            pbx_rosa.Enabled = false;
-            pbx_azul.Enabled = false;
-            pbx_amarelo.Enabled = false;
-            pbx_roxo.Enabled = false;
-            pbx_laranja.Enabled = false;
-            pbx_verde.Enabled = false;
-
-            pbx_rosa.Cursor = Cursors.No;
-            pbx_azul.Cursor = Cursors.No;
-            pbx_amarelo.Cursor = Cursors.No;
-            pbx_roxo.Cursor = Cursors.No;
-            pbx_laranja.Cursor = Cursors.No;
-            pbx_verde.Cursor = Cursors.No;
-
-            
-        }
-
-        #endregion
-
-        #region Finalização com espera
-
-        private void PrepararFinalizacao(
-            bool venceu,
-            int pontuacao = 0,
-            string mensagem = ""
-        )
-        {
-            if (finalizacaoIniciada)
-                return;
-
-            finalizacaoIniciada = true;
-
-            cronometro.Stop();
-
-            vitoriaPendente = venceu;
-
-            pontuacaoPendente = pontuacao;
-
-            mensagemDerrota = mensagem;
-
-            BloquearControles();
-
-            timerFinalizacao.Start();
-        }
-
-        private void TimerFinalizacao_Tick(object sender, EventArgs e)
-        {
-            timerFinalizacao.Stop();
-
-            timerFinalizacao.Dispose();
-
-            JogoForm jogo = ObterJogoForm();
-
-            if (vitoriaPendente)
-            {
-                jogo.AbrirTela(
-                    new VitoriaControl(
-                        IDENTIFICADOR_NIVEL,
-                        pontuacaoPendente
-                    )
-                );
-            }
-            else
-            {
-                jogo.AbrirTela(
-                    new DerrotaControl(
-                        IDENTIFICADOR_NIVEL,
-                        mensagemDerrota
-                    )
-                );
-            }
-        }
-
-        #endregion
-
-        #region Pistas
-
-        private void MostrarPistas(int certas, int foraDeLugar)
-        {
-            List<Image> pistas = new List<Image>();
-
-            for (int i = 0; i < certas; i++)
-            {
-                pistas.Add(pistaPreta);
-            }
-
-            for (int i = 0; i < foraDeLugar; i++)
-            {
-                pistas.Add(pistaBranca);
-            }
-
-            PictureBox[] casas = new PictureBox[4];
-
-            for (int i = 0; i < 4; i++)
-            {
-                casas[i] = (PictureBox)this.Controls.Find(
-                    $"pbx_pista{tentativas + 1}_{i + 1}", true
-                )[0];
-            }
-
-            for (int i = 0; i < 4; i++)
-            {
-                casas[i].BackgroundImage = null;
-            }
-
-            for (int i = 0; i < pistas.Count; i++)
-            {
-                casas[i].BackgroundImage = pistas[i];
-            }
-        }
-
-        #endregion
-
-        #region Verificar tentativa
+        #region Verificação de tentativa
 
         private void btn_confirmar_Click(object sender, EventArgs e)
         {
@@ -605,7 +411,154 @@ namespace ProjetoCruzeiro
 
         #endregion
 
-        #region Voltar
+        #region Exibição das pistas
+
+        private void MostrarPistas(int certas, int foraDeLugar)
+        {
+            List<Image> pistas = new List<Image>();
+
+            for (int i = 0; i < certas; i++)
+            {
+                pistas.Add(pistaPreta);
+            }
+
+            for (int i = 0; i < foraDeLugar; i++)
+            {
+                pistas.Add(pistaBranca);
+            }
+
+            PictureBox[] casas = new PictureBox[4];
+
+            for (int i = 0; i < 4; i++)
+            {
+                casas[i] = (PictureBox)this.Controls.Find(
+                    $"pbx_pista{tentativas + 1}_{i + 1}", true
+                )[0];
+            }
+
+            for (int i = 0; i < 4; i++)
+            {
+                casas[i].BackgroundImage = null;
+            }
+
+            for (int i = 0; i < pistas.Count; i++)
+            {
+                casas[i].BackgroundImage = pistas[i];
+            }
+        }
+
+        #endregion
+
+        #region Sistema de pontuação
+
+        private int CalcularPontuacao()
+        {
+            int pontuacaoConclusao = 500;
+
+            int pontuacaoTentativas = Math.Max(
+                0,
+                3000 - (Math.Max(2, tentativas) - 2) * 500
+            );
+
+            int segundos = (int)Math.Floor(
+                cronometro.Elapsed.TotalSeconds
+            );
+
+            int pontuacaoTempo = Math.Max(
+                0,
+                1500 - Math.Max(0, segundos - 40) * 50
+            );
+
+            int pontuacaoFinal =
+                pontuacaoConclusao +
+                pontuacaoTentativas +
+                pontuacaoTempo;
+
+            return pontuacaoFinal;
+        }
+
+        #endregion
+
+        #region Controle de finalização
+
+        private void PrepararFinalizacao(
+            bool venceu,
+            int pontuacao = 0,
+            string mensagem = ""
+        )
+        {
+            if (finalizacaoIniciada)
+                return;
+
+            finalizacaoIniciada = true;
+
+            cronometro.Stop();
+
+            vitoriaPendente = venceu;
+
+            pontuacaoPendente = pontuacao;
+
+            mensagemDerrota = mensagem;
+
+            BloquearControles();
+
+            timerFinalizacao.Start();
+        }
+
+        private void BloquearControles()
+        {
+            btn_voltar.Enabled = false;
+            btn_confirmar.Enabled = false;
+
+            btn_voltar.Cursor = Cursors.No;
+            btn_confirmar.Cursor = Cursors.No;
+
+            pbx_rosa.Enabled = false;
+            pbx_azul.Enabled = false;
+            pbx_amarelo.Enabled = false;
+            pbx_roxo.Enabled = false;
+            pbx_laranja.Enabled = false;
+            pbx_verde.Enabled = false;
+
+            pbx_rosa.Cursor = Cursors.No;
+            pbx_azul.Cursor = Cursors.No;
+            pbx_amarelo.Cursor = Cursors.No;
+            pbx_roxo.Cursor = Cursors.No;
+            pbx_laranja.Cursor = Cursors.No;
+            pbx_verde.Cursor = Cursors.No;
+        }
+
+        private void TimerFinalizacao_Tick(object sender, EventArgs e)
+        {
+            timerFinalizacao.Stop();
+
+            timerFinalizacao.Dispose();
+
+            JogoForm jogo = ObterJogoForm();
+
+            if (vitoriaPendente)
+            {
+                jogo.AbrirTela(
+                    new VitoriaControl(
+                        IDENTIFICADOR_NIVEL,
+                        pontuacaoPendente
+                    )
+                );
+            }
+            else
+            {
+                jogo.AbrirTela(
+                    new DerrotaControl(
+                        IDENTIFICADOR_NIVEL,
+                        mensagemDerrota
+                    )
+                );
+            }
+        }
+
+        #endregion
+
+        #region Navegação
 
         private void btn_voltar_Click(object sender, EventArgs e)
         {
@@ -633,7 +586,48 @@ namespace ProjetoCruzeiro
 
         #endregion
 
+        #region Localizar controles
+
+        private JogoForm ObterJogoForm()
+        {
+            Control atual = this;
+
+            while (atual != null)
+            {
+                JogoForm jogo = atual as JogoForm;
+
+                if (jogo != null)
+                    return jogo;
+
+                atual = atual.Parent;
+            }
+
+            throw new InvalidOperationException(
+                "Não foi possível localizar o JogoForm."
+            );
+        }
+
+        #endregion
+
         #region Lixeira
+
+        private MenuLateralControl EncontrarMenuLateral(Control raiz)
+        {
+            MenuLateralControl menu = raiz as MenuLateralControl;
+
+            if (menu != null)
+                return menu;
+
+            foreach (Control filho in raiz.Controls)
+            {
+                menu = EncontrarMenuLateral(filho);
+
+                if (menu != null)
+                    return menu;
+            }
+
+            return null;
+        }
 
         private void pbx_tentativa0_casa3_Click(object sender, EventArgs e)
         {

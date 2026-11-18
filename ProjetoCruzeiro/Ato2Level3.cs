@@ -1,9 +1,8 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
-using System.Diagnostics;
 using System.Reflection;
 using System.Windows.Forms;
 
@@ -59,41 +58,54 @@ namespace ProjetoCruzeiro
         {
             InitializeComponent();
 
-            SetStyle(
-                ControlStyles.AllPaintingInWmPaint |
-                ControlStyles.UserPaint |
-                ControlStyles.OptimizedDoubleBuffer |
-                ControlStyles.ResizeRedraw,
-                true
-            );
-
+            ConfigurarDoubleBuffering();
             OrganizarCamadas();
-
-            AtivarDoubleBuffering(this);
 
             round = 1;
             movimentos = 0;
             resets = 3;
             finalizando = false;
 
+            ConfigurarInterface();
+            ConfigurarImagensIniciais();
+            AssociarEventos();
+            ConfigurarEfeitosBotoes();
+            ConfigurarTimers();
+
+            cronometro.Start();
+
+            IniciarJogo();
+        }
+
+        #endregion
+
+        #region Configuração inicial
+
+        private void ConfigurarInterface()
+        {
             lbl_resets2.Text = resets.ToString();
             lbl_resets2.ForeColor = Color.White;
 
             pbx_resetar.Enabled = true;
             pbx_resetar.Cursor = Cursors.Hand;
+        }
 
+        private void ConfigurarImagensIniciais()
+        {
             DefinirImagem(this, "pista1.png");
             DefinirImagem(pbx_zelo, "zelo1.png");
 
             DefinirImagem(pbx_luz1, "luz_pista1.png");
             DefinirImagem(pbx_luz2, "luz_pista1.png");
+        }
 
-            AssociarEventos();
-
+        private void ConfigurarEfeitosBotoes()
+        {
             efeitos.Add(new EfeitoBotao(pbx_resetar));
+        }
 
-            cronometro.Start();
-
+        private void ConfigurarTimers()
+        {
             timerTrocaFundo.Interval = 2000;
             timerTrocaFundo.Tick += TimerTrocaFundo_Tick;
             timerTrocaFundo.Start();
@@ -103,13 +115,11 @@ namespace ProjetoCruzeiro
 
             timerEsperaVitoria.Interval = 3000;
             timerEsperaVitoria.Tick += TimerEsperaVitoria_Tick;
-
-            IniciarJogo();
         }
 
         #endregion
 
-        #region Hierarquia e DoubleBuffering
+        #region Hierarquia e Double Buffering
 
         private void OrganizarCamadas()
         {
@@ -133,6 +143,19 @@ namespace ProjetoCruzeiro
             {
                 controle.BringToFront();
             }
+        }
+
+        private void ConfigurarDoubleBuffering()
+        {
+            SetStyle(
+                ControlStyles.AllPaintingInWmPaint |
+                ControlStyles.UserPaint |
+                ControlStyles.OptimizedDoubleBuffer |
+                ControlStyles.ResizeRedraw,
+                true
+            );
+
+            AtivarDoubleBuffering(this);
         }
 
         private void AtivarDoubleBuffering(Control controle)
@@ -159,46 +182,6 @@ namespace ProjetoCruzeiro
                 AtivarDoubleBuffering(filho);
             }
         }
-
-        #endregion
-
-        #region Menu Lateral
-
-        private MenuLateralControl EncontrarMenuLateral()
-        {
-            Control atual = this;
-
-            while (atual != null && !(atual is JogoForm))
-            {
-                atual = atual.Parent;
-            }
-
-            if (atual == null)
-                return null;
-
-            return EncontrarMenuLateralRecursivo(atual);
-        }
-
-        private MenuLateralControl EncontrarMenuLateralRecursivo(
-            Control controle
-        )
-        {
-            if (controle is MenuLateralControl)
-                return (MenuLateralControl)controle;
-
-            foreach (Control filho in controle.Controls)
-            {
-                MenuLateralControl encontrado =
-                    EncontrarMenuLateralRecursivo(filho);
-
-                if (encontrado != null)
-                    return encontrado;
-            }
-
-            return null;
-        }
-
-        
 
         #endregion
 
@@ -288,29 +271,7 @@ namespace ProjetoCruzeiro
 
         #endregion
 
-        #region Resetar tentativa
-
-        private void btn_resetar_Click(object sender, EventArgs e)
-        {
-            if (finalizando || resets <= 0)
-                return;
-
-            resets--;
-
-            lbl_resets2.Text = resets.ToString();
-
-            if (resets == 0)
-            {
-                pbx_resetar.Enabled = false;
-                lbl_resets2.ForeColor = Color.Red;
-            }
-
-            IniciarJogo();
-        }
-
-        #endregion
-
-        #region Iniciar jogo
+        #region Inicialização do jogo
 
         private void IniciarJogo()
         {
@@ -345,7 +306,7 @@ namespace ProjetoCruzeiro
 
         #endregion
 
-        #region Alternar casas do tabuleiro
+        #region Interação com o tabuleiro
 
         private void Clique(int linha, int coluna)
         {
@@ -396,6 +357,10 @@ namespace ProjetoCruzeiro
             tabuleiro[linha, coluna] = !tabuleiro[linha, coluna];
         }
 
+        #endregion
+
+        #region Atualização visual do tabuleiro
+
         private void AtualizarBotoes()
         {
             btn_00.BackColor = tabuleiro[0, 0] ? Color.FromArgb(253, 154, 255) : Color.Gray;
@@ -410,6 +375,10 @@ namespace ProjetoCruzeiro
             btn_21.BackColor = tabuleiro[2, 1] ? Color.FromArgb(255, 255, 0) : Color.Gray;
             btn_22.BackColor = tabuleiro[2, 2] ? Color.FromArgb(175, 140, 255) : Color.Gray;
         }
+
+        #endregion
+
+        #region Verificação de vitória
 
         private bool Vencer()
         {
@@ -427,7 +396,29 @@ namespace ProjetoCruzeiro
 
         #endregion
 
-        #region Finalizar jogo
+        #region Resetar tentativa
+
+        private void btn_resetar_Click(object sender, EventArgs e)
+        {
+            if (finalizando || resets <= 0)
+                return;
+
+            resets--;
+
+            lbl_resets2.Text = resets.ToString();
+
+            if (resets == 0)
+            {
+                pbx_resetar.Enabled = false;
+                lbl_resets2.ForeColor = Color.Red;
+            }
+
+            IniciarJogo();
+        }
+
+        #endregion
+
+        #region Finalização do jogo
 
         private void FinalizarJogo()
         {
@@ -497,7 +488,7 @@ namespace ProjetoCruzeiro
 
         #endregion
 
-        #region Chamar tela de vitória
+        #region Redirecionamento para vitória
 
         private void TimerEsperaVitoria_Tick(object sender, EventArgs e)
         {
@@ -547,7 +538,7 @@ namespace ProjetoCruzeiro
 
         #endregion
 
-        #region Pontuação
+        #region Sistema de pontuação
 
         private int CalcularPontuacao()
         {
@@ -623,7 +614,7 @@ namespace ProjetoCruzeiro
 
         #endregion
 
-        #region Eventos auxiliares
+        #region Lixeira
 
         private void lbl_movimentos_Click(object sender, EventArgs e)
         {
@@ -631,6 +622,40 @@ namespace ProjetoCruzeiro
 
         private void lbl_resets2_Click(object sender, EventArgs e)
         {
+        }
+
+        private MenuLateralControl EncontrarMenuLateral()
+        {
+            Control atual = this;
+
+            while (atual != null && !(atual is JogoForm))
+            {
+                atual = atual.Parent;
+            }
+
+            if (atual == null)
+                return null;
+
+            return EncontrarMenuLateralRecursivo(atual);
+        }
+
+        private MenuLateralControl EncontrarMenuLateralRecursivo(
+            Control controle
+        )
+        {
+            if (controle is MenuLateralControl)
+                return (MenuLateralControl)controle;
+
+            foreach (Control filho in controle.Controls)
+            {
+                MenuLateralControl encontrado =
+                    EncontrarMenuLateralRecursivo(filho);
+
+                if (encontrado != null)
+                    return encontrado;
+            }
+
+            return null;
         }
 
         #endregion

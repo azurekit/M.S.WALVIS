@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
@@ -14,53 +13,53 @@ namespace ProjetoCruzeiro
     {
         #region Variáveis Globais
 
-        Random random = new Random();
+        private Random random = new Random();
 
-        int pressaoA;
-        int pressaoB;
-        int pressaoC;
-        int pressaoD;
+        private int pressaoA;
+        private int pressaoB;
+        private int pressaoC;
+        private int pressaoD;
 
-        const int metaA = 5;
-        const int metaB = 5;
-        const int metaC = 3;
-        const int metaD = 4;
+        private const int metaA = 5;
+        private const int metaB = 5;
+        private const int metaC = 3;
+        private const int metaD = 4;
 
-        const int pressaoMinima = 1;
-        const int pressaoMaxima = 9;
+        private const int pressaoMinima = 1;
+        private const int pressaoMaxima = 9;
 
-        const int IDENTIFICADOR = 7;
+        private const int IDENTIFICADOR = 7;
 
-        int movimentosUtilizados = 0;
-        int pontuacaoFinal = 0;
+        private int movimentosUtilizados = 0;
+        private int pontuacaoFinal = 0;
 
-        bool concluido = false;
-        bool venceu = false;
+        private bool concluido = false;
+        private bool venceu = false;
 
-        List<string> sequenciaEmbaralhamento = new List<string>();
-        List<EfeitoBotao> efeitos = new List<EfeitoBotao>();
+        private List<string> sequenciaEmbaralhamento = new List<string>();
+        private List<EfeitoBotao> efeitos = new List<EfeitoBotao>();
 
-        Stopwatch cronometro = new Stopwatch();
+        private Stopwatch cronometro = new Stopwatch();
 
-        Timer timerVitoria = new Timer();
+        private Timer timerVitoria = new Timer();
 
-        PictureBox pbxAtualA;
-        PictureBox pbxAtualB;
-        PictureBox pbxAtualC;
-        PictureBox pbxAtualD;
+        private PictureBox pbxAtualA;
+        private PictureBox pbxAtualB;
+        private PictureBox pbxAtualC;
+        private PictureBox pbxAtualD;
 
-        PictureBox pbxMetaA;
-        PictureBox pbxMetaB;
-        PictureBox pbxMetaC;
-        PictureBox pbxMetaD;
+        private PictureBox pbxMetaA;
+        private PictureBox pbxMetaB;
+        private PictureBox pbxMetaC;
+        private PictureBox pbxMetaD;
 
-        PictureBox pbxRosa;
-        PictureBox pbxVermelha;
-        PictureBox pbxVerde;
-        PictureBox pbxAmarela;
-        PictureBox pbxBranca;
-        PictureBox pbxRoxa;
-        PictureBox pbxReiniciar;
+        private PictureBox pbxRosa;
+        private PictureBox pbxVermelha;
+        private PictureBox pbxVerde;
+        private PictureBox pbxAmarela;
+        private PictureBox pbxBranca;
+        private PictureBox pbxRoxa;
+        private PictureBox pbxReiniciar;
 
         #endregion
 
@@ -83,7 +82,7 @@ namespace ProjetoCruzeiro
 
         #endregion
 
-        #region Inicialização
+        #region Construtor
 
         public Ato3Level1()
         {
@@ -105,7 +104,11 @@ namespace ProjetoCruzeiro
             AtualizarInterface();
         }
 
-        void ConfigurarControles()
+        #endregion
+
+        #region Configuração dos Controles
+
+        private void ConfigurarControles()
         {
             pbxAtualA = BuscarControle<PictureBox>("pbx_atualA");
             pbxAtualB = BuscarControle<PictureBox>("pbx_atualB");
@@ -129,7 +132,7 @@ namespace ProjetoCruzeiro
             AplicarDoubleBuffering(this);
         }
 
-        T BuscarControle<T>(string nome) where T : Control
+        private T BuscarControle<T>(string nome) where T : Control
         {
             Control controle = Controls.Find(nome, true).FirstOrDefault();
 
@@ -149,11 +152,12 @@ namespace ProjetoCruzeiro
             {
                 CreateParams cp = base.CreateParams;
                 cp.ExStyle |= 0x02000000;
+
                 return cp;
             }
         }
 
-        void AplicarDoubleBuffering(Control controle)
+        private void AplicarDoubleBuffering(Control controle)
         {
             if (controle == null)
                 return;
@@ -174,9 +178,9 @@ namespace ProjetoCruzeiro
 
         #endregion
 
-        #region Eventos e Animações
+        #region Associação de Eventos
 
-        void ConfigurarEventos()
+        private void ConfigurarEventos()
         {
             pbxRosa.Click += (s, e) => AplicarValvula(2, -1, 0, 0);
             pbxVermelha.Click += (s, e) => AplicarValvula(-1, 2, 0, 0);
@@ -188,7 +192,11 @@ namespace ProjetoCruzeiro
             pbxReiniciar.Click += (s, e) => ReiniciarJogo();
         }
 
-        void ConfigurarAnimacoes()
+        #endregion
+
+        #region Animações dos Botões
+
+        private void ConfigurarAnimacoes()
         {
             PictureBox[] botoes =
             {
@@ -212,7 +220,7 @@ namespace ProjetoCruzeiro
 
         #region Geração Aleatória
 
-        void GerarConfiguracaoAleatoria()
+        private void GerarConfiguracaoAleatoria()
         {
             int[][] movimentosInversos =
             {
@@ -282,7 +290,9 @@ namespace ProjetoCruzeiro
 
                 if (a == metaA && b == metaB &&
                     c == metaC && d == metaD)
+                {
                     continue;
+                }
 
                 if (novaSequencia.Count < 8)
                     continue;
@@ -300,7 +310,7 @@ namespace ProjetoCruzeiro
             }
         }
 
-        void ImprimirSequencia(List<string> movimentosEmbaralhamento)
+        private void ImprimirSequencia(List<string> movimentosEmbaralhamento)
         {
             Console.WriteLine("");
             Console.WriteLine("========== NOVA CONFIGURACAO ==========");
@@ -350,9 +360,9 @@ namespace ProjetoCruzeiro
 
         #endregion
 
-        #region Mecânica
+        #region Mecânica das Válvulas
 
-        void AplicarValvula(int a, int b, int c, int d)
+        private void AplicarValvula(int a, int b, int c, int d)
         {
             if (concluido)
                 return;
@@ -381,7 +391,11 @@ namespace ProjetoCruzeiro
             VerificarResultado();
         }
 
-        void AtualizarInterface()
+        #endregion
+
+        #region Atualização da Interface
+
+        private void AtualizarInterface()
         {
             AtualizarImagem(pbxAtualA, pressaoA);
             AtualizarImagem(pbxAtualB, pressaoB);
@@ -398,19 +412,13 @@ namespace ProjetoCruzeiro
 
         #endregion
 
-        #region Imagens
+        #region Carregamento e Atualização de Imagens   
 
-        string ObterCaminhoImagem(string nome)
-        {
-            return Path.Combine(
-                Application.StartupPath,
-                "imagens",
-                "Level7",
-                nome
-            );
-        }
-
-        void AtualizarImagem(PictureBox pictureBox, int pressao, bool vitoria = false)
+        private void AtualizarImagem(
+            PictureBox pictureBox,
+            int pressao,
+            bool vitoria = false
+        )
         {
             if (pictureBox == null)
                 return;
@@ -450,7 +458,7 @@ namespace ProjetoCruzeiro
             pictureBox.Refresh();
         }
 
-        void AtualizarImagensVitoria()
+        private void AtualizarImagensVitoria()
         {
             AtualizarImagem(pbxAtualA, pressaoA, true);
             AtualizarImagem(pbxAtualB, pressaoB, true);
@@ -465,9 +473,9 @@ namespace ProjetoCruzeiro
 
         #endregion
 
-        #region Vitória e Pontuação
+        #region Verificação de Vitória
 
-        void VerificarResultado()
+        private void VerificarResultado()
         {
             if (pressaoA == metaA &&
                 pressaoB == metaB &&
@@ -490,7 +498,11 @@ namespace ProjetoCruzeiro
             }
         }
 
-        int CalcularPontuacao()
+        #endregion
+
+        #region Sistema de Pontuação
+
+        private int CalcularPontuacao()
         {
             int pontosConclusao = 500;
 
@@ -535,14 +547,18 @@ namespace ProjetoCruzeiro
             return total;
         }
 
-        void TimerVitoria_Tick(object sender, EventArgs e)
+        #endregion
+
+        #region Animação e Redirecionamento de Vitória
+
+        private void TimerVitoria_Tick(object sender, EventArgs e)
         {
             timerVitoria.Stop();
 
             AbrirTelaVitoria();
         }
 
-        void AbrirTelaVitoria()
+        private void AbrirTelaVitoria()
         {
             JogoForm jogo = EncontrarPai<JogoForm>();
 
@@ -556,54 +572,9 @@ namespace ProjetoCruzeiro
 
         #endregion
 
-        #region Menu Lateral
-
-        T EncontrarPai<T>() where T : Control
-        {
-            Control atual = Parent;
-
-            while (atual != null)
-            {
-                T resultado = atual as T;
-
-                if (resultado != null)
-                    return resultado;
-
-                atual = atual.Parent;
-            }
-
-            return null;
-        }
-
-       
-
-        T EncontrarControleRecursivo<T>(Control controle)
-            where T : Control
-        {
-            if (controle == null)
-                return null;
-
-            T resultado = controle as T;
-
-            if (resultado != null)
-                return resultado;
-
-            foreach (Control filho in controle.Controls)
-            {
-                resultado = EncontrarControleRecursivo<T>(filho);
-
-                if (resultado != null)
-                    return resultado;
-            }
-
-            return null;
-        }
-
-        #endregion
-
         #region Habilitação dos Botões
 
-        void HabilitarValvulas(bool habilitar)
+        private void HabilitarValvulas(bool habilitar)
         {
             PictureBox[] botoes =
             {
@@ -624,7 +595,7 @@ namespace ProjetoCruzeiro
             }
         }
 
-        void HabilitarReiniciar(bool habilitar)
+        private void HabilitarReiniciar(bool habilitar)
         {
             pbxReiniciar.Enabled = habilitar;
 
@@ -635,9 +606,9 @@ namespace ProjetoCruzeiro
 
         #endregion
 
-        #region Reiniciar
+        #region Reiniciar Jogo
 
-        void ReiniciarJogo()
+        private void ReiniciarJogo()
         {
             if (concluido)
                 return;
@@ -660,6 +631,49 @@ namespace ProjetoCruzeiro
             cronometro.Start();
 
             AtualizarInterface();
+        }
+
+        #endregion
+
+        #region Lixeira
+
+        private T EncontrarPai<T>() where T : Control
+        {
+            Control atual = Parent;
+
+            while (atual != null)
+            {
+                T resultado = atual as T;
+
+                if (resultado != null)
+                    return resultado;
+
+                atual = atual.Parent;
+            }
+
+            return null;
+        }
+
+        private T EncontrarControleRecursivo<T>(Control controle)
+            where T : Control
+        {
+            if (controle == null)
+                return null;
+
+            T resultado = controle as T;
+
+            if (resultado != null)
+                return resultado;
+
+            foreach (Control filho in controle.Controls)
+            {
+                resultado = EncontrarControleRecursivo<T>(filho);
+
+                if (resultado != null)
+                    return resultado;
+            }
+
+            return null;
         }
 
         #endregion

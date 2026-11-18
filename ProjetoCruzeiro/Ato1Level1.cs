@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
@@ -11,7 +10,7 @@ namespace ProjetoCruzeiro
 {
     public partial class Ato1Level1 : UserControl
     {
-        #region Variáveis Globais
+        #region Variaveis e estruturas
 
         Random random = new Random();
 
@@ -75,11 +74,11 @@ namespace ProjetoCruzeiro
 
         #endregion
 
+        #region Construtor
+
         public Ato1Level1()
         {
             InitializeComponent();
-
-            
 
             monitores = new PictureBox[]
             {
@@ -117,7 +116,9 @@ namespace ProjetoCruzeiro
             IniciarJogo();
         }
 
-        #region Inicialização
+        #endregion
+
+        #region Inicialização do nível
 
         private void IniciarJogo()
         {
@@ -145,7 +146,7 @@ namespace ProjetoCruzeiro
 
         #endregion
 
-        #region Imagens dos monitores
+        #region Carregamento e atualização dos monitores
 
         private void CarregarImagens()
         {
@@ -237,7 +238,7 @@ namespace ProjetoCruzeiro
 
         #endregion
 
-        #region Hover
+        #region Interação com os monitores - Hover
 
         private void Monitor_MouseEnter(object sender, EventArgs e)
         {
@@ -276,7 +277,7 @@ namespace ProjetoCruzeiro
 
         #endregion
 
-        #region Clique e troca de monitores
+        #region Interação com os monitores - Seleção e troca
 
         private void Monitor_Click(object sender, EventArgs e)
         {
@@ -319,7 +320,7 @@ namespace ProjetoCruzeiro
 
         #endregion
 
-        #region Gerar e embaralhar ordem
+        #region Geração da ordem dos monitores
 
         private void Embaralhar(string[] lista)
         {
@@ -400,7 +401,7 @@ namespace ProjetoCruzeiro
 
         #endregion
 
-        #region Gerar dicas
+        #region Geração das dicas
 
         private void GerarDicas()
         {
@@ -520,7 +521,7 @@ namespace ProjetoCruzeiro
 
         #endregion
 
-        #region Verificar dicas e soluções
+        #region Validação das dicas e busca de soluções
 
         private bool RespeitaDica(string[] ordem, Dica dica)
         {
@@ -610,7 +611,7 @@ namespace ProjetoCruzeiro
 
         #endregion
 
-        #region Exibir dicas
+        #region Exibição das dicas
 
         private void ExibirDicas()
         {
@@ -623,7 +624,7 @@ namespace ProjetoCruzeiro
 
         #endregion
 
-        #region Pontuação
+        #region Cálculo da pontuação
 
         private void CalcularPontuacao()
         {
@@ -661,7 +662,7 @@ namespace ProjetoCruzeiro
 
         #endregion
 
-        #region Vitória
+        #region Vitória e transição
 
         private void VerificarVitoria()
         {
@@ -725,5 +726,7 @@ namespace ProjetoCruzeiro
         }
 
         #endregion
+
+      
     }
 }

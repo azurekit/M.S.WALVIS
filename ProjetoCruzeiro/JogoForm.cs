@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -7,10 +6,16 @@ namespace ProjetoCruzeiro
 {
     public partial class JogoForm : UserControl
     {
+        #region Variáveis Globais
+
         private int atoAtual;
         private int nivelAtual;
 
         private MenuLateralControl menuLateral;
+
+        #endregion
+
+        #region Propriedades
 
         public int AtoAtual
         {
@@ -21,6 +26,10 @@ namespace ProjetoCruzeiro
         {
             get { return nivelAtual; }
         }
+
+        #endregion
+
+        #region Construtor
 
         public JogoForm(int ato, int nivel)
         {
@@ -39,6 +48,10 @@ namespace ProjetoCruzeiro
             AbrirNivel();
         }
 
+        #endregion
+
+        #region Carregamento do Nível
+
         private void AbrirNivel()
         {
             UserControl tela = null;
@@ -48,27 +61,51 @@ namespace ProjetoCruzeiro
                 case 1:
                     switch (nivelAtual)
                     {
-                        case 1: tela = new Ato1Level1(); break;
-                        case 2: tela = new Ato1Level2(); break;
-                        case 3: tela = new Ato1Level3(); break;
+                        case 1:
+                            tela = new Ato1Level1();
+                            break;
+
+                        case 2:
+                            tela = new Ato1Level2();
+                            break;
+
+                        case 3:
+                            tela = new Ato1Level3();
+                            break;
                     }
                     break;
 
                 case 2:
                     switch (nivelAtual)
                     {
-                        case 1: tela = new Ato2Level1(); break;
-                        case 2: tela = new Ato2Level2(); break;
-                        case 3: tela = new Ato2Level3(); break;
+                        case 1:
+                            tela = new Ato2Level1();
+                            break;
+
+                        case 2:
+                            tela = new Ato2Level2();
+                            break;
+
+                        case 3:
+                            tela = new Ato2Level3();
+                            break;
                     }
                     break;
 
                 case 3:
                     switch (nivelAtual)
                     {
-                        case 1: tela = new Ato3Level1(); break;
-                        case 2: tela = new Ato3Level2(); break;
-                        case 3: tela = new Ato3Level3(); break;
+                        case 1:
+                            tela = new Ato3Level1();
+                            break;
+
+                        case 2:
+                            tela = new Ato3Level2();
+                            break;
+
+                        case 3:
+                            tela = new Ato3Level3();
+                            break;
                     }
                     break;
             }
@@ -76,6 +113,10 @@ namespace ProjetoCruzeiro
             if (tela != null)
                 AbrirTela(tela);
         }
+
+        #endregion
+
+        #region Navegação entre Telas
 
         public void AbrirTela(UserControl tela)
         {
@@ -99,6 +140,8 @@ namespace ProjetoCruzeiro
 
             panelJogo2.BringToFront();
         }
+
+        #endregion
 
         #region Lixeira
 

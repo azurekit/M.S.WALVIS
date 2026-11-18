@@ -12,28 +12,30 @@ namespace ProjetoCruzeiro
     {
         #region Variáveis Globais
 
-        List<List<int>> suportes = new List<List<int>>();
+        private List<List<int>> suportes = new List<List<int>>();
 
-        PictureBox[] pratos = new PictureBox[5];
-        Panel[] paineis = new Panel[3];
+        private PictureBox[] pratos = new PictureBox[5];
+        private Panel[] paineis = new Panel[3];
 
-        int movimentos = 0;
-        int suporteSelecionado = -1;
+        private int movimentos = 0;
+        private int suporteSelecionado = -1;
 
-        bool jogoFinalizado = false;
+        private bool jogoFinalizado = false;
 
-        Image imagemNormal;
-        Image imagemHover;
-        Image imagemSelecionado;
-        Image imagemVitoria;
+        private Image imagemNormal;
+        private Image imagemHover;
+        private Image imagemSelecionado;
+        private Image imagemVitoria;
 
-        Stopwatch cronometro = new Stopwatch();
+        private Stopwatch cronometro = new Stopwatch();
 
-        int pontuacaoFinal = 0;
+        private int pontuacaoFinal = 0;
 
-        Timer timerVitoria = new Timer();
+        private Timer timerVitoria = new Timer();
 
         #endregion
+
+        #region Construtor
 
         public Ato2Level1()
         {
@@ -58,7 +60,9 @@ namespace ProjetoCruzeiro
             iniciarJogo();
         }
 
-        #region Carregar imagens
+        #endregion
+
+        #region Carregamento de imagens
 
         private void CarregarImagens()
         {
@@ -87,7 +91,7 @@ namespace ProjetoCruzeiro
 
         #endregion
 
-        #region Configurar visuais
+        #region Configuração visual
 
         private void ConfigurarVisuais()
         {
@@ -121,7 +125,7 @@ namespace ProjetoCruzeiro
 
         #endregion
 
-        #region Identificar suporte
+        #region Identificação dos suportes
 
         private Panel ObterPainel(Control controle)
         {
@@ -143,75 +147,7 @@ namespace ProjetoCruzeiro
 
         #endregion
 
-        #region Encontrar JogoForm e MenuLateral
-
-        private JogoForm EncontrarJogoForm()
-        {
-            Control controle = this;
-
-            while (controle != null && !(controle is JogoForm))
-            {
-                controle = controle.Parent;
-            }
-
-            return controle as JogoForm;
-        }
-
-        private MenuLateralControl BuscarMenuLateral(Control pai)
-        {
-            foreach (Control controle in pai.Controls)
-            {
-                MenuLateralControl menu =
-                    controle as MenuLateralControl;
-
-                if (menu != null)
-                    return menu;
-
-                MenuLateralControl encontrado =
-                    BuscarMenuLateral(controle);
-
-                if (encontrado != null)
-                    return encontrado;
-            }
-
-            return null;
-        }
-
-        #endregion
-
-        #region Atualizar imagens dos suportes
-
-        private void AtualizarImagemSuporte(int indice)
-        {
-            if (indice < 0 || indice >= paineis.Length)
-                return;
-
-            if (indice == suporteSelecionado)
-            {
-                paineis[indice].BackgroundImage = imagemSelecionado;
-            }
-            else if (paineis[indice].ClientRectangle.Contains(
-                paineis[indice].PointToClient(Cursor.Position)))
-            {
-                paineis[indice].BackgroundImage = imagemHover;
-            }
-            else
-            {
-                paineis[indice].BackgroundImage = imagemNormal;
-            }
-        }
-
-        private void AtualizarImagensSuportes()
-        {
-            for (int i = 0; i < paineis.Length; i++)
-            {
-                AtualizarImagemSuporte(i);
-            }
-        }
-
-        #endregion
-
-        #region Iniciar jogo
+        #region Inicialização do jogo
 
         private void iniciarJogo()
         {
@@ -245,7 +181,7 @@ namespace ProjetoCruzeiro
 
         #endregion
 
-        #region Atualizar tabuleiro
+        #region Atualização do tabuleiro
 
         private void atualizarTabuleiro()
         {
@@ -284,7 +220,7 @@ namespace ProjetoCruzeiro
 
         #endregion
 
-        #region Clique
+        #region Interação com os suportes
 
         private void Suporte_Click(object sender, EventArgs e)
         {
@@ -369,116 +305,35 @@ namespace ProjetoCruzeiro
 
         #endregion
 
-        #region Calcular pontuação
+        #region Atualização visual dos suportes
 
-        private void CalcularPontuacao()
+        private void AtualizarImagemSuporte(int indice)
         {
-            int segundos = (int)Math.Floor(
-                cronometro.Elapsed.TotalSeconds
-            );
+            if (indice < 0 || indice >= paineis.Length)
+                return;
 
-            int bonusConclusao = 500;
-
-            int penalidadeTempo = Math.Max(0, segundos - 40);
-
-            int pontuacaoTempo = Math.Max(
-                0,
-                2250 - (penalidadeTempo * 50)
-            );
-
-            int movimentosExtras = Math.Max(
-                0,
-                movimentos - 35
-            );
-
-            int pontuacaoMovimentos = Math.Max(
-                0,
-                2250 - (movimentosExtras * 25)
-            );
-
-            pontuacaoFinal =
-                bonusConclusao +
-                pontuacaoTempo +
-                pontuacaoMovimentos;
-        }
-
-        #endregion
-
-        #region Verificar vitória
-
-        private void verificarVitoria()
-        {
-            if (suportes[2].Count == 5)
+            if (indice == suporteSelecionado)
             {
-                jogoFinalizado = true;
-
-                // Parar cronômetro
-
-                cronometro.Stop();
-
-                // Calcular pontuação
-
-                CalcularPontuacao();
-
-                // Exibir imagem de vitória
-
-                pnl_suporteC.BackgroundImage = imagemVitoria;
-
-                // Bloquear interação com todos os suportes
-
-                foreach (Panel painel in paineis)
-                {
-                    painel.Enabled = false;
-                }
-
-                // Bloquear interação com todos os pratos
-
-                foreach (PictureBox prato in pratos)
-                {
-                    prato.Enabled = false;
-                }
-
-                
-
-                // Iniciar espera de 2 segundos
-
-                timerVitoria.Start();
+                paineis[indice].BackgroundImage = imagemSelecionado;
             }
-        }
-
-        #endregion
-
-        #region Transição para vitória
-
-        private void TimerVitoria_Tick(object sender, EventArgs e)
-        {
-            timerVitoria.Stop();
-
-            JogoForm jogo = EncontrarJogoForm();
-
-            if (jogo != null)
+            else if (paineis[indice].ClientRectangle.Contains(
+                paineis[indice].PointToClient(Cursor.Position)))
             {
-                jogo.AbrirTela(
-                    new VitoriaControl(4, pontuacaoFinal)
-                );
+                paineis[indice].BackgroundImage = imagemHover;
             }
             else
             {
-                Cruzeiro cruzeiro =
-                    this.FindForm() as Cruzeiro;
-
-                if (cruzeiro != null)
-                {
-                    cruzeiro.AbrirTela(
-                        new VitoriaControl(4, pontuacaoFinal)
-                    );
-                }
+                paineis[indice].BackgroundImage = imagemNormal;
             }
         }
 
-        #endregion
-
-        #region Visuais
+        private void AtualizarImagensSuportes()
+        {
+            for (int i = 0; i < paineis.Length; i++)
+            {
+                AtualizarImagemSuporte(i);
+            }
+        }
 
         private void Suporte_MouseEnter(object sender, EventArgs e)
         {
@@ -516,11 +371,148 @@ namespace ProjetoCruzeiro
 
         #endregion
 
-        #region lixeira
+        #region Verificação de vitória
+
+        private void verificarVitoria()
+        {
+            if (suportes[2].Count == 5)
+            {
+                jogoFinalizado = true;
+
+                // Parar cronômetro.
+                cronometro.Stop();
+
+                // Calcular pontuação.
+                CalcularPontuacao();
+
+                // Exibir imagem de vitória.
+                pnl_suporteC.BackgroundImage = imagemVitoria;
+
+                // Bloquear interação com todos os suportes.
+                foreach (Panel painel in paineis)
+                {
+                    painel.Enabled = false;
+                }
+
+                // Bloquear interação com todos os pratos.
+                foreach (PictureBox prato in pratos)
+                {
+                    prato.Enabled = false;
+                }
+
+                // Iniciar espera de 2 segundos.
+                timerVitoria.Start();
+            }
+        }
+
+        #endregion
+
+        #region Pontuação
+
+        private void CalcularPontuacao()
+        {
+            int segundos = (int)Math.Floor(
+                cronometro.Elapsed.TotalSeconds
+            );
+
+            int bonusConclusao = 500;
+
+            int penalidadeTempo = Math.Max(0, segundos - 40);
+
+            int pontuacaoTempo = Math.Max(
+                0,
+                2250 - (penalidadeTempo * 50)
+            );
+
+            int movimentosExtras = Math.Max(
+                0,
+                movimentos - 35
+            );
+
+            int pontuacaoMovimentos = Math.Max(
+                0,
+                2250 - (movimentosExtras * 25)
+            );
+
+            pontuacaoFinal =
+                bonusConclusao +
+                pontuacaoTempo +
+                pontuacaoMovimentos;
+        }
+
+        #endregion
+
+        #region Transição para vitória
+
+        private void TimerVitoria_Tick(object sender, EventArgs e)
+        {
+            timerVitoria.Stop();
+
+            JogoForm jogo = EncontrarJogoForm();
+
+            if (jogo != null)
+            {
+                jogo.AbrirTela(
+                    new VitoriaControl(4, pontuacaoFinal)
+                );
+            }
+            else
+            {
+                Cruzeiro cruzeiro =
+                    this.FindForm() as Cruzeiro;
+
+                if (cruzeiro != null)
+                {
+                    cruzeiro.AbrirTela(
+                        new VitoriaControl(4, pontuacaoFinal)
+                    );
+                }
+            }
+        }
+
+        #endregion
+
+        #region Localização do JogoForm
+
+        private JogoForm EncontrarJogoForm()
+        {
+            Control controle = this;
+
+            while (controle != null && !(controle is JogoForm))
+            {
+                controle = controle.Parent;
+            }
+
+            return controle as JogoForm;
+        }
+
+        #endregion
+
+        #region Lixeira
+        // método que eu usava pra localizar o menu lateral, mas não é mais necessário, pois agora o menu lateral é passado como parâmetro para o construtor do Ato2Level1.
+        // ele tá aí pq remover ele pode quebrar o código, então vou deixar por enquanto.
+        private MenuLateralControl BuscarMenuLateral(Control pai) 
+        {
+            foreach (Control controle in pai.Controls)
+            {
+                MenuLateralControl menu =
+                    controle as MenuLateralControl;
+
+                if (menu != null)
+                    return menu;
+
+                MenuLateralControl encontrado =
+                    BuscarMenuLateral(controle);
+
+                if (encontrado != null)
+                    return encontrado;
+            }
+
+            return null;
+        }
 
         private void lbl_movimentos2_Click(object sender, EventArgs e)
         {
-
         }
 
         private void Suporte_MouseHover(object sender, EventArgs e)

@@ -1,0 +1,36 @@
+C:\Users\Roberto Levi\source\repos\ProjetoCruzeiro\ProjetoCruzeiro\bin\Debug\Videos\intro.mp4
+C:\Users\Roberto Levi\source\repos\ProjetoCruzeiro\ProjetoCruzeiro\bin\Debug\Videos\intro2.mp4
+C:\Users\Roberto Levi\source\repos\ProjetoCruzeiro\ProjetoCruzeiro\bin\Debug\Interop.WMPLib.dll
+C:\Users\Roberto Levi\source\repos\ProjetoCruzeiro\ProjetoCruzeiro\bin\Debug\AxInterop.WMPLib.dll
+C:\Users\Roberto Levi\source\repos\ProjetoCruzeiro\ProjetoCruzeiro\obj\Debug\M.S. Walvis.csproj.AssemblyReference.cache
+C:\Users\Roberto Levi\source\repos\ProjetoCruzeiro\ProjetoCruzeiro\obj\Debug\Interop.WMPLib.dll
+C:\Users\Roberto Levi\source\repos\ProjetoCruzeiro\ProjetoCruzeiro\obj\Debug\AxInterop.WMPLib.dll
+C:\Users\Roberto Levi\source\repos\ProjetoCruzeiro\ProjetoCruzeiro\obj\Debug\M.S. Walvis.csproj.ResolveComReference.cache
+C:\Users\Roberto Levi\source\repos\ProjetoCruzeiro\ProjetoCruzeiro\obj\Debug\ProjetoCruzeiro.Ato1Level1.resources
+C:\Users\Roberto Levi\source\repos\ProjetoCruzeiro\ProjetoCruzeiro\obj\Debug\ProjetoCruzeiro.Ato1Level3.resources
+C:\Users\Roberto Levi\source\repos\ProjetoCruzeiro\ProjetoCruzeiro\obj\Debug\ProjetoCruzeiro.Ato2Level2.resources
+C:\Users\Roberto Levi\source\repos\ProjetoCruzeiro\ProjetoCruzeiro\obj\Debug\ProjetoCruzeiro.Ato1Level2.resources
+C:\Users\Roberto Levi\source\repos\ProjetoCruzeiro\ProjetoCruzeiro\obj\Debug\ProjetoCruzeiro.Ato2Level3.resources
+C:\Users\Roberto Levi\source\repos\ProjetoCruzeiro\ProjetoCruzeiro\obj\Debug\ProjetoCruzeiro.Ato2Level1.resources
+C:\Users\Roberto Levi\source\repos\ProjetoCruzeiro\ProjetoCruzeiro\obj\Debug\ProjetoCruzeiro.Ato3Level1.resources
+C:\Users\Roberto Levi\source\repos\ProjetoCruzeiro\ProjetoCruzeiro\obj\Debug\ProjetoCruzeiro.Ato3Level2.resources
+C:\Users\Roberto Levi\source\repos\ProjetoCruzeiro\ProjetoCruzeiro\obj\Debug\ProjetoCruzeiro.Ato3Level3.resources
+C:\Users\Roberto Levi\source\repos\ProjetoCruzeiro\ProjetoCruzeiro\obj\Debug\ProjetoCruzeiro.DerrotaControl.resources
+C:\Users\Roberto Levi\source\repos\ProjetoCruzeiro\ProjetoCruzeiro\obj\Debug\ProjetoCruzeiro.JogoForm.resources
+C:\Users\Roberto Levi\source\repos\ProjetoCruzeiro\ProjetoCruzeiro\obj\Debug\ProjetoCruzeiro.LevelSelectControl.resources
+C:\Users\Roberto Levi\source\repos\ProjetoCruzeiro\ProjetoCruzeiro\obj\Debug\ProjetoCruzeiro.LojaControl.resources
+C:\Users\Roberto Levi\source\repos\ProjetoCruzeiro\ProjetoCruzeiro\obj\Debug\ProjetoCruzeiro.Cruzeiro.resources
+C:\Users\Roberto Levi\source\repos\ProjetoCruzeiro\ProjetoCruzeiro\obj\Debug\ProjetoCruzeiro.MenuLateralControl.resources
+C:\Users\Roberto Levi\source\repos\ProjetoCruzeiro\ProjetoCruzeiro\obj\Debug\ProjetoCruzeiro.MenuControl.resources
+C:\Users\Roberto Levi\source\repos\ProjetoCruzeiro\ProjetoCruzeiro\obj\Debug\ProjetoCruzeiro.CutsceneControl.resources
+C:\Users\Roberto Levi\source\repos\ProjetoCruzeiro\ProjetoCruzeiro\obj\Debug\ProjetoCruzeiro.AvisoControl.resources
+C:\Users\Roberto Levi\source\repos\ProjetoCruzeiro\ProjetoCruzeiro\obj\Debug\ProjetoCruzeiro.DificuldadeSelectControl.resources
+C:\Users\Roberto Levi\source\repos\ProjetoCruzeiro\ProjetoCruzeiro\obj\Debug\ProjetoCruzeiro.VitoriaControl.resources
+C:\Users\Roberto Levi\source\repos\ProjetoCruzeiro\ProjetoCruzeiro\obj\Debug\M.S. Walvis.csproj.GenerateResource.cache
+C:\Users\Roberto Levi\source\repos\ProjetoCruzeiro\ProjetoCruzeiro\obj\Debug\M.S. Walvis.csproj.CoreCompileInputs.cache
+C:\Users\Roberto Levi\source\repos\ProjetoCruzeiro\ProjetoCruzeiro\bin\Debug\M.S. Walvis.exe.config
+C:\Users\Roberto Levi\source\repos\ProjetoCruzeiro\ProjetoCruzeiro\bin\Debug\M.S. Walvis.exe
+C:\Users\Roberto Levi\source\repos\ProjetoCruzeiro\ProjetoCruzeiro\bin\Debug\M.S. Walvis.pdb
+C:\Users\Roberto Levi\source\repos\ProjetoCruzeiro\ProjetoCruzeiro\obj\Debug\MSWalvis.Properties.Resources.resources
+C:\Users\Roberto Levi\source\repos\ProjetoCruzeiro\ProjetoCruzeiro\obj\Debug\M.S. Walvis.exe
+C:\Users\Roberto Levi\source\repos\ProjetoCruzeiro\ProjetoCruzeiro\obj\Debug\M.S. Walvis.pdb

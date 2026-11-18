@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
@@ -8,7 +7,13 @@ namespace ProjetoCruzeiro
 {
     public partial class MenuControl : UserControl
     {
+        #region Variáveis Globais
+
         private List<EfeitoBotao> efeitos = new List<EfeitoBotao>();
+
+        #endregion
+
+        #region Construtor
 
         public MenuControl()
         {
@@ -27,7 +32,9 @@ namespace ProjetoCruzeiro
             efeitos.Add(new EfeitoBotao(pbx_sair));
         }
 
-        #region Botões
+        #endregion
+
+        #region Navegação entre Telas
 
         private void btn_iniciar_Click(object sender, EventArgs e)
         {
@@ -42,6 +49,10 @@ namespace ProjetoCruzeiro
 
             cruzeiro.AbrirTela(new LojaControl());
         }
+
+        #endregion
+
+        #region Encerrar Jogo
 
         private void btn_sair_Click(object sender, EventArgs e)
         {
@@ -62,11 +73,19 @@ namespace ProjetoCruzeiro
 
     public class EfeitoBotao
     {
+        #region Variáveis Globais
+
         private PictureBox botao;
         private Timer timer;
+
         private Size tamanhoOriginal;
         private Point posicaoOriginal;
+
         private bool expandir;
+
+        #endregion
+
+        #region Construtor
 
         public EfeitoBotao(PictureBox botao)
         {
@@ -91,6 +110,10 @@ namespace ProjetoCruzeiro
                 timer.Start();
             };
         }
+
+        #endregion
+
+        #region Animação do Botão
 
         private void Animar(object sender, EventArgs e)
         {
@@ -123,5 +146,7 @@ namespace ProjetoCruzeiro
             if (largura == larguraAlvo && altura == alturaAlvo)
                 timer.Stop();
         }
+
+        #endregion
     }
 }

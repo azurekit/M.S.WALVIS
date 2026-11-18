@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
@@ -10,6 +9,8 @@ namespace ProjetoCruzeiro
 {
     public partial class LevelSelectControl : UserControl
     {
+        #region Variáveis Globais
+
         public int DificuldadeSelecionada;
 
         private Timer timerPontuacao;
@@ -21,6 +22,10 @@ namespace ProjetoCruzeiro
         private const int DURACAO_ANIMACAO = 400;
 
         private List<EfeitoBotao> efeitos = new List<EfeitoBotao>();
+
+        #endregion
+
+        #region Construtor
 
         public LevelSelectControl(int dificuldadeSelecionada)
         {
@@ -36,7 +41,9 @@ namespace ProjetoCruzeiro
             EsconderInfoLevels();
         }
 
-        #region Configuração
+        #endregion
+
+        #region Configuração Inicial
 
         private void ConfigurarLabelPontuacao()
         {
@@ -73,6 +80,10 @@ namespace ProjetoCruzeiro
             timerPontuacao.Tick += TimerPontuacao_Tick;
         }
 
+        #endregion
+
+        #region Carregamento de Imagens
+
         private Image CarregarImagem(string nome)
         {
             string caminho = Path.Combine(
@@ -90,6 +101,10 @@ namespace ProjetoCruzeiro
                 return new Bitmap(imagem);
             }
         }
+
+        #endregion
+
+        #region Configuração dos Atos e Backgrounds
 
         private void ConfigurarAto()
         {
@@ -144,7 +159,7 @@ namespace ProjetoCruzeiro
 
         #endregion
 
-        #region Desbloqueio dos níveis
+        #region Desbloqueio dos Níveis
 
         private bool NivelDesbloqueado(int identificador)
         {
@@ -185,33 +200,33 @@ namespace ProjetoCruzeiro
             PictureBox botao,
             int identificador,
             bool desbloqueado)
-                {
-                    string periodo;
+        {
+            string periodo;
 
-                    if (identificador % 3 == 1)
-                        periodo = "manha";
-                    else if (identificador % 3 == 2)
-                        periodo = "tarde";
-                    else
-                        periodo = "noite";
+            if (identificador % 3 == 1)
+                periodo = "manha";
+            else if (identificador % 3 == 2)
+                periodo = "tarde";
+            else
+                periodo = "noite";
 
-                    string nomeImagem = desbloqueado
-                        ? $"botao{periodo}.png"
-                        : $"botao{periodo}block.png";
+            string nomeImagem = desbloqueado
+                ? $"botao{periodo}.png"
+                : $"botao{periodo}block.png";
 
-                    botao.BackgroundImage = CarregarImagem(nomeImagem);
-                    botao.BackgroundImageLayout = ImageLayout.Stretch;
+            botao.BackgroundImage = CarregarImagem(nomeImagem);
+            botao.BackgroundImageLayout = ImageLayout.Stretch;
 
-                    botao.Enabled = desbloqueado;
+            botao.Enabled = desbloqueado;
 
-                    botao.Cursor = desbloqueado
-                        ? Cursors.Hand
-                        : Cursors.Default;
-                }
+            botao.Cursor = desbloqueado
+                ? Cursors.Hand
+                : Cursors.Default;
+        }
 
         #endregion
 
-        #region Informações dos níveis
+        #region Informações dos Níveis
 
         private void ExibirInfoLevel(int numeroLevel)
         {
@@ -257,7 +272,7 @@ namespace ProjetoCruzeiro
 
         #endregion
 
-        #region Animação da pontuação
+        #region Animação da Pontuação
 
         private void IniciarAnimacaoPontuacao(int pontuacao)
         {
@@ -323,7 +338,7 @@ namespace ProjetoCruzeiro
 
         #endregion
 
-        #region Mouse dos níveis
+        #region Eventos do Mouse dos Níveis
 
         private void Level1_MouseEnter(object sender, EventArgs e)
         {
@@ -356,17 +371,7 @@ namespace ProjetoCruzeiro
 
         #endregion
 
-        #region Botão de voltar
-
-        private void btn_menu_Click(object sender, EventArgs e)
-        {
-            Cruzeiro cruzeiro = (Cruzeiro)FindForm();
-            cruzeiro.AbrirTela(new DificuldadeSelectControl());
-        }
-
-        #endregion
-
-        #region Selecionar nível
+        #region Navegação e Seleção de Níveis
 
         private void AbrirNivel(int numeroLevel)
         {
@@ -397,9 +402,15 @@ namespace ProjetoCruzeiro
             AbrirNivel(3);
         }
 
+        private void btn_menu_Click(object sender, EventArgs e)
+        {
+            Cruzeiro cruzeiro = (Cruzeiro)FindForm();
+            cruzeiro.AbrirTela(new DificuldadeSelectControl());
+        }
+
         #endregion
 
-        #region Eventos auxiliares
+        #region Controle de Visibilidade
 
         protected override void OnVisibleChanged(EventArgs e)
         {
@@ -411,7 +422,7 @@ namespace ProjetoCruzeiro
 
         #endregion
 
-        #region lixeira
+        #region Lixeira
 
         private void lbl_caso_Click(object sender, EventArgs e)
         {

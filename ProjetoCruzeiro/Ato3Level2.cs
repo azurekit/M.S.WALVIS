@@ -11,6 +11,8 @@ namespace ProjetoCruzeiro
 {
     public partial class Ato3Level2 : UserControl
     {
+        #region Classe Historia
+
         private class Historia
         {
             public string Nome;
@@ -22,6 +24,10 @@ namespace ProjetoCruzeiro
                 Falas = falas;
             }
         }
+
+        #endregion
+
+        #region Variáveis Globais
 
         private readonly List<Historia> historias = new List<Historia>();
         private readonly List<int> historiasDisponiveis = new List<int>();
@@ -40,6 +46,10 @@ namespace ProjetoCruzeiro
 
         private const int IDENTIFICADOR_NIVEL = 8;
 
+        #endregion
+
+        #region Construtor
+
         public Ato3Level2()
         {
             InitializeComponent();
@@ -53,45 +63,9 @@ namespace ProjetoCruzeiro
             cronometro.Start();
         }
 
-        private void AtivarDoubleBuffering(Control controle)
-        {
-            if (controle == null)
-                return;
+        #endregion
 
-            PropertyInfo propriedade = typeof(Control).GetProperty(
-                "DoubleBuffered",
-                BindingFlags.Instance | BindingFlags.NonPublic
-            );
-
-            if (propriedade != null)
-                propriedade.SetValue(controle, true, null);
-
-            foreach (Control filho in controle.Controls)
-                AtivarDoubleBuffering(filho);
-        }
-
-        private string CaminhoImagem(string arquivo)
-        {
-            return Path.Combine(
-                Application.StartupPath,
-                "imagens",
-                "Level8",
-                arquivo
-            );
-        }
-
-        private Image CarregarImagem(string arquivo)
-        {
-            string caminho = CaminhoImagem(arquivo);
-
-            if (!File.Exists(caminho))
-                return null;
-
-            using (Image imagem = Image.FromFile(caminho))
-            {
-                return new Bitmap(imagem);
-            }
-        }
+        #region Configuração da Interface
 
         private void ConfigurarInterface()
         {
@@ -129,6 +103,58 @@ namespace ProjetoCruzeiro
             timerFala.Interval = 3000;
             timerFala.Tick += TimerFala_Tick;
         }
+
+        #endregion
+
+        #region Double Buffering
+
+        private void AtivarDoubleBuffering(Control controle)
+        {
+            if (controle == null)
+                return;
+
+            PropertyInfo propriedade = typeof(Control).GetProperty(
+                "DoubleBuffered",
+                BindingFlags.Instance | BindingFlags.NonPublic
+            );
+
+            if (propriedade != null)
+                propriedade.SetValue(controle, true, null);
+
+            foreach (Control filho in controle.Controls)
+                AtivarDoubleBuffering(filho);
+        }
+
+        #endregion
+
+        #region Carregamento de Imagens
+
+        private string CaminhoImagem(string arquivo)
+        {
+            return Path.Combine(
+                Application.StartupPath,
+                "imagens",
+                "Level8",
+                arquivo
+            );
+        }
+
+        private Image CarregarImagem(string arquivo)
+        {
+            string caminho = CaminhoImagem(arquivo);
+
+            if (!File.Exists(caminho))
+                return null;
+
+            using (Image imagem = Image.FromFile(caminho))
+            {
+                return new Bitmap(imagem);
+            }
+        }
+
+        #endregion
+
+        #region Carregamento das Histórias
 
         private void CarregarHistorias()
         {
@@ -193,23 +219,23 @@ namespace ProjetoCruzeiro
                     "*Os críticos de arte aplaudem de pé enquanto os bombeiros tentam apagar o incêndio no prédio ao lado com sirenes altas*"
                 }),
 
-                new Historia("'Hacker de Cinema'", new List<string>
+                new Historia("Hacker de Cinema", new List<string>
                 {
-                    "'Eles detectaram o nosso IP e acionaram o firewall! Consegue quebrar a criptografia quântica do servidor central do Pentágono?'",
-                    "*digita freneticamente no teclado mecânico enquanto telas com códigos em verde neon piscam rapidamente* 'Consegui, invadi o sistema!'",
-                    "'Incrível! Como você conseguiu burlar a barreira de segurança militar mais complexa e impenetrável do planeta em cinco segundos?'",
-                    "'A senha padrão do administrador ainda estava definida como 'admin123'.'",
-                    "*As telas de computador apagam e a dupla ressurge trancada no Interior de um Servidor de Dados Blindado*",
-                    "'Alerta vermelho! O sistema operacional físico iniciou o protocolo de purga térmica e a sala está virando um forno!'",
-                    "'Rápido! Conecte seu dispositivo USB diretamente no barramento central da placa-mãe para injetar o vírus de resfriamento!'",
-                    "'As portas de conexão física são todas de um formato proprietário que não aceita o meu conector universal padrão!'",
-                    "*O hacker puxa um clipe de papel do bolso e começa a violar os circuitos integrados gerando faíscas elétricas*",
-                    "'Você vai fritar os nossos cérebros com essa descarga estática ou vai conseguir burlar o hardware usando um clipe?'",
-                    "'A engenharia reversa de cinema permite que qualquer objeto metálico reescreva o código de firmware se tocado no lugar certo!'",
-                    "*Os coolers gigantes param de girar e a parede divisória se abre para uma Central de Comando Espacial da NASA*",
-                    "'Conseguimos o acesso total! Veja, o mapa orbital mostra que o satélite militar já está sob o nosso controle absoluto!'",
-                    "'Rápido, digite o comando para desorbitar o satélite antes que o agente do FBI arrombe a porta de aço da central!'",
-                    "*Hacker aperta a tecla Enter com força dramática, um bipe longo ecoa e a animação de 'Acesso Concedido' surge em tela cheia*"
+                    "Chefe: 'Eles detectaram o nosso IP e acionaram o firewall! Consegue quebrar a criptografia quântica do servidor central do Pentágono?'",
+                    "*Hacker digita freneticamente no teclado mecânico enquanto telas com códigos em verde neon piscam rapidamente.* Hacker: 'Consegui, invadi o sistema!'",
+                    "Chefe: 'Incrível! Como você conseguiu burlar a barreira de segurança militar mais complexa e impenetrável do planeta em cinco segundos?'",
+                    "Hacker: 'A senha padrão do administrador ainda estava definida como 'admin123'.'",
+                    "*As telas de computador apagam e a dupla ressurge trancada no Interior de um Servidor de Dados Blindado.*",
+                    "Chefe: 'Alerta vermelho! O sistema operacional físico iniciou o protocolo de purga térmica e a sala está virando um forno!'",
+                    "Chefe: 'Rápido! Conecte seu dispositivo USB diretamente no barramento central da placa-mãe para injetar o vírus de resfriamento!'",
+                    "Hacker: 'As portas de conexão física são todas de um formato proprietário que não aceita o meu conector universal padrão!'",
+                    "*O hacker puxa um clipe de papel do bolso e começa a violar os circuitos integrados gerando faíscas elétricas.*",
+                    "Chefe: 'Você vai fritar os nossos cérebros com essa descarga estática ou vai conseguir burlar o hardware usando um clipe?'",
+                    "Hacker: 'A engenharia reversa de cinema permite que qualquer objeto metálico reescreva o código de firmware se tocado no lugar certo!'",
+                    "*Os coolers gigantes param de girar e a parede divisória se abre para uma Central de Comando Espacial da NASA.*",
+                    "Hacker: 'Conseguimos o acesso total! Veja, o mapa orbital mostra que o satélite militar já está sob o nosso controle absoluto!'",
+                    "Chefe: 'Rápido, digite o comando para desorbitar o satélite antes que o agente do FBI arrombe a porta de aço da central!'",
+                    "*Hacker aperta a tecla Enter com força dramática, um bipe longo ecoa e a animação de 'Acesso Concedido' surge em tela cheia.*"
                 }),
 
                 new Historia("'O Monólogo'", new List<string>
@@ -288,7 +314,6 @@ namespace ProjetoCruzeiro
                     "*O carro capota três vezes no ar, explode em câmera lenta e o protagonista sai dos escombros apenas limpando a poeira do paletó*"
                 }),
 
-
                 new Historia("'O Paradoxo da Conveniência'", new List<string>
                 {
                     "Professor: 'Rápido! Ative os circuits do capacitor cronológico e viaje para 1930 para impedir que o ditador construa a bomba!'",
@@ -309,6 +334,10 @@ namespace ProjetoCruzeiro
                 })
             });
         }
+
+        #endregion
+
+        #region Sorteio de Histórias
 
         private void SortearHistoria()
         {
@@ -344,6 +373,10 @@ namespace ProjetoCruzeiro
 
             CriarCartoes(falasEmbaralhadas);
         }
+
+        #endregion
+
+        #region Criação dos Cartões
 
         private void CriarCartoes(List<string> falas)
         {
@@ -404,34 +437,9 @@ namespace ProjetoCruzeiro
             pbx_confirmar.Enabled = false;
         }
 
-        private void ReiniciarResposta(object sender, EventArgs e)
-        {
-            if (vitoria)
-                return;
+        #endregion
 
-            flpFalas.Controls.Clear();
-            flpResposta.Controls.Clear();
-
-            List<Panel> falasEmbaralhadas = cartoes
-                .OrderBy(x => random.Next())
-                .ToList();
-
-            foreach (Panel cartao in falasEmbaralhadas)
-            {
-                AplicarHover(cartao, false);
-                cartao.Cursor = Cursors.Hand;
-
-                foreach (Control controle in cartao.Controls)
-                    controle.Cursor = Cursors.Hand;
-
-                flpFalas.Controls.Add(cartao);
-            }
-
-            pbx_confirmar.Enabled = false;
-            pbx_fala.BackgroundImage = null;
-
-            timerFala.Stop();
-        }
+        #region Arrastar e Soltar Cartões
 
         private void IniciarArraste(Panel cartao, MouseEventArgs e)
         {
@@ -439,30 +447,6 @@ namespace ProjetoCruzeiro
                 return;
 
             cartao.DoDragDrop(cartao, DragDropEffects.Move);
-        }
-
-        private void AplicarHover(Panel cartao, bool ativo)
-        {
-            if (vitoria)
-                return;
-
-            if (ativo)
-            {
-                cartao.BackColor = Color.FromArgb(60, 65, 65, 73);
-                cartao.Cursor = Cursors.Hand;
-            }
-            else
-            {
-                cartao.BackColor = Color.FromArgb(60, 38, 38, 43);
-            }
-        }
-
-        private void VerificarSaidaHover(Panel cartao)
-        {
-            Point posicao = cartao.PointToClient(Cursor.Position);
-
-            if (!cartao.ClientRectangle.Contains(posicao))
-                AplicarHover(cartao, false);
         }
 
         private void DragEnterFalas(object sender, DragEventArgs e)
@@ -517,6 +501,71 @@ namespace ProjetoCruzeiro
             pbx_confirmar.Enabled =
                 flpResposta.Controls.Count == historiaAtual.Falas.Count;
         }
+
+        #endregion
+
+        #region Efeitos Visuais dos Cartões
+
+        private void AplicarHover(Panel cartao, bool ativo)
+        {
+            if (vitoria)
+                return;
+
+            if (ativo)
+            {
+                cartao.BackColor = Color.FromArgb(60, 65, 65, 73);
+                cartao.Cursor = Cursors.Hand;
+            }
+            else
+            {
+                cartao.BackColor = Color.FromArgb(60, 38, 38, 43);
+            }
+        }
+
+        private void VerificarSaidaHover(Panel cartao)
+        {
+            Point posicao = cartao.PointToClient(Cursor.Position);
+
+            if (!cartao.ClientRectangle.Contains(posicao))
+                AplicarHover(cartao, false);
+        }
+
+        #endregion
+
+        #region Reiniciar Resposta
+
+        private void ReiniciarResposta(object sender, EventArgs e)
+        {
+            if (vitoria)
+                return;
+
+            flpFalas.Controls.Clear();
+            flpResposta.Controls.Clear();
+
+            List<Panel> falasEmbaralhadas = cartoes
+                .OrderBy(x => random.Next())
+                .ToList();
+
+            foreach (Panel cartao in falasEmbaralhadas)
+            {
+                AplicarHover(cartao, false);
+                cartao.Cursor = Cursors.Hand;
+
+                foreach (Control controle in cartao.Controls)
+                    controle.Cursor = Cursors.Hand;
+
+                flpFalas.Controls.Add(cartao);
+            }
+
+            pbx_confirmar.Enabled = false;
+            pbx_fala.BackgroundImage = null;
+
+            timerFala.Stop();
+        }
+
+        #endregion
+
+        #region Confirmação da Resposta
 
         private void ConfirmarResposta(object sender, EventArgs e)
         {
@@ -578,6 +627,10 @@ namespace ProjetoCruzeiro
             timerFala.Start();
         }
 
+        #endregion
+
+        #region Controle das Falas
+
         private void TimerFala_Tick(object sender, EventArgs e)
         {
             timerFala.Stop();
@@ -608,6 +661,10 @@ namespace ProjetoCruzeiro
             // Nenhum desbloqueio é necessário, pois nada foi bloqueado.
         }
 
+        #endregion
+
+        #region Sistema de Pontuação
+
         private int CalcularPontuacao()
         {
             int bonusConclusao = 500;
@@ -628,6 +685,10 @@ namespace ProjetoCruzeiro
             return bonusConclusao + bonusTentativa + bonusTempo;
         }
 
+        #endregion
+
+        #region Bloqueio Durante a Vitória
+
         private void BloquearControlesDuranteVitoria()
         {
             pbx_reiniciar.Enabled = false;
@@ -636,6 +697,10 @@ namespace ProjetoCruzeiro
             pbx_reiniciar.Cursor = Cursors.No;
             pbx_confirmar.Cursor = Cursors.No;
         }
+
+        #endregion
+
+        #region Redirecionamento de Tela
 
         private JogoForm EncontrarJogoForm(Control controle)
         {
@@ -658,6 +723,10 @@ namespace ProjetoCruzeiro
             return null;
         }
 
+        #endregion
+
+        #region Lixeira
+
         private MenuLateralControl EncontrarMenuLateral(Control controle)
         {
             if (controle == null)
@@ -678,5 +747,7 @@ namespace ProjetoCruzeiro
 
             return null;
         }
+
+        #endregion
     }
 }

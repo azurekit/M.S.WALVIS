@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -51,6 +50,8 @@ namespace ProjetoCruzeiro
 
         #endregion
 
+        #region Construtor
+
         public Ato1Level2()
         {
             InitializeComponent();
@@ -96,6 +97,8 @@ namespace ProjetoCruzeiro
             IniciarJogo();
         }
 
+        #endregion
+
         #region Inicialização do menu lateral
 
         protected override void OnLoad(EventArgs e)
@@ -125,176 +128,25 @@ namespace ProjetoCruzeiro
             }
         }
 
-        #endregion
-
-        #region Finalização
-
-        private void Ato1Level2_Disposed(object sender, EventArgs e)
+        private MenuLateralControl EncontrarMenuLateral(Control controle)
         {
-            timerVitoria.Stop();
-            timerVitoria.Dispose();
+            if (controle is MenuLateralControl)
+                return controle as MenuLateralControl;
 
-            timerAviso.Stop();
-            timerAviso.Dispose();
-
-            cronometro.Stop();
-
-            if (BackgroundImage != null)
+            foreach (Control filho in controle.Controls)
             {
-                BackgroundImage.Dispose();
-                BackgroundImage = null;
+                MenuLateralControl menu = EncontrarMenuLateral(filho);
+
+                if (menu != null)
+                    return menu;
             }
+
+            return null;
         }
 
         #endregion
 
-        #region Carregar imagens
-
-        private Image CarregarImagem(string caminho)
-        {
-            using (Image imagem = Image.FromFile(caminho))
-            {
-                return new Bitmap(imagem);
-            }
-        }
-
-        private void CarregarFundo(string arquivo)
-        {
-            string caminho = Path.Combine(
-                Application.StartupPath,
-                "imagens",
-                "Level2",
-                arquivo
-            );
-
-            if (!File.Exists(caminho))
-                return;
-
-            Image imagemAnterior = BackgroundImage;
-
-            BackgroundImage = CarregarImagem(caminho);
-            BackgroundImageLayout = ImageLayout.Stretch;
-
-            if (imagemAnterior != null)
-                imagemAnterior.Dispose();
-
-            Invalidate();
-        }
-
-        private void DefinirImagem(Control controle, string arquivo)
-        {
-            string caminho = Path.Combine(
-                Application.StartupPath,
-                "imagens",
-                "Level2",
-                arquivo
-            );
-
-            if (!File.Exists(caminho))
-                return;
-
-            Image imagemAnterior = controle.BackgroundImage;
-
-            controle.BackgroundImage = CarregarImagem(caminho);
-            controle.BackgroundImageLayout = ImageLayout.Stretch;
-
-            if (imagemAnterior != null)
-                imagemAnterior.Dispose();
-        }
-
-        #endregion
-
-        #region Vincular dados aos copos
-
-        private void VincularDadosAosCopos()
-        {
-            VincularDadoAoCopo(pbx_dadoa, pbx_copoa);
-            VincularDadoAoCopo(pbx_dadob, pbx_copob);
-            VincularDadoAoCopo(pbx_dadoc, pbx_copoc);
-        }
-
-        private void VincularDadoAoCopo(PictureBox dado, PictureBox copo)
-        {
-            Point posicaoNaTela = dado.Parent.PointToScreen(dado.Location);
-
-            Point posicaoNoCopo = copo.PointToClient(posicaoNaTela);
-
-            dado.Parent = copo;
-
-            dado.Location = posicaoNoCopo;
-
-            dado.BackColor = Color.Transparent;
-
-            dado.Visible = false;
-
-            dado.BringToFront();
-        }
-
-        #endregion
-
-        #region Configurar imagens iniciais
-
-        private void ConfigurarImagensIniciais()
-        {
-            DefinirImagem(pbx_copoa, "copoa.png");
-            DefinirImagem(pbx_copob, "copob.png");
-            DefinirImagem(pbx_copoc, "copoc.png");
-
-            DefinirImagem(pbx_dadoa, "dado" + dados[0] + ".png");
-            DefinirImagem(pbx_dadob, "dado" + dados[1] + ".png");
-            DefinirImagem(pbx_dadoc, "dado" + dados[2] + ".png");
-
-            pbx_dadoa.Visible = false;
-            pbx_dadob.Visible = false;
-            pbx_dadoc.Visible = false;
-        }
-
-        #endregion
-
-        #region Avisos
-
-        private void MostrarAviso(string mensagem)
-        {
-            timerAviso.Stop();
-
-            lbl_dica1.Visible = false;
-            lbl_dica2.Visible = false;
-            lbl_dica3.Visible = false;
-            lbl_dica4.Visible = false;
-
-            lbl_aviso.Text = mensagem;
-            lbl_aviso.Visible = true;
-
-            timerAviso.Start();
-        }
-
-        private void TimerAviso_Tick(object sender, EventArgs e)
-        {
-            timerAviso.Stop();
-
-            lbl_aviso.Visible = false;
-
-            lbl_dica1.Visible = true;
-            lbl_dica2.Visible = true;
-            lbl_dica3.Visible = true;
-            lbl_dica4.Visible = true;
-        }
-
-        private void OcultarAviso()
-        {
-            timerAviso.Stop();
-
-            lbl_aviso.Visible = false;
-
-            lbl_dica1.Visible = true;
-            lbl_dica2.Visible = true;
-            lbl_dica3.Visible = true;
-            lbl_dica4.Visible = true;
-        }
-
-        #endregion
-
-        #region Iniciar jogo
+        #region Inicialização do jogo
 
         private void IniciarJogo()
         {
@@ -409,9 +261,112 @@ namespace ProjetoCruzeiro
 
         #endregion
 
-        #region Dicas
+        #region Carregamento de imagens
 
-        class Dica
+        private Image CarregarImagem(string caminho)
+        {
+            using (Image imagem = Image.FromFile(caminho))
+            {
+                return new Bitmap(imagem);
+            }
+        }
+
+        private void CarregarFundo(string arquivo)
+        {
+            string caminho = Path.Combine(
+                Application.StartupPath,
+                "imagens",
+                "Level2",
+                arquivo
+            );
+
+            if (!File.Exists(caminho))
+                return;
+
+            Image imagemAnterior = BackgroundImage;
+
+            BackgroundImage = CarregarImagem(caminho);
+            BackgroundImageLayout = ImageLayout.Stretch;
+
+            if (imagemAnterior != null)
+                imagemAnterior.Dispose();
+
+            Invalidate();
+        }
+
+        private void DefinirImagem(Control controle, string arquivo)
+        {
+            string caminho = Path.Combine(
+                Application.StartupPath,
+                "imagens",
+                "Level2",
+                arquivo
+            );
+
+            if (!File.Exists(caminho))
+                return;
+
+            Image imagemAnterior = controle.BackgroundImage;
+
+            controle.BackgroundImage = CarregarImagem(caminho);
+            controle.BackgroundImageLayout = ImageLayout.Stretch;
+
+            if (imagemAnterior != null)
+                imagemAnterior.Dispose();
+        }
+
+        #endregion
+
+        #region Vinculação dos dados aos copos
+
+        private void VincularDadosAosCopos()
+        {
+            VincularDadoAoCopo(pbx_dadoa, pbx_copoa);
+            VincularDadoAoCopo(pbx_dadob, pbx_copob);
+            VincularDadoAoCopo(pbx_dadoc, pbx_copoc);
+        }
+
+        private void VincularDadoAoCopo(PictureBox dado, PictureBox copo)
+        {
+            Point posicaoNaTela = dado.Parent.PointToScreen(dado.Location);
+
+            Point posicaoNoCopo = copo.PointToClient(posicaoNaTela);
+
+            dado.Parent = copo;
+
+            dado.Location = posicaoNoCopo;
+
+            dado.BackColor = Color.Transparent;
+
+            dado.Visible = false;
+
+            dado.BringToFront();
+        }
+
+        #endregion
+
+        #region Configuração das imagens iniciais
+
+        private void ConfigurarImagensIniciais()
+        {
+            DefinirImagem(pbx_copoa, "copoa.png");
+            DefinirImagem(pbx_copob, "copob.png");
+            DefinirImagem(pbx_copoc, "copoc.png");
+
+            DefinirImagem(pbx_dadoa, "dado" + dados[0] + ".png");
+            DefinirImagem(pbx_dadob, "dado" + dados[1] + ".png");
+            DefinirImagem(pbx_dadoc, "dado" + dados[2] + ".png");
+
+            pbx_dadoa.Visible = false;
+            pbx_dadob.Visible = false;
+            pbx_dadoc.Visible = false;
+        }
+
+        #endregion
+
+        #region Estrutura e geração das dicas
+
+        private class Dica
         {
             public string Texto { get; set; }
 
@@ -430,25 +385,35 @@ namespace ProjetoCruzeiro
 
             dicas.Add(new Dica("O dado A é par.", (x, y, z) => x % 2 == 0));
             dicas.Add(new Dica("O dado A é ímpar.", (x, y, z) => x % 2 == 1));
+
             dicas.Add(new Dica("O dado B é par.", (x, y, z) => y % 2 == 0));
             dicas.Add(new Dica("O dado B é ímpar.", (x, y, z) => y % 2 == 1));
+
             dicas.Add(new Dica("O dado C é par.", (x, y, z) => z % 2 == 0));
             dicas.Add(new Dica("O dado C é ímpar.", (x, y, z) => z % 2 == 1));
+
             dicas.Add(new Dica("O dado A é maior que B.", (x, y, z) => x > y));
             dicas.Add(new Dica("O dado A é menor que C.", (x, y, z) => x < z));
+
             dicas.Add(new Dica("O dado B é menor que C.", (x, y, z) => y < z));
             dicas.Add(new Dica("O dado B é maior que C.", (x, y, z) => y > z));
             dicas.Add(new Dica("O dado B é maior que A.", (x, y, z) => y > x));
+
             dicas.Add(new Dica("A soma de A e C é " + (a + c) + ".", (x, y, z) => x + z == a + c));
             dicas.Add(new Dica("A soma de A e B é " + (a + b) + ".", (x, y, z) => x + y == a + b));
             dicas.Add(new Dica("A soma de B e C é " + (b + c) + ".", (x, y, z) => y + z == b + c));
             dicas.Add(new Dica("A soma dos dados é " + (a + b + c) + ".", (x, y, z) => x + y + z == a + b + c));
+
             dicas.Add(new Dica("A diferença de A e C é " + Math.Abs(a - c) + ".", (x, y, z) => Math.Abs(x - z) == Math.Abs(a - c)));
             dicas.Add(new Dica("A diferença de A e B é " + Math.Abs(a - b) + ".", (x, y, z) => Math.Abs(x - y) == Math.Abs(a - b)));
             dicas.Add(new Dica("A diferença de B e C é " + Math.Abs(b - c) + ".", (x, y, z) => Math.Abs(y - z) == Math.Abs(b - c)));
 
             return dicas;
         }
+
+        #endregion
+
+        #region Validação e busca de soluções
 
         private bool Combina(int a, int b, int c, List<Dica> dicas)
         {
@@ -487,7 +452,7 @@ namespace ProjetoCruzeiro
 
         #endregion
 
-        #region Mostrar dicas
+        #region Exibição das dicas
 
         private void MostrarDicas()
         {
@@ -499,7 +464,50 @@ namespace ProjetoCruzeiro
 
         #endregion
 
-        #region Pontuação
+        #region Avisos
+
+        private void MostrarAviso(string mensagem)
+        {
+            timerAviso.Stop();
+
+            lbl_dica1.Visible = false;
+            lbl_dica2.Visible = false;
+            lbl_dica3.Visible = false;
+            lbl_dica4.Visible = false;
+
+            lbl_aviso.Text = mensagem;
+            lbl_aviso.Visible = true;
+
+            timerAviso.Start();
+        }
+
+        private void TimerAviso_Tick(object sender, EventArgs e)
+        {
+            timerAviso.Stop();
+
+            lbl_aviso.Visible = false;
+
+            lbl_dica1.Visible = true;
+            lbl_dica2.Visible = true;
+            lbl_dica3.Visible = true;
+            lbl_dica4.Visible = true;
+        }
+
+        private void OcultarAviso()
+        {
+            timerAviso.Stop();
+
+            lbl_aviso.Visible = false;
+
+            lbl_dica1.Visible = true;
+            lbl_dica2.Visible = true;
+            lbl_dica3.Visible = true;
+            lbl_dica4.Visible = true;
+        }
+
+        #endregion
+
+        #region Cálculo da pontuação
 
         private void CalcularPontuacao()
         {
@@ -539,7 +547,7 @@ namespace ProjetoCruzeiro
 
         #endregion
 
-        #region Bloquear interações
+        #region Bloqueio de interações
 
         private void BloquearControles(Control controle)
         {
@@ -561,22 +569,6 @@ namespace ProjetoCruzeiro
             }
         }
 
-        private MenuLateralControl EncontrarMenuLateral(Control controle)
-        {
-            if (controle is MenuLateralControl)
-                return controle as MenuLateralControl;
-
-            foreach (Control filho in controle.Controls)
-            {
-                MenuLateralControl menu = EncontrarMenuLateral(filho);
-
-                if (menu != null)
-                    return menu;
-            }
-
-            return null;
-        }
-
         private void BloquearInteracoes()
         {
             BloquearControles(this);
@@ -587,13 +579,11 @@ namespace ProjetoCruzeiro
             {
                 controle = controle.Parent;
             }
-
-           
         }
 
         #endregion
 
-        #region Vitória
+        #region Vitória e transição
 
         private void VerificarVitoria()
         {
@@ -698,7 +688,7 @@ namespace ProjetoCruzeiro
 
         #endregion
 
-        #region Botão de confirmar
+        #region Eventos dos controles
 
         private void btn_confirmar_Click(object sender, EventArgs e)
         {
@@ -731,16 +721,35 @@ namespace ProjetoCruzeiro
 
         #endregion
 
+        #region Finalização
+
+        private void Ato1Level2_Disposed(object sender, EventArgs e)
+        {
+            timerVitoria.Stop();
+            timerVitoria.Dispose();
+
+            timerAviso.Stop();
+            timerAviso.Dispose();
+
+            cronometro.Stop();
+
+            if (BackgroundImage != null)
+            {
+                BackgroundImage.Dispose();
+                BackgroundImage = null;
+            }
+        }
+
+        #endregion
+
         #region Lixeira
 
         private void lbl_dica3_Click(object sender, EventArgs e)
         {
-
         }
 
         private void pbx_copoa_Click(object sender, EventArgs e)
         {
-
         }
 
         #endregion

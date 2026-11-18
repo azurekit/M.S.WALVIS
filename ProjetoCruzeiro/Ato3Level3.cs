@@ -929,7 +929,7 @@ namespace ProjetoCruzeiro
                 if (indiceConves == -1)
                 {
                     lbl_dialogo.Text =
-                        "O tempo acabou, Coala. Você é muito lerdo.";
+                        "O tempo acabou, Koala. Você é muito lerdo.";
                 }
                 else
                 {
@@ -1014,7 +1014,7 @@ namespace ProjetoCruzeiro
                     "VOCÊ VENCEU O DUELO!";
 
                 lbl_dialogo.Text =
-                    "Não... Eu sou melhor que você!";
+                    "Hmf, vamos direto ao ponto.";
 
                 MostrarAcertoConves();
             }
@@ -1026,7 +1026,7 @@ namespace ProjetoCruzeiro
                     "VOCÊ PERDEU O DUELO!";
 
                 lbl_dialogo.Text =
-                    "Fim de jogo, Coala. Eu sou o superior!";
+                    "Fim de jogo, Koala!";
 
                 MostrarErroConves();
             }

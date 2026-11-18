@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -22,7 +21,7 @@ namespace ProjetoCruzeiro
 
         #endregion
 
-        #region Dados
+        #region Modelos de Dados
 
         public class DadosSave
         {
@@ -94,7 +93,7 @@ namespace ProjetoCruzeiro
 
         #endregion
 
-        #region Variáveis
+        #region Variáveis e Propriedades
 
         public static DadosSave Dados { get; private set; }
 
@@ -138,6 +137,10 @@ namespace ProjetoCruzeiro
             if (Dados == null)
                 Inicializar();
         }
+
+        #endregion
+
+        #region Preparação e Validação dos Dados
 
         private static void PrepararDados()
         {
@@ -188,7 +191,7 @@ namespace ProjetoCruzeiro
 
         #endregion
 
-        #region Salvamento
+        #region Salvamento e Persistência
 
         public static void Salvar()
         {
@@ -210,7 +213,7 @@ namespace ProjetoCruzeiro
 
         #endregion
 
-        #region Histórias Ato 3 - Nível 2
+        #region Histórias - Ato 3, Nível 2
 
         public static List<string> ObterHistoriasAto3Level2Concluidas()
         {
@@ -266,7 +269,7 @@ namespace ProjetoCruzeiro
 
         #endregion
 
-        #region Pontuação e progresso
+        #region Pontuação e Progresso dos Níveis
 
         public static void AtualizarLevel(
             int identificador,
@@ -332,7 +335,7 @@ namespace ProjetoCruzeiro
 
         #endregion
 
-        #region Moedas
+        #region Sistema de Moedas
 
         public static void DefinirMoedas(int quantidade)
         {
@@ -350,7 +353,7 @@ namespace ProjetoCruzeiro
 
         #endregion
 
-        #region Configurações
+        #region Configurações de Áudio
 
         public static void DefinirVolume(int volume)
         {
@@ -384,7 +387,7 @@ namespace ProjetoCruzeiro
 
         #endregion
 
-        #region Cosméticos
+        #region Sistema de Cosméticos
 
         public static void AdicionarCosmetico(string identificador)
         {

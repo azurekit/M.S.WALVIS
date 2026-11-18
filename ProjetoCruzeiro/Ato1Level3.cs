@@ -32,7 +32,7 @@ namespace ProjetoCruzeiro
 
         #endregion
 
-        #region Variáveis
+        #region Variáveis globais
 
         private readonly List<Peca> pecas = new List<Peca>();
 
@@ -197,7 +197,6 @@ namespace ProjetoCruzeiro
             eventoFrameAlterado = EventoFrameAlterado;
 
             ConfigurarInterface();
-
             ConfigurarTimerVitoria();
 
             Disposed += Ato1Level3_Disposed;
@@ -210,7 +209,7 @@ namespace ProjetoCruzeiro
 
         #endregion
 
-        #region Interface e camadas
+        #region Configuração da interface
 
         private void ConfigurarInterface()
         {
@@ -266,7 +265,68 @@ namespace ProjetoCruzeiro
 
         #endregion
 
-        #region Desenho do GIF no fundo
+        #region Carregamento de imagens
+
+        private bool CarregarImagens()
+        {
+            string pasta = Path.Combine(
+                Application.StartupPath,
+                "imagens",
+                "Level3"
+            );
+
+            try
+            {
+                imagemReta = new Bitmap(
+                    Path.Combine(pasta, "canoreto.png")
+                );
+
+                imagemL1 = new Bitmap(
+                    Path.Combine(pasta, "canol1.png")
+                );
+
+                imagemL2 = new Bitmap(
+                    Path.Combine(pasta, "canol2.png")
+                );
+
+                imagemT = new Bitmap(
+                    Path.Combine(pasta, "canot.png")
+                );
+
+                imagemTotal = new Bitmap(
+                    Path.Combine(pasta, "canototal.png")
+                );
+
+                imagemFumaca = Image.FromFile(
+                    Path.Combine(pasta, "canosfumaça.gif")
+                );
+
+                imagemVitoria = Image.FromFile(
+                    Path.Combine(pasta, "canosvitoria.gif")
+                );
+
+                DefinirAnimacaoFundo(imagemFumaca);
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    "Não foi possível carregar as imagens do nível.\n\n" +
+                    "Verifique a pasta imagens/Level3.\n\n" +
+                    ex.Message,
+                    "Erro",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                );
+
+                return false;
+            }
+        }
+
+        #endregion
+
+        #region Animação do fundo
 
         protected override void OnPaintBackground(PaintEventArgs e)
         {
@@ -335,68 +395,7 @@ namespace ProjetoCruzeiro
 
         #endregion
 
-        #region Carregar imagens
-
-        private bool CarregarImagens()
-        {
-            string pasta = Path.Combine(
-                Application.StartupPath,
-                "imagens",
-                "Level3"
-            );
-
-            try
-            {
-                imagemReta = new Bitmap(
-                    Path.Combine(pasta, "canoreto.png")
-                );
-
-                imagemL1 = new Bitmap(
-                    Path.Combine(pasta, "canol1.png")
-                );
-
-                imagemL2 = new Bitmap(
-                    Path.Combine(pasta, "canol2.png")
-                );
-
-                imagemT = new Bitmap(
-                    Path.Combine(pasta, "canot.png")
-                );
-
-                imagemTotal = new Bitmap(
-                    Path.Combine(pasta, "canototal.png")
-                );
-
-                imagemFumaca = Image.FromFile(
-                    Path.Combine(pasta, "canosfumaça.gif")
-                );
-
-                imagemVitoria = Image.FromFile(
-                    Path.Combine(pasta, "canosvitoria.gif")
-                );
-
-                DefinirAnimacaoFundo(imagemFumaca);
-
-                return true;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(
-                    "Não foi possível carregar as imagens do nível.\n\n" +
-                    "Verifique a pasta imagens/Level3.\n\n" +
-                    ex.Message,
-                    "Erro",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error
-                );
-
-                return false;
-            }
-        }
-
-        #endregion
-
-        #region Gerar tabuleiro
+        #region Geração e limpeza do tabuleiro
 
         private void GerarTabuleiro()
         {
@@ -507,7 +506,7 @@ namespace ProjetoCruzeiro
 
         #endregion
 
-        #region Rotação
+        #region Rotação e atualização das peças
 
         private int Rotacionar(int conexoes, int vezes)
         {
@@ -622,7 +621,7 @@ namespace ProjetoCruzeiro
 
         #endregion
 
-        #region Clique nas peças
+        #region Interação com as peças
 
         private void Peca_Click(object sender, EventArgs e)
         {
@@ -656,7 +655,7 @@ namespace ProjetoCruzeiro
 
         #endregion
 
-        #region Verificar conexão
+        #region Verificação de conexão
 
         private bool VerificarConexao()
         {
@@ -780,7 +779,7 @@ namespace ProjetoCruzeiro
 
         #endregion
 
-        #region Caminho da solução
+        #region Caminho da solução e limite de movimentos
 
         private List<int> ObterCaminhoSolucao()
         {
@@ -954,8 +953,6 @@ namespace ProjetoCruzeiro
                 peca.Imagem.Cursor = Cursors.Default;
             }
 
-          
-
             // Inicia a animação de vitória.
             DefinirAnimacaoFundo(imagemVitoria);
 
@@ -1013,7 +1010,7 @@ namespace ProjetoCruzeiro
 
         #endregion
 
-        #region Localizar JogoForm e MenuLateral
+        #region Localização do JogoForm
 
         private JogoForm EncontrarJogoForm()
         {
@@ -1027,27 +1024,9 @@ namespace ProjetoCruzeiro
             return controle as JogoForm;
         }
 
-        private MenuLateralControl EncontrarMenuLateralRecursivo(
-            Control controle)
-        {
-            foreach (Control filho in controle.Controls)
-            {
-                if (filho is MenuLateralControl)
-                    return filho as MenuLateralControl;
-
-                MenuLateralControl encontrado =
-                    EncontrarMenuLateralRecursivo(filho);
-
-                if (encontrado != null)
-                    return encontrado;
-            }
-
-            return null;
-        }
-
         #endregion
 
-        #region Limpeza
+        #region Limpeza e descarte
 
         private void Ato1Level3_Disposed(object sender, EventArgs e)
         {
@@ -1097,6 +1076,28 @@ namespace ProjetoCruzeiro
 
             if (imagemTotal != null)
                 imagemTotal.Dispose();
+        }
+
+        #endregion
+
+        #region Menu Lateral
+
+        private MenuLateralControl EncontrarMenuLateralRecursivo(
+            Control controle)
+        {
+            foreach (Control filho in controle.Controls)
+            {
+                if (filho is MenuLateralControl)
+                    return filho as MenuLateralControl;
+
+                MenuLateralControl encontrado =
+                    EncontrarMenuLateralRecursivo(filho);
+
+                if (encontrado != null)
+                    return encontrado;
+            }
+
+            return null;
         }
 
         #endregion
